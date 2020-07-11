@@ -82,6 +82,18 @@ const postCssPlugins = [
 const destinationDir = 'dist'
 const sourceDir = 'src'
 const taskConfig = {
+  images: {
+    destDirectory: destinationDir,
+    destOptions: null,
+    srcGlobs: [
+      `${sourceDir}/**/*.{gif,jpg,png,svg}`,
+      `!${sourceDir}/**/_*/**/*.{gif,jpg,png,svg}`, /* ignore files in underscore-prefixed directories */
+      `!${sourceDir}/**/_*.{gif,jpg,png,svg}` /* ignore underscore-prefixed files */
+    ],
+    srcOptions: {
+      since: lastRun(images)
+    },
+  },
   scripts: {
     destDirectory: destinationDir,
     destOptions: null,
@@ -126,6 +138,16 @@ const taskConfig = {
 /**
  * Tasks
  */
+
+function images(done) {
+  src(taskConfig.images.srcGlobs, taskConfig.images.srcOptions || null )
+    .pipe(plumber())
+    .pipe(debug(debugOptions('Images:')))
+    .pipe(dest(taskConfig.images.destDirectory, taskConfig.images.destOptions || null ))
+    .pipe(server.stream())
+
+  done()
+}
 
 function reload(done) {
   server.reload()
@@ -198,6 +220,7 @@ function views(done) {
 }
 
 function watches() {
+  watch(taskConfig.images.srcGlobs, images)
   watch(taskConfig.scripts.srcGlobs, series(
     scripts,
     reload
@@ -216,7 +239,7 @@ function watches() {
 const clean = () => del(destinationDir)
 const build = series(
   clean,
-  parallel(scripts, styles),
+  parallel(images, scripts, styles),
   views
 )
 const dev = series(
@@ -242,6 +265,7 @@ export {
   build,
   clean,
   dev,
+  images,
   reload,
   scripts,
   serve,
