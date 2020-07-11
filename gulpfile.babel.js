@@ -1,25 +1,4 @@
 /**
- * TODO
- *
- * - data
- * - use gulp-twing for markup
- * - fonts
- * - gh-pages
- * - production + webpackProduction
- *   - replaceFiles?
- *   - prebuild, postbuild
- *   - static
- *   - size-report
- * - static
- * - is webpack working??
- * - webpack setup from fedpack?
- * - script to
- *   - copy files to root .tool-versions, .babel.config.json, gulpfile.babel.js, webpack.js
- *   - copy files to root package-lock.json or yarn.lock depending on what command was used
- *   - add the node dependencies
- */
-
-/**
  * A Gulp setup for static site building.
  * Handles images, markup (HTML), scripts, and styles ((Post)CSS, LESS, Sass).
  * File structure is completely up to you.
@@ -100,7 +79,8 @@ const postCssPlugins = [
    *
    */
   // require('postcss-easy-import'),
-  require('postcss-csso')({comments: false})
+  require('postcss-csso')({comments: false}),
+  require('postcss-preset-env')()
 ]
 
 /**
