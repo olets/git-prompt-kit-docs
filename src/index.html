@@ -1,0 +1,317 @@
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="app.css">
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Taviraj:wght@300&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="wrapper">
+			<main>
+			  <h1>
+			    Demo of <a href="//github.com/olets/git-prompt-kit">Git Prompt Kit</a>'s Default Prompt's Features
+			  </h1>
+
+			  <div id="prompt"
+			       data-module="git-prompt-kit"
+			       class="
+			              ## Options
+
+			              checked-no-break-before-ref
+			              checked-break-after-ref
+			              checked-extended-status
+			              checked-show-inactive-status
+			              x-checked-show-inactive-extended-status
+			              x-checked-hide-inactive-upstream
+			              x-checked-show-inactive-ahead-behind
+
+			              ## Context
+
+			              checked-git
+			              checked-succeeded
+			              checked-default-user
+			              checked-default-host
+			              x-checked-root-user
+
+			              ## Git ref status
+
+			              checked-branch
+			              checked-upstream
+			              checked-behind
+			              x-checked-ahead
+			              checked-default-remote
+			              checked-same-name
+			              x-checked-tag
+
+			              ## Git file status
+
+			              checked-stash
+			              x-checked-assume-unchanged
+			              x-checked-skip-worktree
+			              checked-untracked
+			              x-checked-conflicted
+			              x-checked-unstaged-deleted
+			              x-checked-unstaged-modified
+			              x-checked-new
+			              x-checked-staged-deleted
+			              x-checked-staged-modified
+
+			              ## Git action status
+
+			              checked-action
+
+
+			              x-checked-light-terminal
+			              ">
+			    <div id="not-git">
+			      <div id="user">olets</div><div id="host">@dev</div>
+			      <div id="time">
+			        4:07:47
+			      </div>
+			      <div id="custom">
+			        ~/olets<span></span>
+			      </div>
+			    </div>
+
+			    <div id="git-ref">
+			      <div id="head">
+			        <div id="branch">
+			          main
+			        </div>
+
+			        <div id="commit">
+			          1234567
+			        </div>
+			      </div>
+
+			      <div id="local">
+			        local
+			      </div>
+
+			      <div id="upstream">
+			        <div id="ahead">
+			          +<span></span>
+			        </div>
+
+			        <div id="behind">
+			          -<span></span>
+			        </div>
+
+			        <div id="remote">upstream/</div><div id="upstream-branch"><span></span></div>
+			      </div>
+
+			      <div id="tag">
+			        @v9000
+			      </div>
+			    </div>
+
+			    <div id="git-status">
+			      <div id="extended">
+			        <div id="stash">
+			          <span></span>⇲
+			        </div>
+			        <div id="assume-unchanged">
+			          <span></span>⥱
+			        </div>
+			        <div id="skip-worktree">
+			          <span></span>⤳
+			        </div>
+			      </div>
+
+			      <div id="status">
+			        <div id="untracked">
+			          <span></span>??
+			        </div>
+			        <div id="conflicted">
+			          <span></span>UU
+			        </div>
+			        <div id="unstaged-deleted">
+			          <span></span>_D
+			        </div>
+			        <div id="unstaged-modified">
+			          <span></span>_M
+			        </div>
+			        <div id="new">
+			          <span></span>A_
+			        </div>
+			        <div id="staged-deleted">
+			          <span></span>D_
+			        </div>
+			        <div id="staged-modified">
+			          <span></span>M_
+			        </div>
+			      </div>
+
+			      <div id="action">
+			        merge
+			      </div>
+			    </div>
+
+			    <div id="char"></div>
+			  </div>
+
+			  <form action="">
+			    <fieldset>
+			      <legend>
+			        Terminal emulator config
+			      </legend>
+			      <div class="fields">
+			        <div class="field">
+			          <label for="checked-light-terminal">Light terminal</label>
+			          <input type="checkbox" id="checked-light-terminal">
+			        </div>
+			      </div>
+			    </fieldset>
+			    <fieldset>
+			      <legend>
+			        Options (all are true by default)
+			      </legend>
+			      <div class="fields">
+			        <div class="field">
+			          <label for="checked-no-break-before-ref">No line break before ref</label>
+			          <input type="checkbox" id="checked-no-break-before-ref" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-break-after-ref">Line break after ref</label>
+			          <input type="checkbox" id="checked-break-after-ref" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-extended-status">Show extended status</label>
+			          <input type="checkbox" id="checked-extended-status" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-show-inactive-status">Show inactive tree status</label>
+			          <input type="checkbox" id="checked-show-inactive-status" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-show-inactive-extended-status">Show inactive extended tree status</label>
+			          <input type="checkbox" id="checked-show-inactive-extended-status">
+			        </div>
+			        <div class="field">
+			          <label for="checked-show-inactive-ahead-behind">Show inactive ahead and behind</label>
+			          <input type="checkbox" id="checked-show-inactive-ahead-behind">
+			        </div>
+			      </div>
+			    </fieldset>
+			    <fieldset>
+			      <legend>
+			        Context
+			      </legend>
+			      <div class="fields">
+			        <div class="field">
+			          <label for="checked-git">Is a Git repo</label>
+			          <input type="checkbox" id="checked-git" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-succeeded">Previous command succeeded</label>
+			          <input type="checkbox" id="checked-succeeded" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-default-user">Default user</label>
+			          <input type="checkbox" id="checked-default-user" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-default-host">Default host</label>
+			          <input type="checkbox" id="checked-default-host" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-root-user">Root user</label>
+			          <input type="checkbox" id="checked-root-user">
+			        </div>
+			      </div>
+			    </fieldset>
+			    <fieldset>
+			      <legend>
+			        Git ref
+			      </legend>
+			      <div class="fields">
+			        <div class="field">
+			          <label for="checked-branch">On a branch</label>
+			          <input type="checkbox" id="checked-branch" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-upstream">The checked out branch has an upstream</label>
+			          <input type="checkbox" id="checked-upstream" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-ahead">Local is ahead of upstream</label>
+			          <input type="checkbox" id="checked-ahead">
+			        </div>
+			        <div class="field">
+			          <label for="checked-behind">Local is behind upstream</label>
+			          <input type="checkbox" id="checked-behind" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-default-remote">Upstream is on the default remote</label>
+			          <input type="checkbox" id="checked-default-remote" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-same-name">Upstream and local branches have same name</label>
+			          <input type="checkbox" id="checked-same-name" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-tag">On a tag</label>
+			          <input type="checkbox" id="checked-tag">
+			        </div>
+			      </div>
+			    </fieldset>
+			    <fieldset>
+			      <legend>
+			        Git status
+			      </legend>
+			      <div class="fields">
+			        <div class="field">
+			          <label for="checked-stash">Has stash(es)</label>
+			          <input type="checkbox" id="checked-stash" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-assume-unchanged">Has assume-unchanged file(s)</label>
+			          <input type="checkbox" id="checked-assume-unchanged">
+			        </div>
+			        <div class="field">
+			          <label for="checked-skip-worktree">Has skip-worktree file(s)</label>
+			          <input type="checkbox" id="checked-skip-worktree">
+			        </div>
+			        <div class="field">
+			          <label for="checked-untracked">Has untracked file(s)</label>
+			          <input type="checkbox" id="checked-untracked" checked>
+			        </div>
+			        <div class="field">
+			          <label for="checked-conflicted">Has conflicted file(s)</label>
+			          <input type="checkbox" id="checked-conflicted">
+			        </div>
+			        <div class="field">
+			          <label for="checked-unstaged-deleted">Has unstaged deleted file(s)</label>
+			          <input type="checkbox" id="checked-unstaged-deleted">
+			        </div>
+			        <div class="field">
+			          <label for="checked-unstaged-modified">Has unstaged modified file(s)</label>
+			          <input type="checkbox" id="checked-unstaged-modified">
+			        </div>
+			        <div class="field">
+			          <label for="checked-new">Has new file(s)</label>
+			          <input type="checkbox" id="checked-new">
+			        </div>
+			        <div class="field">
+			          <label for="checked-staged-deleted">Has staged deleted file(s)</label>
+			          <input type="checkbox" id="checked-staged-deleted">
+			        </div>
+			        <div class="field">
+			          <label for="checked-staged-modified">Has staged modified file(s)</label>
+			          <input type="checkbox" id="checked-staged-modified">
+			        </div>
+			        <div class="field">
+			          <label for="checked-action">Has action</label>
+			          <input type="checkbox" id="checked-action" checked>
+			        </div>
+			      </div>
+			    </fieldset>
+			  </form>
+			</main>
+
+			<footer>
+			  Copyright &copy; Henry Bley-Vroman 2020
+			</footer>
+		</div>
+		<script src="app.js"></script>
+	</body>
+</html>

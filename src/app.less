@@ -1,0 +1,355 @@
+@import "_normalize";
+
+#colors() {
+  action: #ff00af;
+  extended: #5fd7ff;
+  custom: #00afff;
+  failed: #870000;
+  head: #af87d7;
+  inactive: #9e9e9e;
+  light-terminal: #575f66;
+  upstream: #ffaf87;
+  staged: #87ff87;
+  succeeded: #5fd700;
+  tag: #5fffd7;
+  terminal: #c7c7c7;
+  unstaged: #d70087;
+  userhost: #87afaf;
+}
+
+#prompt {
+  color: #colors[terminal];
+  font-size: 20rem / 16;
+  line-height: 1.2;
+  position: sticky;
+  top: 20px;
+
+  &,
+  * {
+    display: inline;
+  }
+
+  &:not(.checked-show-inactive-extended-status) {
+    &:not(.checked-stash) #stash,
+    &:not(.checked-assume-unchanged) #assume-unchanged,
+    &:not(.checked-skip-worktree) #skip-worktree {
+      display: none;
+    }
+  }
+  &:not(.checked-show-inactive-status) {
+    &:not(.checked-untracked) #untracked,
+    &:not(.checked-conflicted) #conflicted,
+    &:not(.checked-unstaged-deleted) #unstaged-deleted,
+    &:not(.checked-unstaged-modified) #unstaged-modified,
+    &:not(.checked-new) #new,
+    &:not(.checked-staged-deleted) #staged-deleted,
+    &:not(.checked-staged-modified)  #staged-modified {
+      display: none;
+    }
+  }
+  &:not(.checked-show-inactive-ahead-behind) {
+    &:not(.checked-ahead) #ahead,
+    &:not(.checked-behind) #behind {
+      display: none;
+    }
+  }
+}
+.checked-before #before,
+.checked-after #after,
+.checked-stash #stash,
+.checked-assume-unchanged #assume-unchanged,
+.checked-skip-worktree #skip-worktree,
+.checked-untracked #untracked,
+.checked-conflicted #conflicted,
+.checked-unstaged-deleted #unstaged-deleted,
+.checked-unstaged-modified #unstaged-modified,
+.checked-new #new,
+.checked-staged-deleted #staged-deleted,
+.checked-staged-modified  #staged-modified {
+  display: inline-flex;
+}
+
+#not-git {
+  display: block;
+  .checked-no-break-before-ref & {
+    display: inline;
+  }
+}
+
+#user,
+#host {
+  color: #colors[userhost];
+}
+
+.checked-default-host.checked-default-user #user {
+  display: none;
+}
+.checked-default-host #host {
+  display: none;
+}
+#custom {
+  color: #colors[custom];
+  .checked-git & span::before {
+    content: '/git-prompt-kit'
+  }
+}
+#git-ref,
+#git-status {
+  color: #colors[inactive];
+
+  :not(.checked-git) > & {
+    display: none !important;
+  }
+}
+#head {
+  .checked-stash &,
+  .checked-assume-unchanged &,
+  .checked-skip-worktree &,
+  .checked-untracked &,
+  .checked-conflicted &,
+  .checked-unstaged-deleted &,
+  .checked-unstaged-modified &,
+  .checked-new &,
+  .checked-staged-deleted &,
+  .checked-staged-modified & {
+    color: #colors[head]
+  }
+}
+#branch {
+  display: none;
+  .checked-branch & {
+    display: inline-block;
+  }
+}
+#commit {
+  display: inline-block;
+  .checked-branch & {
+    display: none;
+  }
+}
+#local {
+  color: #colors[upstream];
+  .checked-upstream & {
+    display: none;
+  }
+}
+#upstream {
+  color: #colors[upstream];
+  display: none;
+  .checked-upstream & {
+    display: inline-block;
+  }
+}
+#ahead {
+  .checked-ahead & {
+    color: #colors[upstream];
+    span::before {
+      content: '2'
+    }
+  }
+}
+#behind {
+  .checked-behind & {
+    color: #colors[upstream];
+    span::before {
+      content: '3'
+    }
+  }
+}
+#remote {
+  .checked-default-remote & {
+    display: none;
+  }
+}
+#upstream-branch {
+  span::before {
+    content: 'mains';
+  }
+  .checked-same-name & {
+    span::before {
+      content: 'main';
+    }
+    .checked-default-remote& {
+      display: none;
+    }
+  }
+}
+#tag {
+  color: #colors[tag];
+
+  #prompt:not(.checked-tag) & {
+    display: none;
+  }
+}
+#git-status {
+  .checked-break-after-ref & {
+    display: block;
+  }
+}
+#extended {
+  #prompt:not(.checked-extended-status) & {
+    display: none;
+  }
+}
+.checked-stash #stash,
+.checked-assume-unchanged #assume-unchanged,
+.checked-skip-worktree #skip-worktree {
+  color: #colors[extended];
+}
+.checked-stash #stash::before {
+  content: '4'
+}
+.checked-assume-unchanged #assume-unchanged::before {
+  content: '2'
+}
+.checked-skip-worktree #skip-worktree::before {
+  content: '1'
+}
+.checked-untracked #untracked,
+.checked-conflicted #conflicted,
+.checked-unstaged-deleted #unstaged-deleted,
+.checked-unstaged-modified #unstaged-modified {
+  color: #colors[unstaged]
+}
+
+.checked-untracked #untracked::before {
+  content: '1'
+}
+.checked-conflicted #conflicted::before {
+  content: '1'
+}
+.checked-unstaged-deleted #unstaged-deleted::before {
+  content: '1'
+}
+.checked-unstaged-modified #unstaged-modified::before {
+  content: '1'
+}
+
+.checked-new #new,
+.checked-staged-deleted #staged-deleted,
+.checked-staged-modified #staged-modified {
+  color: #colors[staged]
+}
+.checked-new #new::before {
+  content: '1'
+}
+.checked-staged-deleted #staged-deleted::before {
+  content: '1'
+}
+.checked-staged-modified #staged-modified::before {
+  content: '1'
+}
+
+#action {
+  color: #colors[action];
+  display: none;
+  .checked-action & {
+    display: inline;
+  }
+}
+
+#char {
+  color: #colors[failed];
+  display: block;
+
+  &::before {
+    content: '%';
+
+    .checked-root-user & {
+      content: '#';
+    }
+  }
+
+  .checked-succeeded & {
+    color: #colors[succeeded];
+  }
+}
+
+html,
+body,
+.wrapper {
+  height: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Taviraj', serif;
+  font-size: 18rem / 16;
+  font-weight: 327;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+#prompt {
+  background: #262721;
+  box-shadow: 0 2px 4px #bcd;
+  color: #colors[terminal];
+  display: block;
+  font-family: 'Inconsolata', monospace;
+  font-size: 20rem / 16;
+  margin: 20px 20px 60px;
+  padding: 25px 20px 20px;
+
+  &.checked-light-terminal {
+    background: #fafafa;
+  color: #colors[light-terminal];
+  }
+}
+
+fieldset {
+  border: 1px solid #bcd;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  + & {
+    margin-top: 20px;
+    border-top: 1px solid #bcd;
+    padding-top: 20px;
+  }
+}
+
+legend {
+  font-weight: 600;
+  padding-right: 20px;
+  font-size: 1.1rem;
+}
+
+.fields {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) ;
+}
+
+a {
+  color: currentColor;
+  text-decoration-color: #colors[custom];
+  transition: 200ms;
+
+  &:focus,
+  &:hover {
+    text-decoration-color: #colors[action];
+  }
+}
+
+footer {
+  margin-top: 100px;
+  padding-bottom: 20px;
+}
