@@ -17,8 +17,12 @@
   userhost: #87afaf;
 }
 
+input[type="color"][value=""] {
+  // visibility: hidden;
+}
+
 #prompt {
-  color: #colors[terminal];
+  color: var(--color-terminal);
   font-size: 20rem / 16;
   line-height: 1.2;
   position: sticky;
@@ -80,26 +84,27 @@
   }
 }
 
-#user,
+#user {
+  color: var(--color-user);
+  .checked-default-host.checked-default-user & {
+    display: none;
+  }
+}
 #host {
-  color: #colors[userhost];
-}
-
-.checked-default-host.checked-default-user #user {
-  display: none;
-}
-.checked-default-host #host {
-  display: none;
+  color: var(--color-host);
+  .checked-default-host & {
+    display: none;
+  }
 }
 #custom {
-  color: #colors[custom];
+  color: var(--color-custom);
   .checked-git & span::before {
     content: '/git-prompt-kit'
   }
 }
 #git-ref,
 #git-status {
-  color: #colors[inactive];
+  color: var(--color-inactive);
 
   :not(.checked-git) > & {
     display: none !important;
@@ -116,7 +121,7 @@
   .checked-new &,
   .checked-staged-deleted &,
   .checked-staged-modified & {
-    color: #colors[head]
+    color: var(--color-head)
   }
 }
 #branch {
@@ -132,7 +137,7 @@
   }
 }
 #local {
-  color: #colors[upstream];
+  color: var(--color-upstream);
   :not(.checked-branch) &,
   .checked-upstream & {
     display: none;
@@ -146,7 +151,7 @@
 }
 #ahead {
   .checked-ahead & {
-    color: #colors[upstream];
+    color: var(--color-upstream);
     span::before {
       content: '2'
     }
@@ -154,20 +159,20 @@
 }
 #behind {
   .checked-behind & {
-    color: #colors[upstream];
+    color: var(--color-upstream);
     span::before {
       content: '3'
     }
   }
 }
 #remote {
-  color: #colors[upstream];
+  color: var(--color-upstream);
   .checked-default-remote & {
     display: none;
   }
 }
 #upstream-branch {
-  color: #colors[upstream];
+  color: var(--color-upstream);
   span::before {
     content: 'mains';
   }
@@ -181,7 +186,7 @@
   }
 }
 #tag {
-  color: #colors[tag];
+  color: var(--color-tag);
 
   #prompt:not(.checked-tag) & {
     display: none;
@@ -197,11 +202,24 @@
     display: none;
   }
 }
-.checked-stash #stash,
-.checked-assume-unchanged #assume-unchanged,
-.checked-skip-worktree #skip-worktree {
-  color: #colors[extended];
+#stash {
+  .checked-stash & {
+    color: var(--color-stash)
+  }
 }
+
+#assume-unchanged {
+  .checked-assume-unchanged & {
+    color: var(--color-assume-unchanged)
+  }
+}
+
+#skip-worktree {
+  .checked-skip-worktree & {
+    color: var(--color-skip-worktree)
+  }
+}
+
 .checked-stash #stash::before {
   content: '4'
 }
@@ -215,7 +233,7 @@
 .checked-conflicted #conflicted,
 .checked-unstaged-deleted #unstaged-deleted,
 .checked-unstaged-modified #unstaged-modified {
-  color: #colors[unstaged]
+  color: var(--color-unstaged)
 }
 
 .checked-untracked #untracked::before {
@@ -234,7 +252,7 @@
 .checked-new #new,
 .checked-staged-deleted #staged-deleted,
 .checked-staged-modified #staged-modified {
-  color: #colors[staged]
+  color: var(--color-staged)
 }
 .checked-new #new::before {
   content: '1'
@@ -247,7 +265,7 @@
 }
 
 #action {
-  color: #colors[action];
+  color: var(--color-action);
   display: none;
   .checked-action & {
     display: inline;
@@ -255,7 +273,7 @@
 }
 
 #char {
-  color: #colors[failed];
+  color: var(--color-failed);
   display: block;
 
   &::before {
@@ -267,7 +285,7 @@
   }
 
   .checked-succeeded & {
-    color: #colors[succeeded];
+    color: var(--color-succeeded);
   }
 }
 
@@ -304,20 +322,19 @@ h1 {
   margin-bottom: 40px;
 }
 
+button {
+  margin-left: 10px;
+}
+
 #prompt {
-  background: #262721;
+  background: var(--color-background);
   box-shadow: 0 2px 4px #bcd;
-  color: #colors[terminal];
+  color: var(--color-text);
   display: block;
   font-family: 'Inconsolata', monospace;
   font-size: 20rem / 16;
   margin: 20px 20px 60px;
   padding: 25px 20px 20px;
-
-  &.checked-light-terminal {
-    background: #fafafa;
-  color: #colors[light-terminal];
-  }
 }
 
 fieldset {
@@ -346,12 +363,12 @@ legend {
 
 a {
   color: currentColor;
-  text-decoration-color: #colors[custom];
+  text-decoration-color: var(--color-custom);
   transition: 200ms;
 
   &:focus,
   &:hover {
-    text-decoration-color: #colors[action];
+    text-decoration-color: var(--color-action);
   }
 }
 
