@@ -200,6 +200,9 @@ function views(done) {
   const htmlTwigFilter = filter('**/*.html.twig', {restore: true})
 
   src(taskConfig.views.srcGlobs, taskConfig.styles.srcOptions || null )
+    .pipe(rename({
+      extname: '', /* prevent .html.html */
+    }))
     .pipe(plumber())
     .pipe(debug(debugOptions('Views:')))
     .pipe(twigFilter)
@@ -209,9 +212,6 @@ function views(done) {
     }))
     .pipe(twigFilter.restore)
     .pipe(htmlTwigFilter)
-    .pipe(rename({
-      extname: '', /* prevent .html.html */
-    }))
     .pipe(htmlTwigFilter.restore)
     .pipe(dest('dist'))
     .pipe(dest(taskConfig.views.destDirectory, taskConfig.views.destOptions || null ))
