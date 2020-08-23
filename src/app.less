@@ -29,6 +29,10 @@
     display: inline;
   }
 
+  &:not(.initialized) {
+    visibility: hidden;
+  }
+
   &:not(.checked-show-inactive-extended-status) {
     &:not(.checked-stash) #stash,
     &:not(.checked-assume-unchanged) #assume-unchanged,

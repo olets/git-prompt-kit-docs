@@ -1,10 +1,18 @@
 const FORM = document.querySelector('form')
-const PROMPT = document.querySelector('#prompt')
+const INITIALIZED_CLASS = 'initialized'
+const PROMPT = document.getElementById('prompt')
 
 class Form {
   constructor(el) {
-    this.inputs = el.querySelectorAll('input')
-    this.inputs.forEach(input => addEventListener('change', this.handleChange))
+    this.inputs = [...el.querySelectorAll('input')]
+
+  	this.inputs.filter(input => input.checked).forEach(input => {
+  		PROMPT.classList.add(input.id)
+  	})
+
+  	PROMPT.classList.add(INITIALIZED_CLASS)
+
+  	this.inputs.forEach(input => addEventListener('change', this.handleChange))
   }
 
   handleChange = e => {
