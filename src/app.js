@@ -22,7 +22,7 @@ class Form {
   addEventListeners = () => {
     this.optionInputs.forEach(input => input.addEventListener('change', this.handleOptionChange))
     this.resets.forEach(reset => reset.addEventListener('click', this.handleResetClick))
-    this.themeInputs.forEach(input => input.addEventListener('change', this.handleThemeChange))
+    this.themeInputs.forEach(input => input.addEventListener('input', this.handleThemeChange))
   }
 
   applyOptions = (inputs) => {
