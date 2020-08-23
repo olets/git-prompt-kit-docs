@@ -133,13 +133,14 @@
 }
 #local {
   color: #colors[upstream];
+  :not(.checked-branch) &,
   .checked-upstream & {
     display: none;
   }
 }
 #upstream {
   display: none;
-  .checked-upstream & {
+  .checked-upstream:not(.checked-branch) & {
     display: inline-block;
   }
 }
