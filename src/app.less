@@ -375,3 +375,26 @@ footer {
   margin-top: 100px;
   padding-bottom: 20px;
 }
+
+blockquote {
+  font-size: 1rem;
+  margin: 0;
+  padding: 20px 0 40px;
+
+  &::before {
+    content: '👉';
+    display: inline-block;
+    font-size: 1.6rem;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+}
+
+kbd {
+  border: 1px dotted #bbb;
+  border-radius: 2px;
+  font-family: 'Inconsolata', monospace;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 2px 4px;
+}
