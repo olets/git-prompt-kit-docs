@@ -11,52 +11,91 @@ class Form {
     this.resets = [...el.querySelectorAll(RESET_ATTR)]
     this.themeInputs = [...el.querySelectorAll(COLOR_ATTR)]
 
-  	// this.optionInputs.filter(input => input.checked).forEach(input => PROMPT.classList.add(input.id))
-  	// this.themeInputs.forEach(input => document.documentElement.style.setProperty(`--${input.id}`, input.value))
-  	this.applyOptions(this.optionInputs)
-  	this.applyTheme(this.themeInputs)
+    this.applyOptions(this.optionInputs)
+    this.applyTheme(this.themeInputs)
 
-  	PROMPT.classList.add(INITIALIZED_CLASS)
+    PROMPT.classList.add(INITIALIZED_CLASS)
 
-  	this.addEventListeners()
-  }
-
-  applyOptions = (inputs) => {
-  	inputs.forEach(input => PROMPT.classList[`${input.checked ? 'add' : 'remove'}`](input.id))
-  }
-
-  applyTheme = (inputs) => {
-  	inputs.forEach(input => {
-  		document.documentElement.style.setProperty(`--${input.id}`, input.value)
-	  	console.log(`--${input.id} is now ${input.value}`)
-	  })
+    this.addEventListeners()
   }
 
   addEventListeners = () => {
-  	this.optionInputs.forEach(input => input.addEventListener('change', this.handleOptionChange))
-  	this.resets.forEach(reset => reset.addEventListener('click', this.handleResetClick))
-  	this.themeInputs.forEach(input => input.addEventListener('change', this.handleThemeChange))
+    this.optionInputs.forEach(input => input.addEventListener('change', this.handleOptionChange))
+    this.resets.forEach(reset => reset.addEventListener('click', this.handleResetClick))
+    this.themeInputs.forEach(input => input.addEventListener('change', this.handleThemeChange))
+  }
+
+  applyOptions = (inputs) => {
+    const fieldsets = new Set()
+
+    inputs.forEach(input => {
+      fieldsets.add(this.findFieldset(input))
+      PROMPT.classList[`${input.checked ? 'add' : 'remove'}`](input.id)
+    })
+
+    fieldsets.forEach(fieldset => {
+      const {optionInputs} = this.findInputs(fieldset)
+
+      for (let input of optionInputs) {
+        if (input.checked != input.hasAttribute('data-default')) {
+          fieldset.querySelector(RESET_ATTR).disabled = false
+          return
+        }
+      }
+
+      fieldset.querySelector(RESET_ATTR).disabled = true
+    })
+  }
+
+  applyTheme = (inputs) => {
+    const fieldsets = new Set()
+
+    inputs.forEach(input => {
+      fieldsets.add(this.findFieldset(input))
+      document.documentElement.style.setProperty(`--${input.id}`, input.value)
+    })
+
+    fieldsets.forEach(fieldset => {
+      const {themeInputs} = this.findInputs(fieldset)
+
+      for (let input of themeInputs) {
+        if (input.value != input.dataset.default) {
+          fieldset.querySelector(RESET_ATTR).disabled = false
+          return
+        }
+      }
+
+      fieldset.querySelector(RESET_ATTR).disabled = true
+    })
+  }
+
+  findFieldset = (el) => {
+    return el.closest('.fieldset')
+  }
+
+  findInputs = (el) => {
+    return {
+      optionInputs: [...el.querySelectorAll(CHECKBOX_ATTR)],
+      themeInputs: [...el.querySelectorAll(COLOR_ATTR)]
+    }
   }
 
   handleOptionChange = (e) => {
-  	this.applyOptions([e.target])
-    // PROMPT.classList.toggle(e.target.id)
+    this.applyOptions([e.target])
   }
 
-	handleResetClick = (e) => {
-		const fieldset = e.target.closest('.fieldset')
-  	const optionInputs = [...fieldset.querySelectorAll(CHECKBOX_ATTR)]
-  	const themeInputs = [...fieldset.querySelectorAll(COLOR_ATTR)]
-  	optionInputs.forEach(input => input.checked = input.dataset.default === 'checked')
-  	themeInputs.forEach(input => input.value = input.dataset.default)
+  handleResetClick = (e) => {
+    const fieldset = this.findFieldset(e.target)
+    const {optionInputs, themeInputs} = this.findInputs(fieldset)
+    optionInputs.forEach(input => input.checked = input.hasAttribute('data-default'))
+    themeInputs.forEach(input => input.value = input.dataset.default)
 
-  	this.applyTheme(themeInputs)
-  	this.applyOptions(optionInputs)
-	}
+    this.applyTheme(themeInputs)
+    this.applyOptions(optionInputs)
+  }
 
   handleThemeChange = (e) => {
-  	// document.documentElement.style.setProperty(`--${e.target.id}`, e.target.value)
-  	this.applyTheme([e.target])
+    this.applyTheme([e.target])
   }
 }
 
