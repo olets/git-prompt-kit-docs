@@ -336,14 +336,16 @@ button {
 }
 
 fieldset {
-  border: 1px solid #bcd;
+  border: 1px solid #345;
   margin-bottom: 20px;
   padding: 20px;
 
-  + & {
-    margin-top: 20px;
-    border-top: 1px solid #bcd;
-    padding-top: 20px;
+  & & {
+    border: 1px solid #abc;
+  }
+
+  & + & {
+    margin-top: 40px;
   }
 }
 
