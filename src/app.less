@@ -137,7 +137,7 @@ input[type="color"][value=""] {
   }
 }
 #local {
-  color: var(--color-upstream);
+  color: var(--color-remote);
   :not(.checked-branch) &,
   .checked-upstream & {
     display: none;
@@ -151,7 +151,7 @@ input[type="color"][value=""] {
 }
 #ahead {
   .checked-ahead & {
-    color: var(--color-upstream);
+    color: var(--color-remote);
     span::before {
       content: '2'
     }
@@ -159,20 +159,20 @@ input[type="color"][value=""] {
 }
 #behind {
   .checked-behind & {
-    color: var(--color-upstream);
+    color: var(--color-remote);
     span::before {
       content: '3'
     }
   }
 }
 #remote {
-  color: var(--color-upstream);
+  color: var(--color-remote);
   .checked-default-remote & {
     display: none;
   }
 }
 #upstream-branch {
-  color: var(--color-upstream);
+  color: var(--color-remote);
   span::before {
     content: 'mains';
   }
