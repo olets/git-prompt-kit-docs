@@ -415,10 +415,21 @@ kbd {
 code {
   background: #efefef;
   font-family: 'Inconsolata', monospace;
-  font-size: 0.8rem;
 
-  &::before {
-    content: '';
-    display: block;
+  .field & {
+    font-size: 0.8rem;
+
+    &::before {
+      content: '';
+      display: block;
+    }
+  }
+}
+
+ul {
+  list-style-type: circle;
+
+  li {
+    margin-bottom: 5px;
   }
 }
