@@ -1,6 +1,7 @@
 {
-  "name": "custom-gulp",
+  "name": "hometown-prompt-docs",
   "version": "1.0.0",
+  "description": "Documentation for hometown-prompt",
   "main": "gulpfile.babel.js",
   "license": "MIT",
   "scripts": {
@@ -38,5 +39,7 @@
     "webpack": "^4.41.5",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"
-  }
+  },
+  "author": "Henry Bley-Vroman <olets@olets.dev>",
+  "license": "SEE LICENSE IN LICENSE"
 }
