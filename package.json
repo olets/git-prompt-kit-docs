@@ -1,0 +1,10 @@
+{
+  "name": "git-prompt-kit-docs",
+  "version": "1.0.0",
+  "description": "Documentation for git-prompt-kit",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Henry Bley-Vroman <olets@olets.dev>",
+  "license": "SEE LICENSE IN LICENSE"
+}
