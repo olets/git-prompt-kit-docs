@@ -29,6 +29,17 @@ pnpm install
 pnpm docs:dev
 ```
 
+### Update Algolia index
+
+```shell
+cp .env{.example,}
+```
+
+and fill in values in `.env`. Then
+
+```shell
+yarn algolia:index
+```
 ## Contributing
 
 Thanks for your interest. Contributions are welcome!

@@ -1,4 +1,6 @@
+import 'dotenv/config';
 import { defaultTheme, defineUserConfig } from "vuepress";
+import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 
 export default defineUserConfig({
   // https://v2.vuepress.vuejs.org/reference/config.html#head
@@ -63,4 +65,15 @@ export default defineUserConfig({
       externalLinkIcon: false,
     }
   }),
+  
+  plugins: [
+    [
+      // https://v2.vuepress.vuejs.org/reference/plugin/docsearch.html
+      docsearchPlugin({
+        apiKey: process.env.SEARCH_KEY,
+        appId: process.env.APPLICATION_ID,
+        indexName: process.env.INDEX_NAME,
+      }),
+    ],
+  ],
 });
