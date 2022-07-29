@@ -1,95 +1,122 @@
 <script>
 export default {
   props: {
-    git: Object,
-    user: Object,
-    colors: Object,
+    git: {
+      type: Object,
+      default() { return {} },
+    },
+    user: {
+      type: Object,
+      default() { return {} },
+    },
+    colors: {
+      type: Object,
+      default() { return {} },
+    },
   },
   computed: {
     gitPromptKitAction() {
-      return 'GIT_PROMPT_KIT_ACTION'
+      return "GIT_PROMPT_KIT_ACTION";
     },
     gitPromptKitAhead() {
-      return 'GIT_PROMPT_KIT_AHEAD'
+      return "GIT_PROMPT_KIT_AHEAD";
     },
     gitPromptKitAssumedUnchanged() {
-      return 'GIT_PROMPT_KIT_ASSUMED_UNCHANGED'
+      return "GIT_PROMPT_KIT_ASSUMED_UNCHANGED";
     },
     gitPromptKitBehind() {
-      return 'GIT_PROMPT_KIT_BEHIND'
+      return "GIT_PROMPT_KIT_BEHIND";
     },
     gitPromptKitChar() {
-      return 'GIT_PROMPT_KIT_CHAR'
+      return "GIT_PROMPT_KIT_CHAR";
     },
     gitPromptKitConflicted() {
-      return 'GIT_PROMPT_KIT_CONFLICTED'
+      return "GIT_PROMPT_KIT_CONFLICTED";
     },
     gitPromptKitCwd() {
-      return 'GIT_PROMPT_KIT_CWD'
+      return "GIT_PROMPT_KIT_CWD";
     },
     gitPromptKitDeletedStaged() {
-      return 'GIT_PROMPT_KIT_DELETED_STAGED'
+      return "GIT_PROMPT_KIT_DELETED_STAGED";
     },
     gitPromptKitDeleted() {
-      return 'GIT_PROMPT_KIT_DELETED'
+      return "GIT_PROMPT_KIT_DELETED";
     },
     gitPromptKitHead() {
-      return 'GIT_PROMPT_KIT_HEAD'
+      return "GIT_PROMPT_KIT_HEAD";
     },
     gitPromptKitModifiedStaged() {
-      return 'GIT_PROMPT_KIT_MODIFIED_STAGED'
+      return "GIT_PROMPT_KIT_MODIFIED_STAGED";
     },
     gitPromptKitModified() {
-      return 'GIT_PROMPT_KIT_MODIFIED'
+      return "GIT_PROMPT_KIT_MODIFIED";
     },
     gitPromptKitNew() {
-      return 'GIT_PROMPT_KIT_NEW'
+      return "GIT_PROMPT_KIT_NEW";
     },
     gitPromptKitPushAhead() {
-      return 'GIT_PROMPT_KIT_PUSH_AHEAD'
+      return "GIT_PROMPT_KIT_PUSH_AHEAD";
     },
     gitPromptKitPushBehind() {
-      return 'GIT_PROMPT_KIT_PUSH_BEHIND'
+      return "GIT_PROMPT_KIT_PUSH_BEHIND";
     },
     gitPromptKitPush() {
-      return 'GIT_PROMPT_KIT_PUSH'
+      return "GIT_PROMPT_KIT_PUSH";
     },
     gitPromptKitRemote() {
-      return 'GIT_PROMPT_KIT_REMOTE'
+      return "GIT_PROMPT_KIT_REMOTE";
     },
     gitPromptKitRoot() {
-      return 'GIT_PROMPT_KIT_ROOT'
+      return "GIT_PROMPT_KIT_ROOT";
     },
     gitPromptKitSkipWorktree() {
-      return 'GIT_PROMPT_KIT_SKIP_WORKTREE'
+      return "GIT_PROMPT_KIT_SKIP_WORKTREE";
     },
     gitPromptKitStashes() {
-      return 'GIT_PROMPT_KIT_STASHES'
+      return "GIT_PROMPT_KIT_STASHES";
     },
     gitPromptKitTag() {
-      return 'GIT_PROMPT_KIT_TAG'
+      return "GIT_PROMPT_KIT_TAG";
     },
     gitPromptKitUntracked() {
-      return 'GIT_PROMPT_KIT_UNTRACKED'
+      return "GIT_PROMPT_KIT_UNTRACKED";
     },
     gitPromptKitUserhost() {
-      return 'GIT_PROMPT_KIT_USERHOST'
+      return "GIT_PROMPT_KIT_USERHOST";
     },
     gitPromptKitRef() {
-      return this.gitPromptKitHead + this.gitPromptKitAhead + this.gitPromptKitRemote + this.gitPromptKitPush + this.gitPromptKitTag
+      return (
+        this.gitPromptKitHead +
+        this.gitPromptKitAhead +
+        this.gitPromptKitRemote +
+        this.gitPromptKitPush +
+        this.gitPromptKitTag
+      );
     },
     gitPromptKitStatusExtended() {
-      return this.gitPromptKitStashes + this.gitPromptKitAssumedUnchanged + this.gitPromptKitSkipWorktree
+      return (
+        this.gitPromptKitStashes +
+        this.gitPromptKitAssumedUnchanged +
+        this.gitPromptKitSkipWorktree
+      );
     },
     gitPromptKitStatus() {
-      return this.gitPromptKitUntracked + this.gitPromptKitConflicted + this.gitPromptKitDeleted + this.gitPromptKitModified + this.gitPromptKitNew + this.gitPromptKitDeletedStaged + this.gitPromptKitModifiedStaged
+      return (
+        this.gitPromptKitUntracked +
+        this.gitPromptKitConflicted +
+        this.gitPromptKitDeleted +
+        this.gitPromptKitModified +
+        this.gitPromptKitNew +
+        this.gitPromptKitDeletedStaged +
+        this.gitPromptKitModifiedStaged
+      );
     },
     gitPromptKitWorkdir() {
-      return this.gitPromptKitRoot + this.gitPromptKitCwd
+      return this.gitPromptKitRoot + this.gitPromptKitCwd;
     },
   },
   methods: {},
-}
+};
 </script>
 
 <template>
@@ -194,24 +221,24 @@ export default {
         <td>{{ gitPromptKitUserhost }}</td>
       </tr>
 
-        <tr></tr>
+      <tr />
 
-        <tr>
-          <td>GIT_PROMPT_KIT_REF</td>
-          <td>{{ gitPromptKitRef }}</td>
-        </tr>
-        <tr>
-          <td>GIT_PROMPT_KIT_STATUS_EXTENDED</td>
-          <td>{{ gitPromptKitStatusExtended }}</td>
-        </tr>
-        <tr>
-          <td>GIT_PROMPT_KIT_STATUS</td>
-          <td>{{ gitPromptKitStatus }}</td>
-        </tr>
-        <tr>
-          <td>GIT_PROMPT_KIT_WORKDIR</td>
-          <td>{{ gitPromptKitWorkdir }}</td>
-        </tr>
+      <tr>
+        <td>GIT_PROMPT_KIT_REF</td>
+        <td>{{ gitPromptKitRef }}</td>
+      </tr>
+      <tr>
+        <td>GIT_PROMPT_KIT_STATUS_EXTENDED</td>
+        <td>{{ gitPromptKitStatusExtended }}</td>
+      </tr>
+      <tr>
+        <td>GIT_PROMPT_KIT_STATUS</td>
+        <td>{{ gitPromptKitStatus }}</td>
+      </tr>
+      <tr>
+        <td>GIT_PROMPT_KIT_WORKDIR</td>
+        <td>{{ gitPromptKitWorkdir }}</td>
+      </tr>
     </tbody>
   </table>
 </template>

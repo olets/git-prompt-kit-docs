@@ -1,9 +1,9 @@
 <script>
-import Prompt from './Prompt.vue';
-import { ansiOrHexColor, hexColor } from '../utils/ansiToHex.js';
+import PromptComponent from "./PromptComponent.vue";
+import { ansiOrHexColor, hexColor } from "../utils/ansiToHex.js";
 
 export default {
-  components: { Prompt },
+  components: { PromptComponent },
   data() {
     return {
       config: {
@@ -159,122 +159,163 @@ export default {
           GIT_PROMPT_KIT_COLOR_WORKDIR: {
             default: "39",
           },
-        }
+        },
       },
-    }
+    };
   },
   computed: {
     gitConfig() {
-      return this.configFromState(this.config.git)
+      return this.configFromState(this.config.git);
     },
     userConfig() {
-      return this.configFromState(this.config.user)
+      return this.configFromState(this.config.user);
     },
     colorsConfig() {
-      return this.configFromState(this.config.colors)
+      return this.configFromState(this.config.colors);
     },
     textarea() {
-      this.config
-      return [
-        this.gitConfig,
-        this.userConfig,
-        this.colorsConfig,
-      ].filter(v => v)
-        .join('\n')
-    }
+      this.config;
+      return [this.gitConfig, this.userConfig, this.colorsConfig]
+        .filter((v) => v)
+        .join("\n");
+    },
   },
   methods: {
     ansiOrHexColor,
     hexColor,
     configFromState(configObj) {
-      let customizedEntries = []
-      
+      let customizedEntries = [];
+
       for (let entry of Object.entries(configObj)) {
-        const key = entry[0]
-        const values = entry[1]
-        
+        const key = entry[0];
+        const values = entry[1];
+
         if (values?.custom && values.default !== values.custom) {
-          customizedEntries.push(`${key}="${values.custom}"`)
+          customizedEntries.push(`${key}="${values.custom}"`);
         }
       }
-      
-      return customizedEntries.join('\n')
+
+      return customizedEntries.join("\n");
     },
     reset() {
       for (let configType of Object.keys(this.config)) {
         for (let configOption of Object.keys(this.config[configType])) {
-          this.config[configType][configOption].custom = null
+          this.config[configType][configOption].custom = null;
         }
       }
     },
-  }
-}
+  },
+};
 </script>
 
 <template>
-	<details>
+  <details>
     <summary>Interactive configurator</summary>
-  	<form style="display: grid; gap: 8px">
-    <details>
-      <summary :style="this.gitConfig ? 'color: red' : ''">Git</summary>
-      <label v-for="(value, key) in config.git" style="display: flex; gap: 4px; ">
-        <code>{{ key }}</code>
-
-        <span v-if="value.default">(default: <code>{{ value.default}}</code>)</span>
-
-        <input  type="text" v-model="value.custom" :data-config-key="key" :placeholder="value.default">
-      </label>
-    </details>
-    
-    <details>
-      <summary :style="this.colorsConfig ? 'color: red' : ''">Colors</summary>
-      <label v-for="(value, key) in config.colors" style="display: flex; gap: 4px; ">
-        <code>{{ key }}</code>
-
-        <span v-if="value.default">(default: <code>{{ value.default }}</code>)</span>
-
-        <input
-               type="text"
-               :value="value.custom"
-               :data-config-key="key" 
-               :placeholder="value.default"          
-               @input="event => value.custom = ansiOrHexColor(event.target.value)"
-				>
-
-        <input
-          type="color"
-          :value="hexColor(value.custom || value.default)"
-          @input="event => value.custom = ansiOrHexColor(event.target.value)"
+    <form style="display: grid; gap: 8px">
+      <details>
+        <summary :style="gitConfig ? 'color: red' : ''">
+          Git
+        </summary>
+        <label
+          v-for="(value, key) in config.git"
+          :key="key"
+          style="display: flex; gap: 4px"
         >
-      </label>
-    </details>
+          <code>{{ key }}</code>
 
-    <details>
-      <summary :style="this.userConfig ? 'color: red' : ''">User</summary>
-      <label v-for="(value, key) in config.user" style="display: flex; gap: 4px; ">
-        <code>{{ key }}</code>
+          <span v-if="value.default">(default: <code>{{ value.default }}</code>)</span>
 
-        <span v-if="value.default">(default: <code>{{ value.default}}</code>)</span>
+          <input
+            v-model="value.custom"
+            type="text"
+            :data-config-key="key"
+            :placeholder="value.default"
+          >
+        </label>
+      </details>
 
-        <input  type="text" v-model="value.custom" :data-config-key="key" :placeholder="value.default">
-      </label>
-    </details>
-        
-    <div>
-      <button type="button" @click="reset">
-        reset defaults
-      </button>
-    </div>
-  </form>
+      <details>
+        <summary :style="colorsConfig ? 'color: red' : ''">
+          Colors
+        </summary>
+        <label
+          v-for="(value, key) in config.colors"
+          :key="key"
+          style="display: flex; gap: 4px"
+        >
+          <code>{{ key }}</code>
+
+          <span v-if="value.default">(default: <code>{{ value.default }}</code>)</span>
+
+          <input
+            type="text"
+            :value="value.custom"
+            :data-config-key="key"
+            :placeholder="value.default"
+            @input="
+              (event) => (value.custom = ansiOrHexColor(event.target.value))
+            "
+          >
+
+          <input
+            type="color"
+            :value="hexColor(value.custom || value.default)"
+            @input="
+              (event) => (value.custom = ansiOrHexColor(event.target.value))
+            "
+          >
+        </label>
+      </details>
+
+      <details>
+        <summary :style="userConfig ? 'color: red' : ''">
+          User
+        </summary>
+        <label
+          v-for="(value, key) in config.user"
+          :key="key"
+          style="display: flex; gap: 4px"
+        >
+          <code>{{ key }}</code>
+
+          <span v-if="value.default">(default: <code>{{ value.default }}</code>)</span>
+
+          <input
+            v-model="value.custom"
+            type="text"
+            :data-config-key="key"
+            :placeholder="value.default"
+          >
+        </label>
+      </details>
+
+      <div>
+        <button
+          type="button"
+          @click="reset"
+        >
+          reset defaults
+        </button>
+      </div>
+    </form>
   </details>
-  
+
   <details>
-    	<summary>Components</summary>
-      <Prompt v-bind="config"></Prompt>
+    <summary>Components</summary>
+    <PromptComponent v-bind="config" />
   </details>
-  
+
   <details>
-    <summary :style="textarea ? 'color: red' : ''">Config to paste into .zshrc</summary>
-	  <textarea v-model="textarea" readonly spellcheck="false" rows="10" style="resize: vertical; width: 100%" id="textarea"></textarea>
+    <summary :style="textarea ? 'color: red' : ''">
+      Config to paste into .zshrc
+    </summary>
+    <textarea
+      id="textarea"
+      v-model="textarea"
+      readonly
+      spellcheck="false"
+      rows="10"
+      style="resize: vertical; width: 100%"
+    />
   </details>
 </template>

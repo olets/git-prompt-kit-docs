@@ -265,29 +265,36 @@ const ansiHex = {
   252: "#d0d0d0",
   253: "#dadada",
   254: "#e4e4e4",
-  255: "#eeeeee"
-}
+  255: "#eeeeee",
+};
 
 export function ansiOrHexColor(hex) {
-  const index = Object.values(ansiHex).indexOf(hex)
-  
+  const index = Object.values(ansiHex).indexOf(hex);
+
   if (index > -1) {
-    return Object.keys(ansiHex)[index]
+    return Object.keys(ansiHex)[index];
   }
-  
-  return hex
+
+  return hex;
 }
 
 export function hexColor(ansiOrHex) {
-  if (ansiOrHex[0] !== '#') {
-    return ansiHex[ansiOrHex]
+  if (ansiOrHex[0] !== "#") {
+    return ansiHex[ansiOrHex];
   }
-  
-  let hex = ansiOrHex
-  
+
+  let hex = ansiOrHex;
+
   if (ansiOrHex.length === 4) {
-    hex = ansiOrHex[0] + ansiOrHex[1] + ansiOrHex[1] + ansiOrHex[2] + ansiOrHex[2] + ansiOrHex[3] + ansiOrHex[3]
+    hex =
+      ansiOrHex[0] +
+      ansiOrHex[1] +
+      ansiOrHex[1] +
+      ansiOrHex[2] +
+      ansiOrHex[2] +
+      ansiOrHex[3] +
+      ansiOrHex[3];
   }
-  
-  return hex
+
+  return hex;
 }
