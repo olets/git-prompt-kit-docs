@@ -6,6 +6,17 @@ export default {
   data() {
     return {
       ansiRgb: {
+        /**
+         * Started with https://github.com/marionebl/ansi-to-rgb/blob/master/index.js
+         * and ran that through
+         * const rgbToHex = (r, g, b) => {
+         *   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+         * }
+         * Object.entries(ansiRgb).reduce((acc,cur) => {
+         *   acc[entry[0]] = rgbToHex(entry[1])
+         *   return acc
+         * }, {})
+         */
         0: "#000000",
         1: "#800000",
         2: "#008000",
