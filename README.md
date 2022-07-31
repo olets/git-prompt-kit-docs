@@ -20,7 +20,7 @@ Read the documentation at <https://next.git-prompt-kit.olets.dev/>.
 ### Setup
 
 ```shell
-pnpm install
+pnpm install --shamefully-hoist
 ```
 
 ### Serve and watch
