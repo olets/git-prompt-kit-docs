@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import "dotenv/config";
 import { defaultTheme, defineUserConfig } from "vuepress";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 
@@ -6,15 +6,13 @@ export default defineUserConfig({
   // https://v2.vuepress.vuejs.org/reference/config.html#head
   head: [
     // social metas
-    [
-      "meta",
-      { property: "og:title", content: "git-prompt-kit" },
-    ],
+    ["meta", { property: "og:title", content: "git-prompt-kit" }],
     [
       "meta",
       {
         property: "og:description",
-        content: "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
+        content:
+          "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
       },
     ],
     [
@@ -34,7 +32,8 @@ export default defineUserConfig({
       "meta",
       {
         name: "twitter:description",
-        content: "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
+        content:
+          "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
       },
     ],
   ],
@@ -43,7 +42,8 @@ export default defineUserConfig({
   // https://v2.vuepress.vuejs.org/guide/configuration.html#site-config
   lang: "en-US",
   title: "git-prompt-kit",
-  description: "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
+  description:
+    "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
 
   markdown: {
     links: {
@@ -51,8 +51,8 @@ export default defineUserConfig({
         class: "external-link",
         rel: "",
         target: "",
-      }
-    }
+      },
+    },
   },
 
   // default theme config
@@ -63,9 +63,9 @@ export default defineUserConfig({
     docsRepo: "olets/git-prompt-kit-docs",
     themePlugins: {
       externalLinkIcon: false,
-    }
+    },
   }),
-  
+
   plugins: [
     [
       // https://v2.vuepress.vuejs.org/reference/plugin/docsearch.html

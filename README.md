@@ -40,6 +40,7 @@ and fill in values in `.env`. Then
 ```shell
 yarn algolia:index
 ```
+
 ## Contributing
 
 Thanks for your interest. Contributions are welcome!

@@ -1,16 +1,16 @@
-require('dotenv').config();
+// eslint-disable-next-line no-undef
+require("dotenv").config();
 
 const config = {
+  // eslint-disable-next-line no-undef
   index_name: process.env.INDEX_NAME,
-  start_urls: [
-    "https://git-prompt-kit.olets.dev/"
-  ],
+  start_urls: ["https://git-prompt-kit.olets.dev/"],
   stop_urls: [],
   selectors: {
     lvl0: {
       selector: ".sidebar-heading.active",
       global: true,
-      default_value: "Documentation"
+      default_value: "Documentation",
     },
     lvl1: ".theme-default-content h1",
     lvl2: ".theme-default-content h2",
@@ -21,12 +21,12 @@ const config = {
     lang: {
       selector: "/html/@lang",
       type: "xpath",
-      global: true
-    }
+      global: true,
+    },
   },
   custom_settings: {
-    attributesForFaceting: ["lang"]
-  }
-}
+    attributesForFaceting: ["lang"],
+  },
+};
 
-console.log(JSON.stringify(config))
+console.log(JSON.stringify(config));

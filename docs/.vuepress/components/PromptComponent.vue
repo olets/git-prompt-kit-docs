@@ -3,15 +3,21 @@ export default {
   props: {
     git: {
       type: Object,
-      default() { return {} },
+      default() {
+        return {};
+      },
     },
     user: {
       type: Object,
-      default() { return {} },
+      default() {
+        return {};
+      },
     },
     colors: {
       type: Object,
-      default() { return {} },
+      default() {
+        return {};
+      },
     },
   },
   computed: {
