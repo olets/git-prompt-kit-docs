@@ -32,5 +32,8 @@
   "lint-staged": {
     "**/*.{js,vue}": "eslint --cache --fix --no-ignore",
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "pinia": "^2.0.17"
   }
 }
