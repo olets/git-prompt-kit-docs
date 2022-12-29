@@ -68,7 +68,7 @@ export default defineUserConfig({
           link: "/",
         },
         {
-          text: "Options",
+          text: "Configure",
           children: [
             {
               text: "Color",
@@ -84,7 +84,8 @@ export default defineUserConfig({
             },
           ],
         },
-        "/configuration/",
+        "/context",
+        "/configuration",
       ],
     },
     sidebarDepth: 3,
