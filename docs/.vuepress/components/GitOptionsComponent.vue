@@ -5,12 +5,12 @@ import ConfiguratorComponent from "./ConfiguratorComponent.vue";
 export default {
   components: { ConfiguratorComponent },
   setup() {
-    const gitStore = useGitStore();
-    return { gitStore };
+    const store = useGitStore();
+    return { store };
   },
 };
 </script>
 
 <template>
-  <ConfiguratorComponent :store="gitStore"></ConfiguratorComponent>
+  <ConfiguratorComponent :store="store"></ConfiguratorComponent>
 </template>

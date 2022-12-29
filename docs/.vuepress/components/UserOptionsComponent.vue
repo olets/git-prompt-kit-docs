@@ -1,16 +1,16 @@
 <script>
-import { useGitStore } from "../stores/store-git";
+import { useUserStore } from "../stores/store-user";
 import ConfiguratorComponent from "./ConfiguratorComponent.vue";
 
 export default {
   components: { ConfiguratorComponent },
   setup() {
-    const gitStore = useGitStore();
-    return { gitStore };
+    const store = useUserStore();
+    return { store };
   },
 };
 </script>
 
 <template>
-  <ConfiguratorComponent :store="gitStore"></ConfiguratorComponent>
+  <ConfiguratorComponent :store="store"></ConfiguratorComponent>
 </template>
