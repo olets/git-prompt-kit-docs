@@ -13,18 +13,20 @@
   "author": "Henry Bley-Vroman <olets@olets.dev>",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
-    "@algolia/client-search": "^4.14.2",
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@algolia/client-search": "^4.14.3",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "@vuepress/client": "2.0.0-beta.49",
     "@vuepress/plugin-docsearch": "2.0.0-alpha.1",
-    "dotenv": "^16.0.1",
-    "eslint": "^8.20.0",
-    "eslint-plugin-vue": "^9.3.0",
-    "husky": "^8.0.0",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "vue": "^3.2.37",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.30.0",
+    "eslint-plugin-vue": "^9.8.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
+    "vue": "^3.2.45",
     "vuepress": "2.0.0-beta.49"
   },
   "lint-staged": {
@@ -32,6 +34,6 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
-    "pinia": "^2.0.17"
+    "pinia": "^2.0.28"
   }
 }
