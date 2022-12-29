@@ -61,6 +61,33 @@ export default defineUserConfig({
     repo: "olets/git-prompt-kit",
     docsDir: "docs",
     docsRepo: "olets/git-prompt-kit-docs",
+    sidebar: {
+      "/": [
+        {
+          text: "Introduction",
+          link: "/",
+        },
+        {
+          text: "Options",
+          children: [
+            {
+              text: "Color",
+              link: "/color",
+            },
+            {
+              text: "Git",
+              link: "/git",
+            },
+            {
+              text: "User",
+              link: "/user",
+            },
+          ],
+        },
+        "/configuration/",
+      ],
+    },
+    sidebarDepth: 3,
     themePlugins: {
       externalLinkIcon: false,
     },
