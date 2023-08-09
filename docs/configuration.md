@@ -1,1 +1,3 @@
-# Get Your Configuration
+# Configuration
+
+<ConfigurationComponent/>
