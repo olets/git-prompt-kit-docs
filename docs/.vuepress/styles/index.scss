@@ -1,3 +1,25 @@
 :root {
   --content-width: calc(900rem / 16);
 }
+
+.customized:not(:invalid) {
+  background-color: cornsilk !important;
+}
+
+.validity {
+  display: none;
+}
+
+tr:has(:invalid) {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+tr:has(:invalid) .validity {
+  display: block;
+}
+
+:invalid {
+  background-color: rgba(255, 0, 0, 0.1);
+  border-color: red;
+  outline-color: red;
+}
