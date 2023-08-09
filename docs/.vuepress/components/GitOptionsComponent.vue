@@ -12,6 +12,9 @@ export default {
     configure(key, value) {
       this.store.options[key].custom = value;
     },
+    reset() {
+      this.store.$reset;
+    },
   },
 };
 </script>

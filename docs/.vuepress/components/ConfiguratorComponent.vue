@@ -6,6 +6,7 @@ export default {
       required: true,
     },
   },
+  emits: ["configure", "reset"],
 };
 </script>
 
@@ -13,7 +14,7 @@ export default {
   <p v-if="store.customizations" style="color: red">Modified from default</p>
   <p v-if="!store.customizations">Not modified from default</p>
 
-  <button style="margin-top: 20px" @click="store.$reset">Reset</button>
+  <button style="margin-top: 20px" @click="$emit(reset)">Reset</button>
 
   <form style="display: grid; gap: 8px">
     <table>
@@ -43,8 +44,8 @@ export default {
               :placeholder="value.default"
               style="text-align: right; width: 100%"
               :type="value.type.includes('integer') ? 'number' : 'text'"
-              :value="value.custom"
-              @input="$emit('configure', key, value)"
+              :value="value.custom || value.default"
+              @input="$emit('configure', key, event.target.value)"
             />
           </td>
         </tr>

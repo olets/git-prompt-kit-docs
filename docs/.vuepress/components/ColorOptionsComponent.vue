@@ -9,9 +9,12 @@ export default {
   },
   methods: {
     ansiOrHexColor,
-    hexColor,
     configure(key, value) {
       this.store.options[key].custom = value;
+    },
+    hexColor,
+    reset() {
+      this.store.$reset;
     },
   },
 };
