@@ -76,6 +76,7 @@ export default {
           <th>Option</th>
           <th>Default</th>
           <th>Type</th>
+          <th>Notes</th>
           <th>Value</th>
         </tr>
       </thead>
@@ -96,7 +97,10 @@ export default {
           </td>
 
           <td>{{ option.value.default }}</td>
+
           <td>{{ option.type }}</td>
+
+          <td>{{ option.notes }}</td>
 
           <td>
             <div style="display: flex; gap: 1rem">
