@@ -10,22 +10,10 @@ export default {
 </script>
 
 <template>
-  <p
-    v-if="store.customizations"
-    style="color: red"
-  >
-    Modified from default
-  </p>
-  <p v-if="!store.customizations">
-    Not modified from default
-  </p>
+  <p v-if="store.customizations" style="color: red">Modified from default</p>
+  <p v-if="!store.customizations">Not modified from default</p>
 
-  <button
-    style="margin-top: 20px"
-    @click="store.$reset"
-  >
-    Reset
-  </button>
+  <button style="margin-top: 20px" @click="store.$reset">Reset</button>
 
   <form style="display: grid; gap: 8px">
     <table>
@@ -38,10 +26,7 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="(value, key) in store.options"
-          :key="key"
-        >
+        <tr v-for="(value, key) in store.options" :key="key">
           <td>
             <label :for="`field-${key}`">
               <code>{{ key }}</code>
@@ -60,7 +45,7 @@ export default {
               :type="value.type.includes('integer') ? 'number' : 'text'"
               :value="value.custom"
               @input="$emit('configure', key, value)"
-            >
+            />
           </td>
         </tr>
       </tbody>
