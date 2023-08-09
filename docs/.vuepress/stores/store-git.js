@@ -139,16 +139,6 @@ export const useGitStore = defineStore("git", {
         default: "local",
         type: "string",
       },
-      GIT_PROMPT_KIT_LINEBREAK_AFTER_GIT_REF: {
-        custom: null,
-        default: "1",
-        type: "integer (boolean)",
-      },
-      GIT_PROMPT_KIT_NO_LINEBREAK_BEFORE_GIT_REF: {
-        custom: null,
-        default: "1",
-        type: "integer (boolean)",
-      },
     },
   }),
   getters: {
