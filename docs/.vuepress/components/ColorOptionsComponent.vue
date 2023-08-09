@@ -10,25 +10,36 @@ export default {
   methods: {
     ansiOrHexColor,
     hexColor,
+    configure(key, value) {
+      this.store.options[key].custom = value;
+    },
   },
 };
 </script>
 
 <template>
-  <p v-if="store.customizations" style="color: red">Modified from default</p>
-  <p v-if="!store.customizations">Not modified from default</p>
+  <p
+    v-if="store.customizations"
+    style="color: red"
+  >
+    Modified from default
+  </p>
+  <p v-if="!store.customizations">
+    Not modified from default
+  </p>
 
-  <button style="margin-top: 20px" @click="store.$reset">Reset</button>
+  <button
+    style="margin-top: 20px"
+    @click="store.$reset"
+  >
+    Reset
+  </button>
 
   <p>
     Each color configuration variable can be either an
-    <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit"
-      >8-bit ANSI color escape code</a
-    >
+    <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">8-bit ANSI color escape code</a>
     or a
-    <a href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet"
-      >hexadecimal</a
-    >
+    <a href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">hexadecimal</a>
     triplet.
   </p>
 
@@ -44,7 +55,10 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(value, key) in store.options" :key="key">
+        <tr
+          v-for="(value, key) in store.options"
+          :key="key"
+        >
           <td>
             <label :for="`field-${key}`">
               <code>{{ key }}</code>
@@ -62,7 +76,7 @@ export default {
               @input="
                 (event) => (store.options[key].custom = event.target.value)
               "
-            />
+            >
           </td>
 
           <td>
@@ -75,12 +89,12 @@ export default {
                     event.target.value
                   ))
               "
-            />
+            >
           </td>
         </tr>
       </tbody>
     </table>
   </form>
 
-  {{ this.store.customizations }}
+  {{ store.customizations }}
 </template>

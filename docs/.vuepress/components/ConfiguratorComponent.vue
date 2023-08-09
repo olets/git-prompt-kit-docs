@@ -59,10 +59,7 @@ export default {
               style="text-align: right; width: 100%"
               :type="value.type.includes('integer') ? 'number' : 'text'"
               :value="value.custom"
-              @input="
-                // eslint-disable-next-line vue/no-mutating-props
-                (event) => (store.options[key].custom = event.target.value)
-              "
+              @input="$emit('configure', key, value)"
             >
           </td>
         </tr>

@@ -8,9 +8,14 @@ export default {
     const store = useGitStore();
     return { store };
   },
+  methods: {
+    configure(key, value) {
+      this.store.options[key].custom = value;
+    },
+  },
 };
 </script>
 
 <template>
-  <ConfiguratorComponent :store="store"></ConfiguratorComponent>
+  <ConfiguratorComponent :store="store" />
 </template>
