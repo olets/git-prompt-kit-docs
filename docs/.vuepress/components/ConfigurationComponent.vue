@@ -30,11 +30,11 @@ export default {
       }
 
       if (isColor) {
-        this.store.options[key].custom = ansiOrHexColor(target.value);
+        this.store.options[key].value.custom = ansiOrHexColor(target.value);
         return;
       }
 
-      this.store.options[key].custom = target.value;
+      this.store.options[key].value.custom = target.value;
     },
     reset() {
       this.store.$reset;
@@ -84,7 +84,7 @@ export default {
           v-for="(option, key) in store.options"
           :key="key"
           :class="
-            option.custom && option.custom != option.default
+            option.value.custom && option.value.custom != option.value.default
               ? 'customized'
               : null
           "
@@ -95,7 +95,7 @@ export default {
             </label>
           </td>
 
-          <td>{{ option.default }}</td>
+          <td>{{ option.value.default }}</td>
           <td>{{ option.type }}</td>
 
           <td>
@@ -104,10 +104,10 @@ export default {
                 :max="option.type.includes('boolean') ? 1 : null"
                 min="0"
                 :name="`field-${key}`"
-                :placeholder="option.default"
+                :placeholder="option.value.default"
                 style="text-align: right; flex-grow: 1"
                 :type="option.type.includes('integer') ? 'number' : 'text'"
-                :value="option.custom || option.default"
+                :value="option.value.custom || option.value.default"
                 :pattern="getPattern(option.type)"
                 @change="({ target }) => set(key, target)"
               >
@@ -115,7 +115,7 @@ export default {
               <input
                 v-if="option.type.includes('hex')"
                 type="color"
-                :value="hexColor(option.custom || option.default)"
+                :value="hexColor(option.value.custom || option.value.default)"
                 @input="({ target }) => set(key, target, true)"
               >
             </div>

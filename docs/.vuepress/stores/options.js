@@ -6,284 +6,378 @@ export const useOptionsStore = defineStore("color", {
     options: {
       GIT_PROMPT_KIT_COLOR_ACTION: {
         category: "Color",
-        custom: null,
-        default: "199",
+        value: {
+          custom: null,
+          default: "199",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_ASSUME_UNCHANGED: {
         category: "Color",
-        custom: null,
-        default: "81",
+        value: {
+          custom: null,
+          default: "81",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_FAILED: {
         category: "Color",
-        custom: null,
-        default: "88",
+        value: {
+          custom: null,
+          default: "88",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_HEAD: {
         category: "Color",
-        custom: null,
-        default: "140",
+        value: {
+          custom: null,
+          default: "140",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_HOST: {
         category: "Color",
-        custom: null,
-        default: "109",
+        value: {
+          custom: null,
+          default: "109",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_INACTIVE: {
         category: "Color",
-        custom: null,
-        default: "247",
+        value: {
+          custom: null,
+          default: "247",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_PUSH_REMOTE: {
         category: "Color",
-        custom: null,
-        default: "111",
+        value: {
+          custom: null,
+          default: "111",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_REMOTE: {
         category: "Color",
-        custom: null,
-        default: "216",
+        value: {
+          custom: null,
+          default: "216",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_SKIP_WORKTREE: {
         category: "Color",
-        custom: null,
-        default: "81",
+        value: {
+          custom: null,
+          default: "81",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_STAGED: {
         category: "Color",
-        custom: null,
-        default: "120",
+        value: {
+          custom: null,
+          default: "120",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_STASH: {
         category: "Color",
-        custom: null,
-        default: "81",
+        value: {
+          custom: null,
+          default: "81",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_SUCCEEDED: {
         category: "Color",
-        custom: null,
-        default: "76",
+        value: {
+          custom: null,
+          default: "76",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_TAG: {
         category: "Color",
-        custom: null,
-        default: "86",
+        value: {
+          custom: null,
+          default: "86",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_UNSTAGED: {
         category: "Color",
-        custom: null,
-        default: "162",
+        value: {
+          custom: null,
+          default: "162",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_USER: {
         category: "Color",
-        custom: null,
-        default: "109",
+        value: {
+          custom: null,
+          default: "109",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_COLOR_WORKDIR: {
         category: "Color",
-        custom: null,
-        default: "39",
+        value: {
+          custom: null,
+          default: "39",
+        },
         type: "string (ANSI or hex)",
       },
       GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND: {
         category: "Git",
-        custom: null,
-        default: "1",
+        value: {
+          custom: null,
+          default: "1",
+        },
         type: "integer (boolean)",
       },
       GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS: {
         category: "Git",
-        custom: null,
-        default: "1",
+        value: {
+          custom: null,
+          default: "1",
+        },
         type: "integer (boolean)",
       },
       GIT_PROMPT_KIT_HIDE_TOOL_NAMES: {
         category: "Git",
-        custom: null,
-        default: "1",
+        value: {
+          custom: null,
+          default: "1",
+        },
         type: "integer (boolean)",
       },
       GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS: {
         category: "Git",
-        custom: null,
-        default: "1",
+        value: {
+          custom: null,
+          default: "1",
+        },
         type: "integer (boolean)",
       },
       GIT_PROMPT_KIT_SYMBOL_AHEAD: {
         category: "Git",
-        custom: null,
-        default: "+",
+        value: {
+          custom: null,
+          default: "+",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_ASSUME_UNCHANGED: {
         category: "Git",
-        custom: null,
-        default: "⥱ ",
+        value: {
+          custom: null,
+          default: "⥱ ",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_BEHIND: {
         category: "Git",
-        custom: null,
-        default: "-",
+        value: {
+          custom: null,
+          default: "-",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_BRANCH: {
         category: "Git",
-        custom: null,
-        default: "",
+        value: {
+          custom: null,
+          default: "",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_COMMIT: {
         category: "Git",
-        custom: null,
-        default: "",
+        value: {
+          custom: null,
+          default: "",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_CONFLICTED: {
         category: "Git",
-        custom: null,
-        default: "UU",
+        value: {
+          custom: null,
+          default: "UU",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_DELETED: {
         category: "Git",
-        custom: null,
-        default: "_D",
+        value: {
+          custom: null,
+          default: "_D",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED: {
         category: "Git",
-        custom: null,
-        default: "D_",
+        value: {
+          custom: null,
+          default: "D_",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_HOST: {
         category: "Git",
-        custom: null,
-        default: "@",
+        value: {
+          custom: null,
+          default: "@",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_MODIFIED: {
         category: "Git",
-        custom: null,
-        default: "_M",
+        value: {
+          custom: null,
+          default: "_M",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_MODIFIED_STAGED: {
         category: "Git",
-        custom: null,
-        default: "M_",
+        value: {
+          custom: null,
+          default: "M_",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_NEW: {
         category: "Git",
-        custom: null,
-        default: "A_",
+        value: {
+          custom: null,
+          default: "A_",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_PUSH_REMOTE: {
         category: "Git",
-        custom: null,
-        default: "@{push}",
+        value: {
+          custom: null,
+          default: "@{push}",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_REMOTE: {
         category: "Git",
-        custom: null,
-        default: "@{u}",
+        value: {
+          custom: null,
+          default: "@{u}",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE: {
         category: "Git",
-        custom: null,
-        default: "⤳ ",
+        value: {
+          custom: null,
+          default: "⤳ ",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_STASH: {
         category: "Git",
-        custom: null,
-        default: "⇲",
+        value: {
+          custom: null,
+          default: "⇲",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_TAG: {
         category: "Git",
-        custom: null,
-        default: "@",
+        value: {
+          custom: null,
+          default: "@",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_UNTRACKED: {
         category: "Git",
-        custom: null,
-        default: "??",
+        value: {
+          custom: null,
+          default: "??",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_DEFAULT_PUSH_REMOTE_NAME: {
         category: "Git",
-        custom: null,
-        default: "upstream",
+        value: {
+          custom: null,
+          default: "upstream",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_DEFAULT_REMOTE_NAME: {
         category: "Git",
-        custom: null,
-        default: "origin",
+        value: {
+          custom: null,
+          default: "origin",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_CWD_TRAILING_COUNT: {
         category: "Git",
-        custom: null,
-        default: "1",
+        value: {
+          custom: null,
+          default: "1",
+        },
         type: "integer",
       },
       GIT_PROMPT_KIT_ROOT_TRAILING_COUNT: {
         category: "Git",
-        custom: null,
-        default: "1",
+        value: {
+          custom: null,
+          default: "1",
+        },
         type: "integer",
       },
       GIT_PROMPT_KIT_LOCAL: {
         category: "Git",
-        custom: null,
-        default: "local",
+        value: {
+          custom: null,
+          default: "local",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_CHAR_NORMAL: {
         category: "Prompt character",
-        custom: null,
-        default: "%%",
+        value: {
+          custom: null,
+          default: "%%",
+        },
         type: "prompt string",
       },
       GIT_PROMPT_KIT_SYMBOL_CHAR_ROOT: {
         category: "Prompt character",
-        custom: null,
-        default: "#",
+        value: {
+          custom: null,
+          default: "#",
+        },
         type: "string",
       },
       GIT_PROMPT_KIT_HIDDEN_HOSTS: {
         category: "User",
-        custom: null,
-        default: "()",
+        value: {
+          custom: null,
+          default: "()",
+        },
         type: "array",
       },
       GIT_PROMPT_KIT_HIDDEN_USERS: {
         category: "User",
-        custom: null,
-        default: "()",
+        value: {
+          custom: null,
+          default: "()",
+        },
         type: "array",
       },
     },

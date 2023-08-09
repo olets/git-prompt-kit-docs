@@ -3,10 +3,10 @@ export function configFromState(configObj) {
 
   for (let entry of Object.entries(configObj)) {
     const key = entry[0];
-    const values = entry[1];
+    const option = entry[1];
 
-    if (values?.custom && values.default !== values.custom) {
-      customizedEntries.push(`${key}="${values.custom}"`);
+    if (option.value?.custom && option.value.default !== option.value.custom) {
+      customizedEntries.push(`${key}="${option.value.custom}"`);
     }
   }
 
