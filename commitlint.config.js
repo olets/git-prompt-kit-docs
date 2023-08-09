@@ -4,6 +4,6 @@ module.exports = {
   rules: {
     "body-max-line-length": [1, "always", 100],
     "subject-full-stop": [1, "never", "."],
-    "subject-case": [1, "always"],
+    "subject-case": [0, "always"],
   },
 };
