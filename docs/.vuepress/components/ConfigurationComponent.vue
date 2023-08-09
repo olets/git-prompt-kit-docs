@@ -9,9 +9,14 @@ export default {
   },
   methods: {
     ansiOrHexColor,
+    getMax(type) {
+      return type.includes("bit") ? 1 : null;
+    },
     getPattern(type) {
-      const patt = type === "array" ? "\\(.*\\)" : null;
-      return patt;
+      return type === "array" ? "\\(.*\\)" : null;
+    },
+    getType(type) {
+      return type.includes("integer") ? "number" : "text";
     },
     hexColor,
     set(key, target, isColor = false) {
@@ -105,14 +110,14 @@ export default {
           <td>
             <div style="display: flex; gap: 1rem">
               <input
-                :max="option.type.includes('boolean') ? 1 : null"
+                :max="getMax(option?.type)"
                 min="0"
                 :name="`field-${key}`"
                 :placeholder="option.value.default"
                 style="text-align: right; flex-grow: 1"
-                :type="option.type.includes('integer') ? 'number' : 'text'"
+                :type="getType(option?.type)"
                 :value="option.value.custom || option.value.default"
-                :pattern="getPattern(option.type)"
+                :pattern="getPattern(option?.type)"
                 @change="({ target }) => set(key, target)"
               >
 
@@ -125,10 +130,10 @@ export default {
             </div>
 
             <div
-              v-if="getPattern(option.type)"
+              v-if="getPattern(option?.type)"
               class="validity"
             >
-              Must match /{{ getPattern(option.type) }}/
+              Must match /{{ getPattern(option?.type) }}/
             </div>
           </td>
         </tr>
