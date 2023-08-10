@@ -7,6 +7,19 @@ export default {
     const store = useOptionsStore();
     return { store };
   },
+  computed: {
+    groupedOptions() {
+      const ret = Object.entries(this.store.options).reduce((acc, [k, v]) => {
+        acc[v.group] = {
+          ...(acc[v.group] || {}),
+          [k]: v,
+        };
+        return acc;
+      }, {});
+
+      return ret;
+    },
+  },
   methods: {
     ansiOrHexColor,
     getMax(type) {
@@ -74,72 +87,81 @@ export default {
     Reset
   </button>
 
-  <form style="display: grid; gap: 8px">
-    <table>
-      <thead>
-        <tr>
-          <th>Option</th>
-          <th>Default</th>
-          <th>Type</th>
-          <th>Notes</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(option, key) in store.options"
-          :key="key"
-          :class="
-            option.value.custom && option.value.custom != option.value.default
-              ? 'customized'
-              : null
-          "
-        >
-          <td>
-            <label :for="`field-${key}`">
-              <code>{{ key }}</code>
-            </label>
-          </td>
+  <section
+    v-for="(options, groupKey) in groupedOptions"
+    :key="groupKey"
+  >
+    <h2 :id="groupKey">
+      {{ groupKey }}
+    </h2>
 
-          <td>{{ option.value.default }}</td>
+    <form style="display: grid; gap: 8px; width: 100%">
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Default</th>
+            <th>Type</th>
+            <th>Notes</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(option, optionKey) in options"
+            :key="optionKey"
+            :class="
+              option.value.custom && option.value.custom != option.value.default
+                ? 'customized'
+                : null
+            "
+          >
+            <td>
+              <label :for="`field-${optionKey}`">
+                <code>{{ optionKey }}</code>
+              </label>
+            </td>
 
-          <td>{{ option.type }}</td>
+            <td>{{ option.value.default }}</td>
 
-          <td>{{ option.notes }}</td>
+            <td>{{ option.type }}</td>
 
-          <td>
-            <div style="display: flex; gap: 1rem">
-              <input
-                :max="getMax(option?.type)"
-                min="0"
-                :name="`field-${key}`"
-                :placeholder="option.value.default"
-                style="text-align: right; flex-grow: 1"
-                :type="getType(option?.type)"
-                :value="option.value.custom || option.value.default"
-                :pattern="getPattern(option?.type)"
-                @change="({ target }) => set(key, target)"
+            <td>{{ option.notes }}</td>
+
+            <td>
+              <div style="display: flex; gap: 1rem">
+                <input
+                  :max="getMax(option?.type)"
+                  min="0"
+                  :name="`field-${optionKey}`"
+                  :placeholder="option.value.default"
+                  style="text-align: right; flex-grow: 1"
+                  :type="getType(option?.type)"
+                  :value="option.value.custom || option.value.default"
+                  :pattern="getPattern(option?.type)"
+                  @change="({ target }) => set(optionKey, target)"
+                >
+
+                <input
+                  v-if="option.group === 'Color'"
+                  type="color"
+                  :value="hexColor(option.value.custom || option.value.default)"
+                  @input="({ target }) => set(optionKey, target, true)"
+                >
+              </div>
+
+              <div
+                v-if="getPattern(option?.type)"
+                class="validity"
               >
-
-              <input
-                v-if="option.type.includes('hex')"
-                type="color"
-                :value="hexColor(option.value.custom || option.value.default)"
-                @input="({ target }) => set(key, target, true)"
-              >
-            </div>
-
-            <div
-              v-if="getPattern(option?.type)"
-              class="validity"
-            >
-              Must match /{{ getPattern(option?.type) }}/
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+                Must match /{{ getPattern(option?.type) }}/
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </section>
 
   {{ store.customizations }}
 </template>

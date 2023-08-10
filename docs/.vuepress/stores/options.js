@@ -5,7 +5,7 @@ export const useOptionsStore = defineStore("color", {
   state: () => ({
     options: {
       GIT_PROMPT_KIT_COLOR_ACTION: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "199",
         },
@@ -13,7 +13,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_ASSUME_UNCHANGED: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "81",
         },
@@ -21,7 +21,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_FAILED: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "88",
         },
@@ -29,7 +29,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_HEAD: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "140",
         },
@@ -37,7 +37,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_HOST: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "109",
         },
@@ -45,7 +45,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_INACTIVE: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "247",
         },
@@ -53,7 +53,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_PUSH_REMOTE: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "111",
         },
@@ -61,7 +61,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_REMOTE: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "216",
         },
@@ -69,7 +69,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_SKIP_WORKTREE: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "81",
         },
@@ -77,7 +77,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_STAGED: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "120",
         },
@@ -85,7 +85,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_STASH: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "81",
         },
@@ -93,7 +93,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_SUCCEEDED: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "76",
         },
@@ -101,7 +101,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_TAG: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "86",
         },
@@ -109,7 +109,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_UNSTAGED: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "162",
         },
@@ -117,7 +117,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_USER: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "109",
         },
@@ -125,7 +125,7 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_COLOR_WORKDIR: {
-        category: "Color",
+        group: "Color",
         value: {
           default: "39",
         },
@@ -133,196 +133,196 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND: {
-        category: "Git",
+        group: "Behavior",
         value: {
           default: "1",
         },
         type: "integer bit",
       },
       GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS: {
-        category: "Git",
+        group: "Behavior",
         value: {
           default: "1",
         },
         type: "integer bit",
       },
       GIT_PROMPT_KIT_HIDE_TOOL_NAMES: {
-        category: "Git",
+        group: "Behavior",
         value: {
           default: "1",
         },
         type: "integer bit",
       },
       GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS: {
-        category: "Git",
+        group: "Behavior",
         value: {
           default: "1",
         },
         type: "integer bit",
       },
       GIT_PROMPT_KIT_SYMBOL_AHEAD: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "+",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_ASSUME_UNCHANGED: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "⥱ ",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_BEHIND: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "-",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_BRANCH: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_COMMIT: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_CONFLICTED: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "UU",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_DELETED: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "_D",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "D_",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_HOST: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "@",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_MODIFIED: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "_M",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_MODIFIED_STAGED: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "M_",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_NEW: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "A_",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_PUSH_REMOTE: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "@{push}",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_REMOTE: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "@{u}",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "⤳ ",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_STASH: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "⇲",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_TAG: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "@",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_UNTRACKED: {
-        category: "Git",
+        group: "Symbol",
         value: {
           default: "??",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_DEFAULT_PUSH_REMOTE_NAME: {
-        category: "Git",
+        group: "Content",
         value: {
           default: "upstream",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_DEFAULT_REMOTE_NAME: {
-        category: "Git",
+        group: "Content",
         value: {
           default: "origin",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_CWD_TRAILING_COUNT: {
-        category: "Git",
+        group: "Content",
         value: {
           default: "1",
         },
         type: "integer",
       },
       GIT_PROMPT_KIT_ROOT_TRAILING_COUNT: {
-        category: "Git",
+        group: "Content",
         value: {
           default: "1",
         },
         type: "integer",
       },
       GIT_PROMPT_KIT_LOCAL: {
-        category: "Git",
+        group: "Content",
         value: {
           default: "local",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_CHAR_NORMAL: {
-        category: "Prompt character",
+        group: "Symbol",
         value: {
           default: "%%",
         },
@@ -330,14 +330,14 @@ export const useOptionsStore = defineStore("color", {
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_CHAR_ROOT: {
-        category: "Prompt character",
+        group: "Symbol",
         value: {
           default: "#",
         },
         type: "string",
       },
       GIT_PROMPT_KIT_HIDDEN_HOSTS: {
-        category: "User",
+        group: "Content",
         value: {
           default: "()",
         },
@@ -345,7 +345,7 @@ export const useOptionsStore = defineStore("color", {
         type: "array",
       },
       GIT_PROMPT_KIT_HIDDEN_USERS: {
-        category: "User",
+        group: "Content",
         value: {
           default: "()",
         },
