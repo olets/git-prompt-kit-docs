@@ -1,7 +1,7 @@
 <script>
-import { useOptionsStore } from "../stores/options";
-import { hexColor } from "../utils/ansiToHex.js";
-import valueOf from "../utils/valueOf";
+import { useOptionsStore } from "../../stores/options";
+import { hexColor } from "../../utils/ansiToHex.js";
+import valueOf from "../../utils/valueOf";
 
 export default {
   props: {

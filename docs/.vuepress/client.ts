@@ -4,10 +4,10 @@ import "a11y-dialog";
 const pinia = createPinia();
 import OptionsConfigurationComponent from "./components/OptionsConfigurationComponent.vue";
 import ContextConfigurationComponent from "./components/ContextConfigurationComponent.vue";
-import PromptComponent from "./components/PromptComponent.vue";
+import PromptComponent from "./components/prompt/PromptComponent.vue";
 import ResetOptionsComponent from "./components/ResetOptionsComponent.vue";
 import ConfigComponent from "./components/ConfigComponent.vue";
-import PromptSegmentComponent from "./components/PromptSegmentComponent.vue";
+import PromptSegmentComponent from "./components/prompt/PromptSegmentComponent.vue";
 
 export default defineClientConfig({
   enhance({ app }) {

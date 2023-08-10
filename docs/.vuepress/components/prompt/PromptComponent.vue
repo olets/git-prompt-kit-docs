@@ -1,8 +1,8 @@
 <script>
-import { useOptionsStore } from "../stores/options";
-import { useContextStore } from "../stores/context";
-import { hexColor } from "../utils/ansiToHex.js";
-import valueOf from "../utils/valueOf";
+import { useOptionsStore } from "../../stores/options";
+import { useContextStore } from "../../stores/context";
+import { hexColor } from "../../utils/ansiToHex.js";
+import valueOf from "../../utils/valueOf";
 import PromptSegmentComponent from "./PromptSegmentComponent.vue";
 
 export default {
