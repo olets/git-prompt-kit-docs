@@ -6,19 +6,19 @@
 
 ## Behavior Options
 
-<ConfigurationComponent group="behavior"/>
+<OptionsConfigurationComponent group="behavior"/>
 
 ## Color Options
 
-<ConfigurationComponent group="color"/>
+<OptionsConfigurationComponent group="color"/>
 
 ## Content Options
 
-<ConfigurationComponent group="content"/>
+<OptionsConfigurationComponent group="content"/>
 
 ## Symbol Options
 
-<ConfigurationComponent group="symbol"/>
+<OptionsConfigurationComponent group="symbol"/>
 
 <ResetOptionsComponent/>
 
