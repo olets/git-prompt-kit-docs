@@ -15,6 +15,7 @@ export default {
     <p>Copy and paste into your <code>.zshrc</code></p>
     <textarea
       v-model="store.customizations"
+      :disabled="!store.customizations"
       style="width: 100%"
       readonly
     />
