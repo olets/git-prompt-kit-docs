@@ -3,21 +3,24 @@ import { useOptionsStore } from "../stores/options";
 import { ansiOrHexColor, hexColor } from "../utils/ansiToHex.js";
 
 export default {
+  props: {
+    group: {
+      type: String,
+      required: true,
+    },
+  },
   setup() {
     const store = useOptionsStore();
     return { store };
   },
   computed: {
-    groupedOptions() {
-      const ret = Object.entries(this.store.options).reduce((acc, [k, v]) => {
-        acc[v.group] = {
-          ...(acc[v.group] || {}),
-          [k]: v,
-        };
-        return acc;
-      }, {});
-
-      return ret;
+    options() {
+      return Object.fromEntries(
+        Object.entries(this.store.options).filter(
+          // eslint-disable-next-line no-unused-vars
+          ([_k, v]) => v.group.toLowerCase() === this.group.toLowerCase()
+        )
+      );
     },
   },
   methods: {
@@ -62,121 +65,70 @@ export default {
 </script>
 
 <template>
-  <section>
-    <h2 class="sr-only">
-      Contents
-    </h2>
-    <ul>
-      <li
-        v-for="groupKey in Object.keys(groupedOptions)"
-        :key="groupKey"
-      >
-        <a :href="'#' + groupKey">{{ groupKey }} Options</a>
-      </li>
+  <form style="display: grid; gap: 8px; width: 100%">
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Default</th>
+          <th>Type</th>
+          <th>Notes</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(option, optionKey) in options"
+          :key="optionKey"
+          :class="
+            option.value.custom && option.value.custom != option.value.default
+              ? 'customized'
+              : null
+          "
+        >
+          <td>
+            <label :for="`field-${optionKey}`">
+              <code>{{ optionKey }}</code>
+            </label>
+          </td>
 
-      <li><a href="#config">Your Configuration</a></li>
-    </ul>
-  </section>
+          <td>{{ option.value.default }}</td>
 
-  <p>
-    Each color configuration variable can be either an
-    <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">8-bit ANSI color escape code</a>
-    or a
-    <a href="https://en.wikipedia.org/wiki/Web_colors#Hex_triplet">hexadecimal</a>
-    triplet.
-  </p>
+          <td>{{ option.type }}</td>
 
-  <button
-    style="margin-top: 20px"
-    :disabled="!store.customizations"
-    @click="reset"
-  >
-    Reset
-  </button>
+          <td>{{ option.notes }}</td>
 
-  <section
-    v-for="(options, groupKey) in groupedOptions"
-    :key="groupKey"
-  >
-    <h2 :id="groupKey">
-      {{ groupKey }} Options
-    </h2>
-
-    <form style="display: grid; gap: 8px; width: 100%">
-      <table>
-        <thead>
-          <tr>
-            <th>Option</th>
-            <th>Default</th>
-            <th>Type</th>
-            <th>Notes</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(option, optionKey) in options"
-            :key="optionKey"
-            :class="
-              option.value.custom && option.value.custom != option.value.default
-                ? 'customized'
-                : null
-            "
-          >
-            <td>
-              <label :for="`field-${optionKey}`">
-                <code>{{ optionKey }}</code>
-              </label>
-            </td>
-
-            <td>{{ option.value.default }}</td>
-
-            <td>{{ option.type }}</td>
-
-            <td>{{ option.notes }}</td>
-
-            <td>
-              <div style="display: flex; gap: 1rem">
-                <input
-                  :max="getMax(option?.type)"
-                  min="0"
-                  :name="`field-${optionKey}`"
-                  :placeholder="option.value.default"
-                  style="text-align: right; flex-grow: 1"
-                  :type="getType(option?.type)"
-                  :value="option.value.custom || option.value.default"
-                  :pattern="getPattern(option?.type)"
-                  @change="({ target }) => set(optionKey, target)"
-                >
-
-                <input
-                  v-if="option.group === 'Color'"
-                  type="color"
-                  :value="hexColor(option.value.custom || option.value.default)"
-                  @input="({ target }) => set(optionKey, target, true)"
-                >
-              </div>
-
-              <div
-                v-if="getPattern(option?.type)"
-                class="validity"
+          <td>
+            <div style="display: flex; gap: 1rem">
+              <input
+                :max="getMax(option?.type)"
+                min="0"
+                :name="`field-${optionKey}`"
+                :placeholder="option.value.default"
+                style="text-align: right; flex-grow: 1"
+                :type="getType(option?.type)"
+                :value="option.value.custom || option.value.default"
+                :pattern="getPattern(option?.type)"
+                @change="({ target }) => set(optionKey, target)"
               >
-                Must match /{{ getPattern(option?.type) }}/
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
-  </section>
 
-  <section id="config">
-    <h2>Your Configuration</h2>
-    <p>Copy and paste into your <code>.zshrc</code></p>
-    <textarea
-      v-model="store.customizations"
-      style="width: 100%"
-      readonly
-    />
-  </section>
+              <input
+                v-if="option.group === 'Color'"
+                type="color"
+                :value="hexColor(option.value.custom || option.value.default)"
+                @input="({ target }) => set(optionKey, target, true)"
+              >
+            </div>
+
+            <div
+              v-if="getPattern(option?.type)"
+              class="validity"
+            >
+              Must match /{{ getPattern(option?.type) }}/
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 </template>
