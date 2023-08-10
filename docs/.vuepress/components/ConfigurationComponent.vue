@@ -82,6 +82,8 @@ export default {
       >
         <a :href="'#' + groupKey">{{ groupKey }} Options</a>
       </li>
+
+      <li><a href="#config">Your Configuration</a></li>
     </ul>
   </section>
 
@@ -176,5 +178,13 @@ export default {
     </form>
   </section>
 
-  {{ store.customizations }}
+  <section id="config">
+    <h2>Your Configuration</h2>
+    <p>Copy and paste into your <code>.zshrc</code></p>
+    <textarea
+      v-model="store.customizations"
+      style="width: 100%"
+      readonly
+    />
+  </section>
 </template>
