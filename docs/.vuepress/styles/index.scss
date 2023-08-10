@@ -1,5 +1,7 @@
 :root {
   --content-width: calc(900rem / 16);
+
+  scroll-behavior: smooth;
 }
 
 .customized:not(:invalid) {

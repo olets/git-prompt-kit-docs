@@ -71,6 +71,19 @@ export default {
   <p v-if="!store.customizations">
     Not modified from default
   </p>
+  <section>
+    <h2 class="sr-only">
+      Contents
+    </h2>
+    <ul>
+      <li
+        v-for="groupKey in Object.keys(groupedOptions)"
+        :key="groupKey"
+      >
+        <a :href="'#' + groupKey">{{ groupKey }} Options</a>
+      </li>
+    </ul>
+  </section>
 
   <p>
     Each color configuration variable can be either an
@@ -92,7 +105,7 @@ export default {
     :key="groupKey"
   >
     <h2 :id="groupKey">
-      {{ groupKey }}
+      {{ groupKey }} Options
     </h2>
 
     <form style="display: grid; gap: 8px; width: 100%">
