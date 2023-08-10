@@ -1,4 +1,4 @@
-export function configFromState(configObj) {
+export default function (configObj) {
   let customizedEntries = [];
 
   for (let entry of Object.entries(configObj)) {
@@ -10,6 +10,5 @@ export function configFromState(configObj) {
     }
   }
 
-  console.log({ customizedEntries });
   return customizedEntries.join("\n");
 }

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { configFromState } from "../utils/configFromState.js";
+import configFromState from "../utils/configFromState.js";
 
 export const useOptionsStore = defineStore("color", {
   state: () => ({
