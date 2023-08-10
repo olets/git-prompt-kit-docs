@@ -62,15 +62,6 @@ export default {
 </script>
 
 <template>
-  <p
-    v-if="store.customizations"
-    style="color: red"
-  >
-    Modified from default
-  </p>
-  <p v-if="!store.customizations">
-    Not modified from default
-  </p>
   <section>
     <h2 class="sr-only">
       Contents
@@ -97,6 +88,7 @@ export default {
 
   <button
     style="margin-top: 20px"
+    :disabled="!store.customizations"
     @click="reset"
   >
     Reset
