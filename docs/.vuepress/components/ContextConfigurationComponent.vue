@@ -1,5 +1,6 @@
 <script>
 import { useContextStore } from "../stores/context";
+import valueOf from "../utils/valueOf";
 
 export default {
   setup() {
@@ -7,18 +8,13 @@ export default {
     return { store };
   },
   methods: {
-    getChecked(option) {
-      if (option.value?.custom !== undefined && option.value?.custom !== null) {
-        return option.value?.custom;
-      }
-      return option.value.default;
-    },
     set(key, target) {
-      this.store.context[key].value.custom = target.checked;
+      this.store.data[key].value.custom = target.checked;
     },
     reset() {
       this.store.$reset();
     },
+    valueOf,
   },
 };
 </script>
@@ -34,9 +30,9 @@ export default {
       </thead>
       <tbody>
         <tr
-          v-for="(item, key) in store.context"
+          v-for="(item, key) in store.data"
           :key="key"
-          :class="getChecked(item) ? 'customized' : null"
+          :class="valueOf(item) ? 'customized' : null"
         >
           <td>
             <label :for="`field-${key}`">
@@ -45,14 +41,12 @@ export default {
           </td>
 
           <td>
-            <div style="display: flex; gap: 1rem">
-              <input
-                :id="`field-${key}`"
-                type="checkbox"
-                :checked="getChecked(item)"
-                @change="set(key, $event.target)"
-              >
-            </div>
+            <input
+              :id="`field-${key}`"
+              type="checkbox"
+              :checked="valueOf(item)"
+              @change="set(key, $event.target)"
+            >
           </td>
         </tr>
       </tbody>

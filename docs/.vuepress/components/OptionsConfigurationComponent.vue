@@ -1,6 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { ansiOrHexColor, hexColor } from "../utils/ansiToHex.js";
+import valueOf from "../utils/valueOf";
 
 export default {
   props: {
@@ -16,7 +17,7 @@ export default {
   computed: {
     options() {
       return Object.fromEntries(
-        Object.entries(this.store.options).filter(
+        Object.entries(this.store.data).filter(
           // eslint-disable-next-line no-unused-vars
           ([_k, v]) => v.group.toLowerCase() === this.group.toLowerCase()
         )
@@ -51,15 +52,16 @@ export default {
       }
 
       if (isColor) {
-        this.store.options[key].value.custom = ansiOrHexColor(target.value);
+        this.store.data[key].value.custom = ansiOrHexColor(target.value);
         return;
       }
 
-      this.store.options[key].value.custom = target.value;
+      this.store.data[key].value.custom = target.value;
     },
     reset() {
       this.store.$reset();
     },
+    valueOf,
   },
 };
 </script>
@@ -107,7 +109,7 @@ export default {
                 :placeholder="option.value.default"
                 style="text-align: right; flex-grow: 1"
                 :type="getType(option?.type)"
-                :value="option.value.custom || option.value.default"
+                :value="valueOf(option)"
                 :pattern="getPattern(option?.type)"
                 @change="({ target }) => set(optionKey, target)"
               >
@@ -115,7 +117,7 @@ export default {
               <input
                 v-if="option.group === 'Color'"
                 type="color"
-                :value="hexColor(option.value.custom || option.value.default)"
+                :value="hexColor(valueOf(option))"
                 @input="({ target }) => set(optionKey, target, true)"
               >
             </div>

@@ -2,10 +2,18 @@ import { defineStore } from "pinia";
 
 export const useContextStore = defineStore("context", {
   state: () => ({
-    context: {
+    data: {
+      terminalBackgroundColor: {
+        label: "Terminal background color",
+        value: { default: "#4a4a4a" },
+      },
+      terminalTextColor: {
+        label: "Terminal text color",
+        value: { default: "#fefefe" },
+      },
       action: {
         label: "Has an ongoing Git action",
-        value: { default: true },
+        value: { default: false },
       },
       ahead: {
         label: "Is ahead of the remote",
@@ -63,9 +71,26 @@ export const useContextStore = defineStore("context", {
         label: "Has a distinct push remote",
         value: { default: false },
       },
+      defaultPushRemote: {
+        label: "Push remote branch is on the default push remote",
+        value: { default: true },
+      },
+      // not supported by git-status
+      // sameNamePushRemoteBranch: {
+      //   label: "Push remote branch has the same name as the local branch",
+      //   value: { default: true },
+      // },
       remote: {
         label: "Has a remote",
         value: { default: false },
+      },
+      defaultRemote: {
+        label: "Remote branch is on the default remote",
+        value: { default: true },
+      },
+      sameNameRemoteBranch: {
+        label: "Remote branch has the same name as the local branch",
+        value: { default: true },
       },
       skipWorktree: {
         label: "Has files with the skip-worktree bit set",

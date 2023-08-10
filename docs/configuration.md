@@ -2,6 +2,10 @@
 
 [[toc]]
 
+<div style="top: calc(2 * var(--navbar-height)); position: sticky">
+  <PromptComponent/>
+</div>
+
 <ResetOptionsComponent/>
 
 ## Behavior Options
