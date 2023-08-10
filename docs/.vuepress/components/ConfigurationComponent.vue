@@ -55,7 +55,7 @@ export default {
       this.store.options[key].value.custom = target.value;
     },
     reset() {
-      this.store.$reset;
+      this.store.$reset();
     },
   },
 };
