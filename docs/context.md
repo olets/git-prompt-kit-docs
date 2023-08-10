@@ -1,3 +1,3 @@
 # Context
 
-<ContextComponent></ContextComponent>
+<ContextConfigurationComponent/>

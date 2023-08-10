@@ -2,94 +2,94 @@ import { defineStore } from "pinia";
 
 export const useContextStore = defineStore("context", {
   state: () => ({
-    data: {
+    context: {
       action: {
         label: "Has an ongoing Git action",
-        checked: false,
+        value: { default: true },
       },
       ahead: {
         label: "Is ahead of the remote",
-        checked: false,
+        value: { default: false },
       },
       assumeUnchanged: {
         label: "Has files with the assume-unchanged bit set",
-        checked: false,
+        value: { default: false },
       },
       behind: {
         label: "Is behind the remote",
-        checked: false,
+        value: { default: false },
       },
       conflicted: {
         label: "Has conflicts",
-        checked: false,
+        value: { default: false },
       },
       git: {
         label: "In a Git repo",
-        checked: false,
+        value: { default: false },
       },
       deletedStaged: {
         label: "Has staged deleted files",
-        checked: false,
+        value: { default: false },
       },
       deleted: {
         label: "Has unstaged deleted files",
-        checked: false,
+        value: { default: false },
       },
       branch: {
         label: "There is a branch pointing to the checked out commit",
-        checked: false,
+        value: { default: false },
       },
       modifiedStaged: {
         label: "Has staged modified files",
-        checked: false,
+        value: { default: false },
       },
       modified: {
         label: "Has unstaged modified files",
-        checked: false,
+        value: { default: false },
       },
       new: {
         label: "Has (staged) new files",
-        checked: false,
+        value: { default: false },
       },
       pushAhead: {
         label: "Is ahead of the push remote",
-        checked: false,
+        value: { default: false },
       },
       pushBehind: {
         label: "Is behind the push remote",
-        checked: false,
+        value: { default: false },
       },
       push: {
         label: "Has a distinct push remote",
-        checked: false,
+        value: { default: false },
       },
       remote: {
         label: "Has a remote",
-        checked: false,
+        value: { default: false },
       },
       skipWorktree: {
         label: "Has files with the skip-worktree bit set",
-        checked: false,
+        value: { default: false },
       },
       stashes: {
         label: "Has stashes",
-        checked: false,
+        value: { default: false },
       },
       tag: {
         label: "There is a tag pointing to the checked out commit",
-        checked: false,
+        value: { default: false },
       },
       untracked: {
         label: "Has (unstaged) untracked files",
-        checked: false,
+        value: { default: false },
       },
       hiddenUser: {
         label: "The current user is hidden",
-        checked: false,
+        value: { default: false },
       },
       hiddenHost: {
         label: "The current host is hidden",
-        checked: false,
+        value: { default: false },
       },
     },
   }),
