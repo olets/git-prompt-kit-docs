@@ -116,6 +116,14 @@ export const useContextStore = defineStore("context", {
         label: "The current host is hidden",
         value: { default: false },
       },
+      root: {
+        label: "Current user is root",
+        value: { default: false },
+      },
+      failed: {
+        label: "Previous command failed",
+        value: { default: false },
+      },
     },
   }),
 });

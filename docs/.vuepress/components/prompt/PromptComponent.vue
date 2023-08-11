@@ -483,6 +483,18 @@ export default {
       />
     </span>
 
-    <span id="char" />
+    <!-- prompt character -->
+    <PromptSegmentComponent
+      :color-option="
+        valueOf(store.context.data.failed)
+          ? 'GIT_PROMPT_KIT_COLOR_FAILED'
+          : 'GIT_PROMPT_KIT_COLOR_SUCCEEDED'
+      "
+      :text="
+        valueOf(store.context.data.root)
+          ? valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_CHAR_ROOT)
+          : valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_CHAR_NORMAL)
+      "
+    />
   </div>
 </template>
