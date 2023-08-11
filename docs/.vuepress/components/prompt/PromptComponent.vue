@@ -37,7 +37,6 @@ export default {
     )}; color: ${hexColor(valueOf(store.context.data.terminalTextColor))};
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    margin: 1rem;
     border-radius: .25rem;`"
   >
     <div style="display: flex; gap: var(--prompt-gap)">
