@@ -40,237 +40,264 @@ export default {
     margin: 1rem;
     border-radius: .25rem;`"
   >
-    <span id="not-git">
-      <PromptSegmentComponent
-        v-if="!valueOf(store.context.data.hiddenUser)"
-        :color-option="'GIT_PROMPT_KIT_COLOR_USER'"
-        text="olets"
-      />
+    <div style="display: flex; gap: var(--prompt-gap)">
+      <span
+        id="not-git"
+        style="display: flex; gap: var(--prompt-gap)"
+      >
+        <div>
+          <PromptSegmentComponent
+            v-if="!valueOf(store.context.data.hiddenUser)"
+            :color-option="'GIT_PROMPT_KIT_COLOR_USER'"
+            text="olets"
+          />
 
-      <PromptSegmentComponent
-        v-if="!valueOf(store.context.data.hiddenHost)"
-        :color-option="'GIT_PROMPT_KIT_COLOR_HOST'"
-        text="@dev"
-      />
+          <PromptSegmentComponent
+            v-if="!valueOf(store.context.data.hiddenHost)"
+            :color-option="'GIT_PROMPT_KIT_COLOR_HOST'"
+            text="@dev"
+          />
+        </div>
 
-      <PromptSegmentComponent text="4:07:47" />
+        <PromptSegmentComponent text="4:07:47" />
 
-      <PromptSegmentComponent
-        :color-option="'GIT_PROMPT_KIT_COLOR_WORKDIR'"
-        :text="`~/olets${valueOf(store.context.data.git) ? '/' : ''}`"
-      />
+        <!-- GIT_PROMPT_KIT_WORKDIR -->
+        <div style="display: flex; gap: var(--prompt-gap)">
+          <PromptSegmentComponent
+            :color-option="'GIT_PROMPT_KIT_COLOR_WORKDIR'"
+            :text="`~/olets${valueOf(store.context.data.git) ? '/' : ''}`"
+          />
 
-      <PromptSegmentComponent
+          <PromptSegmentComponent
+            v-if="valueOf(store.context.data.git)"
+            :color-option="'GIT_PROMPT_KIT_COLOR_WORKDIR'"
+            style="text-decoration: underline"
+            text="git-prompt-kit"
+          />
+        </div>
+      </span>
+
+      <span
         v-if="valueOf(store.context.data.git)"
-        :color-option="'GIT_PROMPT_KIT_COLOR_WORKDIR'"
-        style="text-decoration: underline"
-        text="git-prompt-kit"
-      />
-    </span>
-    <span
-      v-if="valueOf(store.context.data.git)"
-      id="git-ref"
-    >
-      <PromptSegmentComponent
-        v-if="!valueOf(store.options.data.GIT_PROMPT_KIT_HIDE_TOOL_NAMES)"
-        text="Git"
-      />
-
-      <span id="head">
-        <!-- branch -->
+        id="git-ref"
+        style="display: flex; gap: var(--prompt-gap)"
+      >
         <PromptSegmentComponent
-          v-if="valueOf(store.context.data.branch)"
-          :color-option="'GIT_PROMPT_KIT_COLOR_HEAD'"
-          :text="`${
-            valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BRANCH) || ''
-          }main`"
+          v-if="!valueOf(store.options.data.GIT_PROMPT_KIT_HIDE_TOOL_NAMES)"
+          text="Git"
         />
 
-        <!-- commit -->
-        <PromptSegmentComponent
-          v-if="!valueOf(store.context.data.branch)"
-          :color-option="'GIT_PROMPT_KIT_COLOR_HEAD'"
-          :text="`${
-            valueOf(valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_COMMIT)) ||
-            ''
-          }1234567`"
-        />
-      </span>
+        <span
+          id="head"
+          style="display: flex; gap: var(--prompt-gap)"
+        >
+          <!-- branch -->
+          <PromptSegmentComponent
+            v-if="valueOf(store.context.data.branch)"
+            :color-option="'GIT_PROMPT_KIT_COLOR_HEAD'"
+            :text="`${
+              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BRANCH) || ''
+            }main`"
+          />
 
-      <!-- local -->
-      <span
-        v-if="
-          valueOf(store.context.data.branch) &&
-            !valueOf(store.context.data.remote)
-        "
-        :style="`color: ${hexColor(
-          valueOf(store.options.data.GIT_PROMPT_KIT_COLOR_REMOTE)
-        )};`"
-      >
-        {{ valueOf(store.options.data.GIT_PROMPT_KIT_LOCAL) }}
-      </span>
+          <!-- commit -->
+          <PromptSegmentComponent
+            v-if="!valueOf(store.context.data.branch)"
+            :color-option="'GIT_PROMPT_KIT_COLOR_HEAD'"
+            :text="`${
+              valueOf(
+                valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_COMMIT)
+              ) || ''
+            }1234567`"
+          />
+        </span>
 
-      <!-- upstream -->
-      <span
-        v-if="valueOf(store.context.data.remote)"
-        id="upstream"
-      >
-        <!-- remote symbol -->
-        <!-- TODO is this the real logic? if not should it be? -->
-        <PromptSegmentComponent
+        <!-- local -->
+        <span
           v-if="
-            valueOf(store.context.data.ahead) ||
+            valueOf(store.context.data.branch) &&
+              !valueOf(store.context.data.remote)
+          "
+          :style="`color: ${hexColor(
+            valueOf(store.options.data.GIT_PROMPT_KIT_COLOR_REMOTE)
+          )};`"
+        >
+          {{ valueOf(store.options.data.GIT_PROMPT_KIT_LOCAL) }}
+        </span>
+
+        <!-- upstream -->
+        <span
+          v-if="valueOf(store.context.data.remote)"
+          id="upstream"
+        >
+          <!-- remote symbol -->
+          <!-- TODO is this the real logic? if not should it be? -->
+          <PromptSegmentComponent
+            v-if="
+              valueOf(store.context.data.ahead) ||
+                valueOf(store.context.data.behind) ||
+                valueOf(
+                  store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
+                )
+            "
+            :color-option="
+              valueOf(store.context.data.ahead) ||
+                valueOf(store.context.data.behind)
+                ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
+                : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
+            "
+            :text="
+              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_REMOTE) || ''
+            "
+          />
+
+          <!-- remote and remote branch -->
+          <PromptSegmentComponent
+            v-if="
+              !valueOf(store.context.data.defaultRemote) ||
+                !valueOf(store.context.data.sameNameRemoteBranch)
+            "
+            :color-option="'GIT_PROMPT_KIT_COLOR_REMOTE'"
+            :text="`${
+              valueOf(store.context.data.defaultRemote) ? '' : 'upstream/'
+            }${
+              valueOf(store.context.data.sameNameRemoteBranch) ? '' : 'trunk'
+            }`"
+          />
+
+          <!-- remote ahead -->
+          <PromptSegmentComponent
+            v-if="
+              valueOf(store.context.data.ahead) ||
+                valueOf(
+                  store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
+                )
+            "
+            :color-option="
+              valueOf(store.context.data.ahead)
+                ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
+                : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
+            "
+            :text="`${
+              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''
+            }${valueOf(store.context.data.ahead) ? '2' : ''}`"
+          />
+
+          <!-- remote behind -->
+          <PromptSegmentComponent
+            v-if="
               valueOf(store.context.data.behind) ||
-              valueOf(
-                store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
-              )
-          "
-          :color-option="
-            valueOf(store.context.data.ahead) ||
+                valueOf(
+                  store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
+                )
+            "
+            :color-option="
               valueOf(store.context.data.behind)
-              ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
-              : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
-          "
-          :text="valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_REMOTE) || ''"
-        />
-
-        <!-- remote and remote branch -->
-        <PromptSegmentComponent
-          v-if="
-            !valueOf(store.context.data.defaultRemote) ||
-              !valueOf(store.context.data.sameNameRemoteBranch)
-          "
-          :color-option="'GIT_PROMPT_KIT_COLOR_REMOTE'"
-          :text="`${
-            valueOf(store.context.data.defaultRemote) ? '' : 'upstream/'
-          }${valueOf(store.context.data.sameNameRemoteBranch) ? '' : 'trunk'}`"
-        />
-
-        <!-- remote ahead -->
-        <PromptSegmentComponent
-          v-if="
-            valueOf(store.context.data.ahead) ||
-              valueOf(
-                store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
-              )
-          "
-          :color-option="
-            valueOf(store.context.data.ahead)
-              ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
-              : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
-          "
-          :text="`${
-            valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''
-          }${valueOf(store.context.data.ahead) ? '2' : ''}`"
-        />
-
-        <!-- remote behind -->
-        <PromptSegmentComponent
-          v-if="
-            valueOf(store.context.data.behind) ||
-              valueOf(
-                store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
-              )
-          "
-          :color-option="
-            valueOf(store.context.data.behind)
-              ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
-              : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
-          "
-          :text="`${
-            valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND) || ''
-          }${valueOf(store.context.data.behind) ? '2' : ''}`"
-        />
-      </span>
-
-      <!-- push remote -->
-      <span
-        v-if="valueOf(store.context.data.push)"
-        id="push"
-      >
-        <!-- push remote symbol -->
-        <!-- TODO is this the real logic? if not should it be? -->
-        <PromptSegmentComponent
-          v-if="
-            valueOf(store.context.data.pushAhead) ||
-              valueOf(store.context.data.pushBehind) ||
-              valueOf(
-                store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
-              )
-          "
-          :color-option="
-            valueOf(store.context.data.pushAhead) ||
-              valueOf(store.context.data.pushBehind)
-              ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
-              : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
-          "
-          :text="
-            valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_PUSH_REMOTE) || ''
-          "
-        />
+                ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
+                : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
+            "
+            :text="`${
+              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND) || ''
+            }${valueOf(store.context.data.behind) ? '2' : ''}`"
+          />
+        </span>
 
         <!-- push remote -->
-        <!-- note: no push remote branch -->
-        <PromptSegmentComponent
-          v-if="
-            !valueOf(store.context.data.defaultPushRemote) ||
-              !valueOf(store.context.data.sameNamePushRemoteBranch)
-          "
-          :color-option="'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'"
-          :text="
-            valueOf(store.context.data.defaultPushRemote) ? '' : 'upstream'
-          "
-        />
+        <span
+          v-if="valueOf(store.context.data.push)"
+          id="push"
+        >
+          <!-- push remote symbol -->
+          <!-- TODO is this the real logic? if not should it be? -->
+          <PromptSegmentComponent
+            v-if="
+              valueOf(store.context.data.pushAhead) ||
+                valueOf(store.context.data.pushBehind) ||
+                valueOf(
+                  store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
+                )
+            "
+            :color-option="
+              valueOf(store.context.data.pushAhead) ||
+                valueOf(store.context.data.pushBehind)
+                ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
+                : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
+            "
+            :text="
+              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_PUSH_REMOTE) ||
+                ''
+            "
+          />
 
-        <!-- push remote ahead -->
-        <PromptSegmentComponent
-          v-if="
-            valueOf(store.context.data.pushAhead) ||
-              valueOf(
-                store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
-              )
-          "
-          :color-option="
-            valueOf(store.context.data.pushAhead)
-              ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
-              : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
-          "
-          :text="`${
-            valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''
-          }${valueOf(store.context.data.pushAhead) ? '2' : ''}`"
-        />
+          <!-- push remote -->
+          <!-- note: no push remote branch -->
+          <PromptSegmentComponent
+            v-if="
+              !valueOf(store.context.data.defaultPushRemote) ||
+                !valueOf(store.context.data.sameNamePushRemoteBranch)
+            "
+            :color-option="'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'"
+            :text="
+              valueOf(store.context.data.defaultPushRemote) ? '' : 'upstream'
+            "
+          />
 
-        <!-- push remote behind -->
+          <!-- push remote ahead -->
+          <PromptSegmentComponent
+            v-if="
+              valueOf(store.context.data.pushAhead) ||
+                valueOf(
+                  store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
+                )
+            "
+            :color-option="
+              valueOf(store.context.data.pushAhead)
+                ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
+                : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
+            "
+            :text="`${
+              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''
+            }${valueOf(store.context.data.pushAhead) ? '2' : ''}`"
+          />
+
+          <!-- push remote behind -->
+          <PromptSegmentComponent
+            v-if="
+              valueOf(store.context.data.pushBehind) ||
+                valueOf(
+                  store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
+                )
+            "
+            :color-option="
+              valueOf(store.context.data.pushBehind)
+                ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
+                : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
+            "
+            :text="`${
+              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND) || ''
+            }${valueOf(store.context.data.pushBehind) ? '2' : ''}`"
+          />
+        </span>
+
+        <!-- tag -->
         <PromptSegmentComponent
-          v-if="
-            valueOf(store.context.data.pushBehind) ||
-              valueOf(
-                store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
-              )
-          "
-          :color-option="
-            valueOf(store.context.data.pushBehind)
-              ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
-              : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
-          "
+          v-if="valueOf(store.context.data.tag)"
+          :color-option="'GIT_PROMPT_KIT_COLOR_TAG'"
           :text="`${
-            valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND) || ''
-          }${valueOf(store.context.data.pushBehind) ? '2' : ''}`"
+            valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_TAG) || ''
+          }v9000`"
         />
       </span>
+    </div>
 
-      <!-- tag -->
-      <PromptSegmentComponent
-        v-if="valueOf(store.context.data.tag)"
-        :color-option="'GIT_PROMPT_KIT_COLOR_TAG'"
-        :text="`${
-          valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_TAG) || ''
-        }v9000`"
-      />
-    </span>
-
-    <span id="git-status">
-      <span id="extended">
+    <span
+      id="git-status"
+      style="display: flex; gap: var(--prompt-gap)"
+    >
+      <span
+        id="extended"
+        style="display: flex; gap: var(--prompt-gap)"
+      >
         <!-- stash -->
         <PromptSegmentComponent
           v-if="
@@ -329,7 +356,10 @@ export default {
         />
       </span>
 
-      <span id="status">
+      <span
+        id="status"
+        style="display: flex; gap: var(--prompt-gap)"
+      >
         <!-- untracked -->
         <PromptSegmentComponent
           v-if="
