@@ -48,13 +48,13 @@ export default {
         <div>
           <PromptSegmentComponent
             v-if="!valueOf(store.context.data.hiddenUser)"
-            :color-option="'GIT_PROMPT_KIT_COLOR_USER'"
+            color-option="GIT_PROMPT_KIT_COLOR_USER"
             text="olets"
           />
 
           <PromptSegmentComponent
             v-if="!valueOf(store.context.data.hiddenHost)"
-            :color-option="'GIT_PROMPT_KIT_COLOR_HOST'"
+            color-option="GIT_PROMPT_KIT_COLOR_HOST"
             text="@dev"
           />
         </div>
@@ -64,13 +64,13 @@ export default {
         <!-- GIT_PROMPT_KIT_WORKDIR -->
         <div style="display: flex; gap: var(--prompt-gap)">
           <PromptSegmentComponent
-            :color-option="'GIT_PROMPT_KIT_COLOR_WORKDIR'"
+            color-option="GIT_PROMPT_KIT_COLOR_WORKDIR"
             :text="`~/olets${valueOf(store.context.data.git) ? '/' : ''}`"
           />
 
           <PromptSegmentComponent
             v-if="valueOf(store.context.data.git)"
-            :color-option="'GIT_PROMPT_KIT_COLOR_WORKDIR'"
+            color-option="GIT_PROMPT_KIT_COLOR_WORKDIR"
             style="text-decoration: underline"
             text="git-prompt-kit"
           />
@@ -94,7 +94,7 @@ export default {
           <!-- branch -->
           <PromptSegmentComponent
             v-if="valueOf(store.context.data.branch)"
-            :color-option="'GIT_PROMPT_KIT_COLOR_HEAD'"
+            color-option="GIT_PROMPT_KIT_COLOR_HEAD"
             :text="`${
               valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BRANCH) || ''
             }main`"
@@ -103,7 +103,7 @@ export default {
           <!-- commit -->
           <PromptSegmentComponent
             v-if="!valueOf(store.context.data.branch)"
-            :color-option="'GIT_PROMPT_KIT_COLOR_HEAD'"
+            color-option="GIT_PROMPT_KIT_COLOR_HEAD"
             :text="`${
               valueOf(
                 valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_COMMIT)
@@ -157,7 +157,7 @@ export default {
               !valueOf(store.context.data.defaultRemote) ||
                 !valueOf(store.context.data.sameNameRemoteBranch)
             "
-            :color-option="'GIT_PROMPT_KIT_COLOR_REMOTE'"
+            color-option="GIT_PROMPT_KIT_COLOR_REMOTE"
             :text="`${
               valueOf(store.context.data.defaultRemote) ? '' : 'upstream/'
             }${
@@ -236,7 +236,7 @@ export default {
               !valueOf(store.context.data.defaultPushRemote) ||
                 !valueOf(store.context.data.sameNamePushRemoteBranch)
             "
-            :color-option="'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'"
+            color-option="GIT_PROMPT_KIT_COLOR_PUSH_REMOTE"
             :text="
               valueOf(store.context.data.defaultPushRemote) ? '' : 'upstream'
             "
@@ -282,7 +282,7 @@ export default {
         <!-- tag -->
         <PromptSegmentComponent
           v-if="valueOf(store.context.data.tag)"
-          :color-option="'GIT_PROMPT_KIT_COLOR_TAG'"
+          color-option="GIT_PROMPT_KIT_COLOR_TAG"
           :text="`${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_TAG) || ''
           }v9000`"
@@ -478,7 +478,7 @@ export default {
       <!-- action -->
       <PromptSegmentComponent
         v-if="valueOf(store.context.data.action)"
-        :color-option="'GIT_PROMPT_KIT_COLOR_ACTION'"
+        color-option="GIT_PROMPT_KIT_COLOR_ACTION"
         text="merge"
       />
     </span>
