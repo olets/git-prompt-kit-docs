@@ -1,6 +1,7 @@
 import { ansiOrHexColor } from "./ansiToHex.js";
 
-export default function (key, target, isColor = false) {
+export default function (key, target) {
+  const { checked, type, value } = target;
   const valid = !target.validity.patternMismatch;
   const pattern = target.getAttribute("pattern");
 
@@ -13,10 +14,15 @@ export default function (key, target, isColor = false) {
     return;
   }
 
-  if (isColor) {
-    this.store.data[key].value.custom = ansiOrHexColor(target.value);
+  if (type === "checkbox") {
+    this.store.data[key].value.custom = checked;
     return;
   }
 
-  this.store.data[key].value.custom = target.value;
+  if (type === "color") {
+    this.store.data[key].value.custom = ansiOrHexColor(value);
+    return;
+  }
+
+  this.store.data[key].value.custom = value;
 }

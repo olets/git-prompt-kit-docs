@@ -33,7 +33,6 @@ export default {
         <tr
           v-for="(item, key) in store.data"
           :key="key"
-          :class="valueOf(item) ? 'customized' : null"
         >
           <td>
             <label

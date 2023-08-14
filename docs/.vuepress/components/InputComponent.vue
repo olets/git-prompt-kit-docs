@@ -22,7 +22,21 @@ export default {
       return type === "array" ? "\\(.*\\)" : null;
     },
     getType(type) {
-      return type.includes("integer") ? "number" : "text";
+      let ret;
+
+      switch (type) {
+        case "boolean":
+          ret = "checkbox";
+          break;
+        case "number":
+          ret = "number";
+          break;
+        default:
+          ret = "text";
+          break;
+      }
+
+      return ret;
     },
     hexColor,
     valueOf,
@@ -42,6 +56,11 @@ export default {
         :type="getType(value?.type)"
         :value="valueOf(value)"
         :pattern="getPattern(value?.type)"
+        :checked="
+          getType(value?.type) === 'checkbox' && valueOf(value) === true
+            ? true
+            : false
+        "
         @change="$emit('set', theKey, $event.target)"
       >
 
@@ -49,7 +68,7 @@ export default {
         v-if="value.type === 'color'"
         type="color"
         :value="hexColor(valueOf(value))"
-        @input="$emit('set', theKey, $event.target, true)"
+        @input="$emit('set', theKey, $event.target)"
       >
     </div>
 
