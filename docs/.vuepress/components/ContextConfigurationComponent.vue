@@ -35,7 +35,10 @@ export default {
           :class="valueOf(item) ? 'customized' : null"
         >
           <td>
-            <label :for="`field-${key}`">
+            <label
+              :for="`field-${key}`"
+              style="display: block"
+            >
               {{ item.label }}
             </label>
           </td>

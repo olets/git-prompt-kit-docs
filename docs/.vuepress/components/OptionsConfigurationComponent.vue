@@ -89,7 +89,10 @@ export default {
           "
         >
           <td>
-            <label :for="`field-${optionKey}`">
+            <label
+              :for="`field-${optionKey}`"
+              style="display: block"
+            >
               <code>{{ optionKey }}</code>
             </label>
           </td>
