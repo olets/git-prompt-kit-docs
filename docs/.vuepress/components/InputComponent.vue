@@ -46,7 +46,7 @@ export default {
       >
 
       <input
-        v-if="value.group === 'Color'"
+        v-if="value.type === 'color'"
         type="color"
         :value="hexColor(valueOf(value))"
         @input="$emit('set', theKey, $event.target, true)"

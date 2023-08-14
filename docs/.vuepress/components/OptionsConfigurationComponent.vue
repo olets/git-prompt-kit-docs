@@ -1,6 +1,6 @@
 <script>
 import { useOptionsStore } from "../stores/options";
-import { ansiOrHexColor } from "../utils/ansiToHex.js";
+import set from "../utils/set.js";
 import InputComponent from "./InputComponent.vue";
 
 export default {
@@ -26,7 +26,6 @@ export default {
     },
   },
   methods: {
-    ansiOrHexColor,
     getMax(type) {
       return type.includes("bit") ? 1 : null;
     },
@@ -36,28 +35,7 @@ export default {
     getType(type) {
       return type.includes("integer") ? "number" : "text";
     },
-    set(key, target, isColor = false) {
-      const valid = !target.validity.patternMismatch;
-      const pattern = target.getAttribute("pattern");
-
-      target.setCustomValidity("");
-      target.reportValidity();
-
-      if (!valid) {
-        target.setCustomValidity(
-          `Invalid: must match the pattern /${pattern}/`
-        );
-        target.reportValidity();
-        return;
-      }
-
-      if (isColor) {
-        this.store.data[key].value.custom = ansiOrHexColor(target.value);
-        return;
-      }
-
-      this.store.data[key].value.custom = target.value;
-    },
+    set,
     reset() {
       this.store.$reset();
     },

@@ -1,19 +1,20 @@
 <script>
 import { useContextStore } from "../stores/context";
 import valueOf from "../utils/valueOf";
+import set from "../utils/set.js";
+import InputComponent from "./InputComponent.vue";
 
 export default {
+  components: [InputComponent],
   setup() {
     const store = useContextStore();
     return { store };
   },
   methods: {
-    set(key, target) {
-      this.store.data[key].value.custom = target.checked;
-    },
     reset() {
       this.store.$reset();
     },
+    set,
     valueOf,
   },
 };
@@ -44,12 +45,11 @@ export default {
           </td>
 
           <td>
-            <input
-              :id="`field-${key}`"
-              type="checkbox"
-              :checked="valueOf(item)"
-              @change="set(key, $event.target)"
-            >
+            <InputComponent
+              :the-key="key"
+              :value="item"
+              @set="set"
+            />
           </td>
         </tr>
       </tbody>
