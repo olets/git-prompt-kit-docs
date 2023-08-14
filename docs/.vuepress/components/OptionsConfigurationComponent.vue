@@ -1,9 +1,10 @@
 <script>
 import { useOptionsStore } from "../stores/options";
-import { ansiOrHexColor, hexColor } from "../utils/ansiToHex.js";
-import valueOf from "../utils/valueOf";
+import { ansiOrHexColor } from "../utils/ansiToHex.js";
+import InputComponent from "./InputComponent.vue";
 
 export default {
+  components: [InputComponent],
   props: {
     group: {
       type: String,
@@ -35,7 +36,6 @@ export default {
     getType(type) {
       return type.includes("integer") ? "number" : "text";
     },
-    hexColor,
     set(key, target, isColor = false) {
       const valid = !target.validity.patternMismatch;
       const pattern = target.getAttribute("pattern");
@@ -104,33 +104,11 @@ export default {
           <td>{{ option.notes }}</td>
 
           <td>
-            <div style="display: flex; gap: 1rem">
-              <input
-                :max="getMax(option?.type)"
-                min="0"
-                :name="`field-${optionKey}`"
-                :placeholder="option.value.default"
-                style="text-align: right; flex-grow: 1"
-                :type="getType(option?.type)"
-                :value="valueOf(option)"
-                :pattern="getPattern(option?.type)"
-                @change="({ target }) => set(optionKey, target)"
-              >
-
-              <input
-                v-if="option.group === 'Color'"
-                type="color"
-                :value="hexColor(valueOf(option))"
-                @input="({ target }) => set(optionKey, target, true)"
-              >
-            </div>
-
-            <div
-              v-if="getPattern(option?.type)"
-              class="validity"
-            >
-              Must match /{{ getPattern(option?.type) }}/
-            </div>
+            <InputComponent
+              :the-key="optionKey"
+              :value="option"
+              @set="set"
+            />
           </td>
         </tr>
       </tbody>

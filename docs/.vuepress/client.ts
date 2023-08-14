@@ -8,6 +8,7 @@ import PromptComponent from "./components/prompt/PromptComponent.vue";
 import ResetOptionsComponent from "./components/ResetOptionsComponent.vue";
 import ConfigComponent from "./components/ConfigComponent.vue";
 import PromptSegmentComponent from "./components/prompt/PromptSegmentComponent.vue";
+import InputComponent from "./components/InputComponent.vue";
 
 export default defineClientConfig({
   enhance({ app }) {
@@ -24,5 +25,6 @@ export default defineClientConfig({
     app.component("ResetOptionsComponent", ResetOptionsComponent);
     app.component("ConfigComponent", ConfigComponent);
     app.component("PromptSegmentComponent", PromptSegmentComponent);
+    app.component("InputComponent", InputComponent);
   },
 });
