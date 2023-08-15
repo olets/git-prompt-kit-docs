@@ -393,7 +393,7 @@ export default {
           color-option="GIT_PROMPT_KIT_COLOR_TAG"
           :text="`${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_TAG) || ''
-          }v9000`"
+          }v1.3.3`"
         />
       </span>
     </div>
