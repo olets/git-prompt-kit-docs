@@ -173,7 +173,12 @@ export default {
           <!-- branch -->
           <PromptSegmentComponent
             v-if="valueOf(store.context.data.gitRefBranch)"
-            color-option="GIT_PROMPT_KIT_COLOR_HEAD"
+            :color-option="
+              valueOf(store.context.data.gitRefAhead) ||
+                valueOf(store.context.data.gitRefBehind)
+                ? 'GIT_PROMPT_KIT_COLOR_HEAD'
+                : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
+            "
             :text="`${
               valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BRANCH) || ''
             }main`"
