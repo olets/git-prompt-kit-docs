@@ -46,13 +46,13 @@ export default {
       >
         <div>
           <PromptSegmentComponent
-            v-if="!valueOf(store.context.data.hiddenUser)"
+            v-if="!valueOf(store.context.data.userHiddenUser)"
             color-option="GIT_PROMPT_KIT_COLOR_USER"
             text="olets"
           />
 
           <PromptSegmentComponent
-            v-if="!valueOf(store.context.data.hiddenHost)"
+            v-if="!valueOf(store.context.data.userHiddenHost)"
             color-option="GIT_PROMPT_KIT_COLOR_HOST"
             text="@dev"
           />
@@ -64,11 +64,13 @@ export default {
         <div style="display: flex; gap: var(--prompt-gap)">
           <PromptSegmentComponent
             color-option="GIT_PROMPT_KIT_COLOR_WORKDIR"
-            :text="`~/olets${valueOf(store.context.data.git) ? '/' : ''}`"
+            :text="`~/olets${
+              valueOf(store.context.data.directoryGit) ? '/' : ''
+            }`"
           />
 
           <PromptSegmentComponent
-            v-if="valueOf(store.context.data.git)"
+            v-if="valueOf(store.context.data.directoryGit)"
             color-option="GIT_PROMPT_KIT_COLOR_WORKDIR"
             style="text-decoration: underline"
             text="git-prompt-kit"
@@ -77,7 +79,7 @@ export default {
       </span>
 
       <span
-        v-if="valueOf(store.context.data.git)"
+        v-if="valueOf(store.context.data.directoryGit)"
         id="git-ref"
         style="display: flex; gap: var(--prompt-gap)"
       >
@@ -92,7 +94,7 @@ export default {
         >
           <!-- branch -->
           <PromptSegmentComponent
-            v-if="valueOf(store.context.data.branch)"
+            v-if="valueOf(store.context.data.gitRefBranch)"
             color-option="GIT_PROMPT_KIT_COLOR_HEAD"
             :text="`${
               valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BRANCH) || ''
@@ -101,7 +103,7 @@ export default {
 
           <!-- commit -->
           <PromptSegmentComponent
-            v-if="!valueOf(store.context.data.branch)"
+            v-if="!valueOf(store.context.data.gitRefBranch)"
             color-option="GIT_PROMPT_KIT_COLOR_HEAD"
             :text="`${
               valueOf(
@@ -114,8 +116,8 @@ export default {
         <!-- local -->
         <span
           v-if="
-            valueOf(store.context.data.branch) &&
-              !valueOf(store.context.data.remote)
+            valueOf(store.context.data.gitRefBranch) &&
+              !valueOf(store.context.data.gitRefRemote)
           "
           :style="`color: ${hexColor(
             valueOf(store.options.data.GIT_PROMPT_KIT_COLOR_REMOTE)
@@ -126,22 +128,22 @@ export default {
 
         <!-- upstream -->
         <span
-          v-if="valueOf(store.context.data.remote)"
+          v-if="valueOf(store.context.data.gitRefRemote)"
           id="upstream"
         >
           <!-- remote symbol -->
           <!-- TODO is this the real logic? if not should it be? -->
           <PromptSegmentComponent
             v-if="
-              valueOf(store.context.data.ahead) ||
-                valueOf(store.context.data.behind) ||
+              valueOf(store.context.data.gitRefAhead) ||
+                valueOf(store.context.data.gitRefBehind) ||
                 valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
             :color-option="
-              valueOf(store.context.data.ahead) ||
-                valueOf(store.context.data.behind)
+              valueOf(store.context.data.gitRefAhead) ||
+                valueOf(store.context.data.gitRefBehind)
                 ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
                 : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
             "
@@ -153,72 +155,74 @@ export default {
           <!-- remote and remote branch -->
           <PromptSegmentComponent
             v-if="
-              !valueOf(store.context.data.defaultRemote) ||
-                !valueOf(store.context.data.sameNameRemoteBranch)
+              !valueOf(store.context.data.gitRefDefaultRemote) ||
+                !valueOf(store.context.data.gitRefSameNameRemoteBranch)
             "
             color-option="GIT_PROMPT_KIT_COLOR_REMOTE"
             :text="`${
-              valueOf(store.context.data.defaultRemote) ? '' : 'upstream/'
+              valueOf(store.context.data.gitRefDefaultRemote) ? '' : 'upstream/'
             }${
-              valueOf(store.context.data.sameNameRemoteBranch) ? '' : 'trunk'
+              valueOf(store.context.data.gitRefSameNameRemoteBranch)
+                ? ''
+                : 'trunk'
             }`"
           />
 
           <!-- remote ahead -->
           <PromptSegmentComponent
             v-if="
-              valueOf(store.context.data.ahead) ||
+              valueOf(store.context.data.gitRefAhead) ||
                 valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
             :color-option="
-              valueOf(store.context.data.ahead)
+              valueOf(store.context.data.gitRefAhead)
                 ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
                 : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
             "
             :text="`${
               valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''
-            }${valueOf(store.context.data.ahead) ? '2' : ''}`"
+            }${valueOf(store.context.data.gitRefAhead) ? '2' : ''}`"
           />
 
           <!-- remote behind -->
           <PromptSegmentComponent
             v-if="
-              valueOf(store.context.data.behind) ||
+              valueOf(store.context.data.gitRefBehind) ||
                 valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
             :color-option="
-              valueOf(store.context.data.behind)
+              valueOf(store.context.data.gitRefBehind)
                 ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
                 : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
             "
             :text="`${
               valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND) || ''
-            }${valueOf(store.context.data.behind) ? '2' : ''}`"
+            }${valueOf(store.context.data.gitRefBehind) ? '2' : ''}`"
           />
         </span>
 
         <!-- push remote -->
         <span
-          v-if="valueOf(store.context.data.push)"
+          v-if="valueOf(store.context.data.gitPushRefPush)"
           id="push"
         >
           <!-- push remote symbol -->
           <!-- TODO is this the real logic? if not should it be? -->
           <PromptSegmentComponent
             v-if="
-              valueOf(store.context.data.pushAhead) ||
-                valueOf(store.context.data.pushBehind) ||
+              valueOf(store.context.data.gitPushRefPushAhead) ||
+                valueOf(store.context.data.gitPushRefPushBehind) ||
                 valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
             :color-option="
-              valueOf(store.context.data.pushAhead) ||
-                valueOf(store.context.data.pushBehind)
+              valueOf(store.context.data.gitPushRefPushAhead) ||
+                valueOf(store.context.data.gitPushRefPushBehind)
                 ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
                 : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
             "
@@ -232,55 +236,57 @@ export default {
           <!-- note: no push remote branch -->
           <PromptSegmentComponent
             v-if="
-              !valueOf(store.context.data.defaultPushRemote) ||
-                !valueOf(store.context.data.sameNamePushRemoteBranch)
+              !valueOf(store.context.data.gitPushRefDefaultPushRemote) ||
+                !valueOf(store.context.data.gitPushRefSameNamePushRemoteBranch)
             "
             color-option="GIT_PROMPT_KIT_COLOR_PUSH_REMOTE"
             :text="
-              valueOf(store.context.data.defaultPushRemote) ? '' : 'upstream'
+              valueOf(store.context.data.gitPushRefDefaultPushRemote)
+                ? ''
+                : 'upstream'
             "
           />
 
           <!-- push remote ahead -->
           <PromptSegmentComponent
             v-if="
-              valueOf(store.context.data.pushAhead) ||
+              valueOf(store.context.data.gitPushRefPushAhead) ||
                 valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
             :color-option="
-              valueOf(store.context.data.pushAhead)
+              valueOf(store.context.data.gitPushRefPushAhead)
                 ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
                 : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
             "
             :text="`${
               valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''
-            }${valueOf(store.context.data.pushAhead) ? '2' : ''}`"
+            }${valueOf(store.context.data.gitPushRefPushAhead) ? '2' : ''}`"
           />
 
           <!-- push remote behind -->
           <PromptSegmentComponent
             v-if="
-              valueOf(store.context.data.pushBehind) ||
+              valueOf(store.context.data.gitPushRefPushBehind) ||
                 valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
             :color-option="
-              valueOf(store.context.data.pushBehind)
+              valueOf(store.context.data.gitPushRefPushBehind)
                 ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
                 : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
             "
             :text="`${
               valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND) || ''
-            }${valueOf(store.context.data.pushBehind) ? '2' : ''}`"
+            }${valueOf(store.context.data.gitPushRefPushBehind) ? '2' : ''}`"
           />
         </span>
 
         <!-- tag -->
         <PromptSegmentComponent
-          v-if="valueOf(store.context.data.tag)"
+          v-if="valueOf(store.context.data.gitRefTag)"
           color-option="GIT_PROMPT_KIT_COLOR_TAG"
           :text="`${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_TAG) || ''
@@ -300,35 +306,39 @@ export default {
         <!-- stash -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.stashes) ||
+            valueOf(store.context.data.gitExtendedStatusStashes) ||
               valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
           :color-option="
-            valueOf(store.context.data.stashes)
+            valueOf(store.context.data.gitExtendedStatusStashes)
               ? 'GIT_PROMPT_KIT_COLOR_STASH'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.stashes) ? '2' : ''}${
-            valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH) || ''
-          }`"
+          :text="`${
+            valueOf(store.context.data.gitExtendedStatusStashes) ? '2' : ''
+          }${valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH) || ''}`"
         />
 
         <!-- assume-unchanged -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.assumeUnchanged) ||
+            valueOf(store.context.data.gitExtendedStatusAssumeUnchanged) ||
               valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
           :color-option="
-            valueOf(store.context.data.assumeUnchanged)
+            valueOf(store.context.data.gitExtendedStatusAssumeUnchanged)
               ? 'GIT_PROMPT_KIT_COLOR_ASSUME_UNCHANGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.assumeUnchanged) ? '2' : ''}${
+          :text="`${
+            valueOf(store.context.data.gitExtendedStatusAssumeUnchanged)
+              ? '2'
+              : ''
+          }${
             valueOf(
               store.options.data.GIT_PROMPT_KIT_SYMBOL_ASSUME_UNCHANGED
             ) || ''
@@ -338,17 +348,19 @@ export default {
         <!-- skip-worktree -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.skipWorktree) ||
+            valueOf(store.context.data.gitExtendedStatusSkipWorktree) ||
               valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
           :color-option="
-            valueOf(store.context.data.skipWorktree)
+            valueOf(store.context.data.gitExtendedStatusSkipWorktree)
               ? 'GIT_PROMPT_KIT_COLOR_SKIP_WORKTREE'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.skipWorktree) ? '2' : ''}${
+          :text="`${
+            valueOf(store.context.data.gitExtendedStatusSkipWorktree) ? '2' : ''
+          }${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE) ||
             ''
           }`"
@@ -362,15 +374,15 @@ export default {
         <!-- untracked -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.untracked) ||
+            valueOf(store.context.data.gitStatusUntracked) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
           :color-option="
-            valueOf(store.context.data.untracked)
+            valueOf(store.context.data.gitStatusUntracked)
               ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.untracked) ? '2' : ''}${
+          :text="`${valueOf(store.context.data.gitStatusUntracked) ? '2' : ''}${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_UNTRACKED) || ''
           }`"
         />
@@ -378,15 +390,17 @@ export default {
         <!-- conflicted -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.conflicted) ||
+            valueOf(store.context.data.gitStatusConflicted) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
           :color-option="
-            valueOf(store.context.data.conflicted)
+            valueOf(store.context.data.gitStatusConflicted)
               ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.conflicted) ? '2' : ''}${
+          :text="`${
+            valueOf(store.context.data.gitStatusConflicted) ? '2' : ''
+          }${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_CONFLICTED) || ''
           }`"
         />
@@ -394,15 +408,15 @@ export default {
         <!-- deleted -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.deleted) ||
+            valueOf(store.context.data.gitStatusDeleted) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
           :color-option="
-            valueOf(store.context.data.deleted)
+            valueOf(store.context.data.gitStatusDeleted)
               ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.deleted) ? '2' : ''}${
+          :text="`${valueOf(store.context.data.gitStatusDeleted) ? '2' : ''}${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_DELETED) || ''
           }`"
         />
@@ -410,15 +424,15 @@ export default {
         <!-- modified -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.modified) ||
+            valueOf(store.context.data.gitStatusModified) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
           :color-option="
-            valueOf(store.context.data.modified)
+            valueOf(store.context.data.gitStatusModified)
               ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.modified) ? '2' : ''}${
+          :text="`${valueOf(store.context.data.gitStatusModified) ? '2' : ''}${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_MODIFIED) || ''
           }`"
         />
@@ -426,15 +440,15 @@ export default {
         <!-- new -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.new) ||
+            valueOf(store.context.data.gitStatusNew) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
           :color-option="
-            valueOf(store.context.data.new)
+            valueOf(store.context.data.gitStatusNew)
               ? 'GIT_PROMPT_KIT_COLOR_STAGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.new) ? '2' : ''}${
+          :text="`${valueOf(store.context.data.gitStatusNew) ? '2' : ''}${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_NEW) || ''
           }`"
         />
@@ -442,15 +456,17 @@ export default {
         <!-- staged deleted -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.deletedStaged) ||
+            valueOf(store.context.data.gitStatusDeletedStaged) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
           :color-option="
-            valueOf(store.context.data.deletedStaged)
+            valueOf(store.context.data.gitStatusDeletedStaged)
               ? 'GIT_PROMPT_KIT_COLOR_STAGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.deletedStaged) ? '2' : ''}${
+          :text="`${
+            valueOf(store.context.data.gitStatusDeletedStaged) ? '2' : ''
+          }${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED) ||
             ''
           }`"
@@ -459,15 +475,17 @@ export default {
         <!-- staged modified -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.modifiedStaged) ||
+            valueOf(store.context.data.gitStatusModifiedStaged) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
           :color-option="
-            valueOf(store.context.data.modifiedStaged)
+            valueOf(store.context.data.gitStatusModifiedStaged)
               ? 'GIT_PROMPT_KIT_COLOR_STAGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
-          :text="`${valueOf(store.context.data.modifiedStaged) ? '2' : ''}${
+          :text="`${
+            valueOf(store.context.data.gitStatusModifiedStaged) ? '2' : ''
+          }${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_MODIFIED_STAGED) ||
             ''
           }`"
@@ -476,7 +494,7 @@ export default {
 
       <!-- action -->
       <PromptSegmentComponent
-        v-if="valueOf(store.context.data.action)"
+        v-if="valueOf(store.context.data.gitStatusAction)"
         color-option="GIT_PROMPT_KIT_COLOR_ACTION"
         text="merge"
       />
@@ -485,12 +503,12 @@ export default {
     <!-- prompt character -->
     <PromptSegmentComponent
       :color-option="
-        valueOf(store.context.data.failed)
+        valueOf(store.context.data.sessionFailed)
           ? 'GIT_PROMPT_KIT_COLOR_FAILED'
           : 'GIT_PROMPT_KIT_COLOR_SUCCEEDED'
       "
       :text="
-        valueOf(store.context.data.root)
+        valueOf(store.context.data.userRoot)
           ? valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_CHAR_ROOT)
           : valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_CHAR_NORMAL)
       "

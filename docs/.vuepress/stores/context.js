@@ -4,155 +4,191 @@ export const useContextStore = defineStore("context", {
   state: () => ({
     data: {
       terminalBackgroundColor: {
-        label: "Terminal background color",
+        group: "Terminal",
+        label: "Background color",
         value: { default: "#4a4a4a" },
         type: "color",
       },
       terminalTextColor: {
-        label: "Terminal text color",
+        group: "Terminal",
+        label: "Text color",
         value: { default: "#fefefe" },
         type: "color",
       },
-      action: {
+      gitStatusAction: {
+        group: "Git status",
         label: "Has an ongoing Git action",
         value: { default: false },
         type: "boolean",
       },
-      ahead: {
-        label: "Is ahead of the remote",
+      gitRefTag: {
+        group: "Git ref",
+        label: "There is a tag at HEAD",
         value: { default: false },
         type: "boolean",
       },
-      assumeUnchanged: {
+      gitRefBranch: {
+        group: "Git ref",
+        label: "On a local branch",
+        value: { default: false },
+        type: "boolean",
+      },
+      gitRefRemote: {
+        group: "Git ref",
+        label: "The local branch has a (pull) remote",
+        notes: "Only relevant when on a branch",
+        value: { default: false },
+        type: "boolean",
+      },
+      gitRefAhead: {
+        group: "Git ref",
+        label: "The local branch is ahead of the remote",
+        notes: "Only relevant when on a branch",
+        value: { default: false },
+        type: "boolean",
+      },
+      gitRefBehind: {
+        group: "Git ref",
+        label: "The local branch is behind the remote",
+        notes: "Only relevant when on a branch",
+        value: { default: false },
+        type: "boolean",
+      },
+      extendedGitStatusAssumeUnchanged: {
+        group: "Extended Git status",
         label: "Has files with the assume-unchanged bit set",
         value: { default: false },
         type: "boolean",
       },
-      behind: {
-        label: "Is behind the remote",
-        value: { default: false },
-        type: "boolean",
-      },
-      conflicted: {
+      gitStatusConflicted: {
+        group: "Git status",
         label: "Has conflicts",
         value: { default: false },
         type: "boolean",
       },
-      git: {
+      directoryGit: {
+        group: "Directory",
         label: "In a Git repo",
         value: { default: false },
         type: "boolean",
       },
-      deletedStaged: {
+      gitStatusDeletedStaged: {
+        group: "Git status",
         label: "Has staged deleted files",
         value: { default: false },
         type: "boolean",
       },
-      deleted: {
+      gitStatusDeleted: {
+        group: "Git status",
         label: "Has unstaged deleted files",
         value: { default: false },
         type: "boolean",
       },
-      branch: {
-        label: "There is a branch pointing to the checked out commit",
-        value: { default: false },
-        type: "boolean",
-      },
-      modifiedStaged: {
+      gitStatusModifiedStaged: {
+        group: "Git status",
         label: "Has staged modified files",
         value: { default: false },
         type: "boolean",
       },
-      modified: {
+      gitStatusModified: {
+        group: "Git status",
         label: "Has unstaged modified files",
         value: { default: false },
         type: "boolean",
       },
-      new: {
+      gitStatusNew: {
+        group: "Git status",
         label: "Has (staged) new files",
         value: { default: false },
         type: "boolean",
       },
-      pushAhead: {
-        label: "Is ahead of the push remote",
-        value: { default: false },
-        type: "boolean",
-      },
-      pushBehind: {
-        label: "Is behind the push remote",
-        value: { default: false },
-        type: "boolean",
-      },
-      push: {
-        label: "Has a distinct push remote",
-        value: { default: false },
-        type: "boolean",
-      },
-      defaultPushRemote: {
-        label: "Push remote branch is on the default push remote",
+      gitRefDefaultRemote: {
+        group: "Git ref",
+        label: "Remote branch is on the default remote",
+        notes: "Only relevant when on a branch with a remote",
         value: { default: true },
-
+        type: "boolean",
+      },
+      gitRefSameNameRemoteBranch: {
+        group: "Git ref",
+        label: "Remote branch has the same name as the local branch",
+        notes: "Only relevant when on a branch with a remote",
+        value: { default: true },
+        type: "boolean",
+      },
+      gitPushRefPush: {
+        group: "Git push ref",
+        label: "Has a push remote distinct from the pull remote",
+        notes: "Only relevant when on a branch",
+        value: { default: false },
+        type: "boolean",
+      },
+      gitPushRefPushAhead: {
+        group: "Git push ref",
+        label: "The local branch is ahead of the distinct push remote",
+        notes: "Only relevant when on a branch with a distinct push remote",
+        value: { default: false },
+        type: "boolean",
+      },
+      gitPushRefPushBehind: {
+        group: "Git push ref",
+        label: "The local branch is behind the push remote",
+        notes: "Only relevant when on a branch with a distinct push remote",
+        value: { default: false },
+        type: "boolean",
+      },
+      gitPushRefDefaultPushRemote: {
+        group: "Git push ref",
+        label: "Push remote branch is on the default push remote",
+        notes: "Only relevant when on a branch with a distinct push remote",
+        value: { default: true },
         type: "boolean",
       },
       // not supported by git-status
-      // <sa></sa>meNamePushRemoteBranch: {
+      // gitRefSameNamePushRemoteBranch: {
+      //   group: "Git ref",
       //   label: "Push remote branch has the same name as the local branch",
       //   value: { default: true },
-      // type: "boolean",
+      //   type: "boolean",
       // },
-      remote: {
-        label: "Has a remote",
-        value: { default: false },
-        type: "boolean",
-      },
-      defaultRemote: {
-        label: "Remote branch is on the default remote",
-        value: { default: true },
-
-        type: "boolean",
-      },
-      sameNameRemoteBranch: {
-        label: "Remote branch has the same name as the local branch",
-        value: { default: true },
-
-        type: "boolean",
-      },
-      skipWorktree: {
+      extendedGitStatusSkipWorktree: {
+        group: "Extended Git status",
         label: "Has files with the skip-worktree bit set",
         value: { default: false },
         type: "boolean",
       },
-      stashes: {
+      extendedGitStatusStashes: {
+        group: "Extended Git status",
         label: "Has stashes",
         value: { default: false },
         type: "boolean",
       },
-      tag: {
-        label: "There is a tag pointing to the checked out commit",
-        value: { default: false },
-        type: "boolean",
-      },
-      untracked: {
+      gitStatusUntracked: {
+        group: "Git status",
         label: "Has (unstaged) untracked files",
         value: { default: false },
         type: "boolean",
       },
-      hiddenUser: {
+      userHiddenUser: {
+        group: "User",
         label: "The current user is hidden",
         value: { default: false },
         type: "boolean",
       },
-      hiddenHost: {
+      userHiddenHost: {
+        group: "User",
         label: "The current host is hidden",
         value: { default: false },
         type: "boolean",
       },
-      root: {
+      userRoot: {
+        group: "User",
         label: "Current user is root",
         value: { default: false },
         type: "boolean",
       },
-      failed: {
+      sessionFailed: {
+        group: "Session",
         label: "Previous command failed",
         value: { default: false },
         type: "boolean",

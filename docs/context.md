@@ -13,4 +13,34 @@ In the terminal, the prompt character will be [expanded as a prompt](https://zsh
 
 </div>
 
-<ContextConfigurationComponent/>
+## Terminal
+
+<ContextConfigurationComponent group="Terminal"/>
+
+## User
+
+<ContextConfigurationComponent group="User"/>
+
+## Session
+
+<ContextConfigurationComponent group="Session"/>
+
+## Directory
+
+<ContextConfigurationComponent group="Directory"/>
+
+## Git ref
+
+<ContextConfigurationComponent group="Git ref"/>
+
+### Triangular workflow
+
+<ContextConfigurationComponent group="Git push ref"/>
+
+## Git status
+
+<ContextConfigurationComponent group="Git status"/>
+
+## Extended Git status
+
+<ContextConfigurationComponent group="Extended Git status"/>

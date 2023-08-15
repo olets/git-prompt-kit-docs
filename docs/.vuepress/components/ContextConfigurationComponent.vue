@@ -6,9 +6,25 @@ import InputComponent from "./InputComponent.vue";
 
 export default {
   components: [InputComponent],
+  props: {
+    group: {
+      type: String,
+      required: true,
+    },
+  },
   setup() {
     const store = useContextStore();
     return { store };
+  },
+  computed: {
+    options() {
+      return Object.fromEntries(
+        Object.entries(this.store.data).filter(
+          // eslint-disable-next-line no-unused-vars
+          ([_k, v]) => v.group.toLowerCase() === this.group.toLowerCase()
+        )
+      );
+    },
   },
   methods: {
     reset() {
@@ -25,13 +41,14 @@ export default {
     <table>
       <thead>
         <tr>
-          <th>State</th>
-          <th>True?</th>
+          <th>Context</th>
+          <th>Notes</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="(item, key) in store.data"
+          v-for="(value, key) in options"
           :key="key"
         >
           <td>
@@ -39,14 +56,18 @@ export default {
               :for="`field-${key}`"
               style="display: block"
             >
-              {{ item.label }}
+              {{ value.label }}
             </label>
+          </td>
+
+          <td>
+            {{ value?.notes }}
           </td>
 
           <td>
             <InputComponent
               :the-key="key"
-              :value="item"
+              :value="value"
               @set="set"
             />
           </td>
