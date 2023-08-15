@@ -154,21 +154,6 @@ export default {
           color-option="GIT_PROMPT_KIT_COLOR_CWD"
           :text="cwd()"
         />
-        <!--<div style="display: flex">
-          <PromptSegmentComponent
-            color-option="GIT_PROMPT_KIT_COLOR_CWD"
-            :text="`~/olets${
-              valueOf(store.context.data.directoryGit) ? '/' : ''
-            }`"
-          />
-
-          <PromptSegmentComponent
-            v-if="valueOf(store.context.data.directoryGit)"
-            color-option="GIT_PROMPT_KIT_COLOR_CWD"
-            style="text-decoration: underline"
-            text="git-prompt-kit"
-          />
-        </div>-->
       </span>
 
       <span
