@@ -28,6 +28,9 @@ export default {
         case "boolean":
           ret = "checkbox";
           break;
+        case "integer bit":
+          ret = "number";
+          break;
         case "number":
           ret = "number";
           break;
