@@ -306,6 +306,14 @@ export default {
       style="display: flex; gap: var(--prompt-gap)"
     >
       <span
+        v-if="
+          valueOf(store.context.data.gitExtendedStatusStashes) ||
+            valueOf(store.context.data.gitExtendedStatusAssumeUnchanged) ||
+            valueOf(store.context.data.gitExtendedStatusSkipWorktree) ||
+            !valueOf(
+              store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
+            )
+        "
         id="extended"
         style="display: flex; gap: var(--prompt-gap)"
       >
@@ -313,7 +321,7 @@ export default {
         <PromptSegmentComponent
           v-if="
             valueOf(store.context.data.gitExtendedStatusStashes) ||
-              valueOf(
+              !valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
@@ -331,7 +339,7 @@ export default {
         <PromptSegmentComponent
           v-if="
             valueOf(store.context.data.gitExtendedStatusAssumeUnchanged) ||
-              valueOf(
+              !valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
@@ -355,7 +363,7 @@ export default {
         <PromptSegmentComponent
           v-if="
             valueOf(store.context.data.gitExtendedStatusSkipWorktree) ||
-              valueOf(
+              !valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
