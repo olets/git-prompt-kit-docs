@@ -135,27 +135,32 @@ export default {
         <span
           v-if="valueOf(store.context.data.gitRefRemote)"
           id="upstream"
+          style="display: flex; gap: var(--prompt-gap)"
         >
           <!-- remote symbol -->
-          <!-- TODO is this the real logic? if not should it be? -->
-          <PromptSegmentComponent
+          <span
             v-if="
-              valueOf(store.context.data.gitRefAhead) ||
-                valueOf(store.context.data.gitRefBehind) ||
-                valueOf(
-                  store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
-                )
+              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_REMOTE) &&
+                valueOf(store.context.data.gitPushRefPush)
             "
-            :color-option="
-              valueOf(store.context.data.gitRefAhead) ||
-                valueOf(store.context.data.gitRefBehind)
-                ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
-                : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
-            "
-            :text="
-              valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_REMOTE) || ''
-            "
-          />
+          >
+            <PromptSegmentComponent
+              v-if="
+                valueOf(store.context.data.gitRefAhead) ||
+                  valueOf(store.context.data.gitRefBehind) ||
+                  !valueOf(
+                    store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
+                  )
+              "
+              :color-option="
+                valueOf(store.context.data.gitRefAhead) ||
+                  valueOf(store.context.data.gitRefBehind)
+                  ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
+                  : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
+              "
+              :text="valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_REMOTE)"
+            />
+          </span>
 
           <!-- remote and remote branch -->
           <PromptSegmentComponent
@@ -165,11 +170,16 @@ export default {
             "
             color-option="GIT_PROMPT_KIT_COLOR_REMOTE"
             :text="`${
-              valueOf(store.context.data.gitRefDefaultRemote) ? '' : 'upstream/'
+              !valueOf(store.context.data.gitRefDefaultRemote) ? 'upstream' : ''
             }${
-              valueOf(store.context.data.gitRefSameNameRemoteBranch)
-                ? ''
-                : 'trunk'
+              !valueOf(store.context.data.gitRefDefaultRemote) &&
+              !valueOf(store.context.data.gitRefSameNameRemoteBranch)
+                ? '/'
+                : ''
+            }${
+              !valueOf(store.context.data.gitRefSameNameRemoteBranch)
+                ? 'trunk'
+                : ''
             }`"
           />
 
@@ -177,7 +187,7 @@ export default {
           <PromptSegmentComponent
             v-if="
               valueOf(store.context.data.gitRefAhead) ||
-                valueOf(
+                !valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
@@ -195,7 +205,7 @@ export default {
           <PromptSegmentComponent
             v-if="
               valueOf(store.context.data.gitRefBehind) ||
-                valueOf(
+                !valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
@@ -221,7 +231,7 @@ export default {
             v-if="
               valueOf(store.context.data.gitPushRefPushAhead) ||
                 valueOf(store.context.data.gitPushRefPushBehind) ||
-                valueOf(
+                !valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
@@ -256,7 +266,7 @@ export default {
           <PromptSegmentComponent
             v-if="
               valueOf(store.context.data.gitPushRefPushAhead) ||
-                valueOf(
+                !valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
@@ -274,7 +284,7 @@ export default {
           <PromptSegmentComponent
             v-if="
               valueOf(store.context.data.gitPushRefPushBehind) ||
-                valueOf(
+                !valueOf(
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
