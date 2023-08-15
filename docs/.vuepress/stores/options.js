@@ -4,6 +4,7 @@ import configFromState from "../utils/configFromState.js";
 export const useOptionsStore = defineStore("color", {
   state: () => ({
     data: {
+      // GROUP: COLOR
       GIT_PROMPT_KIT_COLOR_ACTION: {
         group: "Color",
         value: { default: "199" },
@@ -13,6 +14,12 @@ export const useOptionsStore = defineStore("color", {
       GIT_PROMPT_KIT_COLOR_ASSUME_UNCHANGED: {
         group: "Color",
         value: { default: "81" },
+        notes: "ANSI or hex",
+        type: "color",
+      },
+      GIT_PROMPT_KIT_COLOR_CWD: {
+        group: "Color",
+        value: { default: "39" },
         notes: "ANSI or hex",
         type: "color",
       },
@@ -94,12 +101,8 @@ export const useOptionsStore = defineStore("color", {
         notes: "ANSI or hex",
         type: "color",
       },
-      GIT_PROMPT_KIT_COLOR_WORKDIR: {
-        group: "Color",
-        value: { default: "39" },
-        notes: "ANSI or hex",
-        type: "color",
-      },
+
+      // GROUP: BEHAVIOR
       GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND: {
         group: "Behavior",
         value: { default: "1" },
@@ -120,6 +123,8 @@ export const useOptionsStore = defineStore("color", {
         value: { default: "1" },
         type: "integer bit",
       },
+
+      // GROUP: SYMBOL
       GIT_PROMPT_KIT_SYMBOL_AHEAD: {
         group: "Symbol",
         value: { default: "+" },
@@ -138,6 +143,17 @@ export const useOptionsStore = defineStore("color", {
       GIT_PROMPT_KIT_SYMBOL_BRANCH: {
         group: "Symbol",
         value: { default: "" },
+        type: "string",
+      },
+      GIT_PROMPT_KIT_SYMBOL_CHAR_NORMAL: {
+        group: "Symbol",
+        value: { default: "%%" },
+        notes: "Rendered as a prompt string",
+        type: "string",
+      },
+      GIT_PROMPT_KIT_SYMBOL_CHAR_ROOT: {
+        group: "Symbol",
+        value: { default: "#" },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_COMMIT: {
@@ -163,6 +179,11 @@ export const useOptionsStore = defineStore("color", {
       GIT_PROMPT_KIT_SYMBOL_HOST: {
         group: "Symbol",
         value: { default: "@" },
+        type: "string",
+      },
+      GIT_PROMPT_KIT_SYMBOL_LOCAL: {
+        group: "Content",
+        value: { default: "local" },
         type: "string",
       },
       GIT_PROMPT_KIT_SYMBOL_MODIFIED: {
@@ -210,6 +231,13 @@ export const useOptionsStore = defineStore("color", {
         value: { default: "??" },
         type: "string",
       },
+      GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT: {
+        group: "Content",
+        value: { default: "1" },
+        type: "integer",
+      },
+
+      // GROUP: CONTENT
       GIT_PROMPT_KIT_DEFAULT_PUSH_REMOTE_NAME: {
         group: "Content",
         value: { default: "upstream" },
@@ -220,31 +248,10 @@ export const useOptionsStore = defineStore("color", {
         value: { default: "origin" },
         type: "string",
       },
-      GIT_PROMPT_KIT_CWD_TRAILING_COUNT: {
+      GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT: {
         group: "Content",
         value: { default: "1" },
         type: "integer",
-      },
-      GIT_PROMPT_KIT_ROOT_TRAILING_COUNT: {
-        group: "Content",
-        value: { default: "1" },
-        type: "integer",
-      },
-      GIT_PROMPT_KIT_LOCAL: {
-        group: "Content",
-        value: { default: "local" },
-        type: "string",
-      },
-      GIT_PROMPT_KIT_SYMBOL_CHAR_NORMAL: {
-        group: "Symbol",
-        value: { default: "%%" },
-        notes: "Rendered as a prompt string",
-        type: "string",
-      },
-      GIT_PROMPT_KIT_SYMBOL_CHAR_ROOT: {
-        group: "Symbol",
-        value: { default: "#" },
-        type: "string",
       },
       GIT_PROMPT_KIT_HIDDEN_HOSTS: {
         group: "Content",

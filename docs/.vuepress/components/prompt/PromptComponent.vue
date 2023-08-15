@@ -68,7 +68,7 @@ export default {
         <!-- GIT_PROMPT_KIT_WORKDIR -->
         <div style="display: flex">
           <PromptSegmentComponent
-            color-option="GIT_PROMPT_KIT_COLOR_WORKDIR"
+            color-option="GIT_PROMPT_KIT_COLOR_CWD"
             :text="`~/olets${
               valueOf(store.context.data.directoryGit) ? '/' : ''
             }`"
@@ -76,7 +76,7 @@ export default {
 
           <PromptSegmentComponent
             v-if="valueOf(store.context.data.directoryGit)"
-            color-option="GIT_PROMPT_KIT_COLOR_WORKDIR"
+            color-option="GIT_PROMPT_KIT_COLOR_CWD"
             style="text-decoration: underline"
             text="git-prompt-kit"
           />
@@ -128,7 +128,7 @@ export default {
             valueOf(store.options.data.GIT_PROMPT_KIT_COLOR_REMOTE)
           )};`"
         >
-          {{ valueOf(store.options.data.GIT_PROMPT_KIT_LOCAL) }}
+          {{ valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_LOCAL) }}
         </span>
 
         <!-- upstream -->
