@@ -15,9 +15,6 @@ export default {
   },
   emits: ["set"],
   methods: {
-    getMax(type) {
-      return type.includes("bit") ? 1 : null;
-    },
     getPattern(type) {
       return type === "array" ? "\\(.*\\)" : null;
     },
@@ -28,10 +25,7 @@ export default {
         case "boolean":
           ret = "checkbox";
           break;
-        case "integer bit":
-          ret = "number";
-          break;
-        case "number":
+        case "integer":
           ret = "number";
           break;
         default:
@@ -52,8 +46,6 @@ export default {
     <div style="display: flex; gap: 1rem">
       <input
         :id="`field-${theKey}`"
-        :max="getMax(value?.type)"
-        min="0"
         :name="`field-${theKey}`"
         :placeholder="value.value.default"
         style="text-align: right; flex-grow: 1"

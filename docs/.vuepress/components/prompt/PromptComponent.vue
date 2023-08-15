@@ -15,6 +15,89 @@ export default {
     return { store };
   },
   methods: {
+    cwd() {
+      const aboveRoot = ["~", "projects", "olets"];
+      const root = `<span style="${
+        valueOf(this.store.context.data.directoryGit)
+          ? "text-decoration: underline"
+          : ""
+      }">git-prompt-kit</span>`;
+      const subdirectories = ["website", "docs", "demo"];
+      const cwd = "hometown-prompt";
+
+      let segments = [];
+
+      if (!valueOf(this.store.context.data.directoryGit)) {
+        segments = [...aboveRoot, root, ...subdirectories, cwd];
+
+        if (
+          valueOf(
+            this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
+          ) > -1 &&
+          valueOf(
+            this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
+          ) < segments.length
+        ) {
+          segments = segments.slice(
+            segments.length -
+              1 -
+              valueOf(
+                this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
+              )
+          );
+        }
+
+        return segments.join("/");
+      }
+
+      if (
+        valueOf(this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT) <
+          0 ||
+        valueOf(
+          this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
+        ) >= aboveRoot.length
+      ) {
+        segments = aboveRoot;
+      } else {
+        segments = aboveRoot.slice(
+          aboveRoot.length -
+            valueOf(
+              this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
+            )
+        );
+      }
+
+      segments.push(root);
+
+      if (
+        valueOf(
+          this.store.options.data
+            .GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT
+        ) < 0 ||
+        valueOf(
+          this.store.options.data
+            .GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT
+        ) >= subdirectories.length
+      ) {
+        segments = [...segments, ...subdirectories];
+      } else {
+        segments = [
+          ...segments,
+          "...",
+          ...subdirectories.slice(
+            subdirectories.length -
+              valueOf(
+                this.store.options.data
+                  .GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT
+              )
+          ),
+        ];
+      }
+
+      segments.push(cwd);
+
+      return segments.join("/");
+    },
     hexColor,
     valueOf,
     segment(color, text) {
@@ -65,8 +148,13 @@ export default {
 
         <PromptSegmentComponent text="4:07:47" />
 
-        <!-- GIT_PROMPT_KIT_WORKDIR -->
-        <div style="display: flex">
+        <!-- GIT_PROMPT_KIT_CWD -->
+
+        <PromptSegmentComponent
+          color-option="GIT_PROMPT_KIT_COLOR_CWD"
+          :text="cwd()"
+        />
+        <!--<div style="display: flex">
           <PromptSegmentComponent
             color-option="GIT_PROMPT_KIT_COLOR_CWD"
             :text="`~/olets${
@@ -80,7 +168,7 @@ export default {
             style="text-decoration: underline"
             text="git-prompt-kit"
           />
-        </div>
+        </div>-->
       </span>
 
       <span

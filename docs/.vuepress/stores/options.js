@@ -106,22 +106,22 @@ export const useOptionsStore = defineStore("color", {
       GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND: {
         group: "Behavior",
         value: { default: "1" },
-        type: "integer bit",
+        type: "integer",
       },
       GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS: {
         group: "Behavior",
         value: { default: "1" },
-        type: "integer bit",
+        type: "integer",
       },
       GIT_PROMPT_KIT_HIDE_TOOL_NAMES: {
         group: "Behavior",
         value: { default: "1" },
-        type: "integer bit",
+        type: "integer",
       },
       GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS: {
         group: "Behavior",
         value: { default: "1" },
-        type: "integer bit",
+        type: "integer",
       },
 
       // GROUP: SYMBOL
@@ -231,13 +231,13 @@ export const useOptionsStore = defineStore("color", {
         value: { default: "??" },
         type: "string",
       },
-      GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT: {
-        group: "Content",
-        value: { default: "1" },
-        type: "integer",
-      },
 
       // GROUP: CONTENT
+      GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT: {
+        group: "Content",
+        value: { default: 1 },
+        type: "integer",
+      },
       GIT_PROMPT_KIT_DEFAULT_PUSH_REMOTE_NAME: {
         group: "Content",
         value: { default: "upstream" },
@@ -247,11 +247,6 @@ export const useOptionsStore = defineStore("color", {
         group: "Content",
         value: { default: "origin" },
         type: "string",
-      },
-      GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT: {
-        group: "Content",
-        value: { default: "1" },
-        type: "integer",
       },
       GIT_PROMPT_KIT_HIDDEN_HOSTS: {
         group: "Content",
@@ -264,6 +259,11 @@ export const useOptionsStore = defineStore("color", {
         value: { default: "()" },
         notes: "Must be in parentheses",
         type: "array",
+      },
+      GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT: {
+        group: "Content",
+        value: { default: "1" },
+        type: "integer",
       },
     },
   }),

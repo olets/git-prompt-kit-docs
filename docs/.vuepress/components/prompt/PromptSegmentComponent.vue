@@ -33,7 +33,6 @@ export default {
         ? `color: ${hexColor(valueOf(store.data[colorOption]))}`
         : null
     "
-  >
-    {{ text }}
-  </span>
+    v-html="text"
+  />
 </template>
