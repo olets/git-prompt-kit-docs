@@ -5,5 +5,6 @@ module.exports = {
     "body-max-line-length": [1, "always", 100],
     "subject-full-stop": [1, "never", "."],
     "subject-case": [0, "always"],
+    "header-max-length": [1, "always", 72],
   },
 };
