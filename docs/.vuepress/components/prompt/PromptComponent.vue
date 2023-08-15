@@ -317,9 +317,9 @@ export default {
     >
       <span
         v-if="
-          valueOf(store.context.data.gitExtendedStatusStashes) ||
-            valueOf(store.context.data.gitExtendedStatusAssumeUnchanged) ||
-            valueOf(store.context.data.gitExtendedStatusSkipWorktree) ||
+          valueOf(store.context.data.extendedGitStatusStashes) ||
+            valueOf(store.context.data.extendedGitStatusAssumeUnchanged) ||
+            valueOf(store.context.data.extendedGitStatusSkipWorktree) ||
             !valueOf(
               store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
             )
@@ -330,36 +330,36 @@ export default {
         <!-- stash -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.gitExtendedStatusStashes) ||
+            valueOf(store.context.data.extendedGitStatusStashes) ||
               !valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
           :color-option="
-            valueOf(store.context.data.gitExtendedStatusStashes)
+            valueOf(store.context.data.extendedGitStatusStashes)
               ? 'GIT_PROMPT_KIT_COLOR_STASH'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
           :text="`${
-            valueOf(store.context.data.gitExtendedStatusStashes) ? '2' : ''
+            valueOf(store.context.data.extendedGitStatusStashes) ? '2' : ''
           }${valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH) || ''}`"
         />
 
         <!-- assume-unchanged -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.gitExtendedStatusAssumeUnchanged) ||
+            valueOf(store.context.data.extendedGitStatusAssumeUnchanged) ||
               !valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
           :color-option="
-            valueOf(store.context.data.gitExtendedStatusAssumeUnchanged)
+            valueOf(store.context.data.extendedGitStatusAssumeUnchanged)
               ? 'GIT_PROMPT_KIT_COLOR_ASSUME_UNCHANGED'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
           :text="`${
-            valueOf(store.context.data.gitExtendedStatusAssumeUnchanged)
+            valueOf(store.context.data.extendedGitStatusAssumeUnchanged)
               ? '2'
               : ''
           }${
@@ -372,18 +372,18 @@ export default {
         <!-- skip-worktree -->
         <PromptSegmentComponent
           v-if="
-            valueOf(store.context.data.gitExtendedStatusSkipWorktree) ||
+            valueOf(store.context.data.extendedGitStatusSkipWorktree) ||
               !valueOf(
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
           :color-option="
-            valueOf(store.context.data.gitExtendedStatusSkipWorktree)
+            valueOf(store.context.data.extendedGitStatusSkipWorktree)
               ? 'GIT_PROMPT_KIT_COLOR_SKIP_WORKTREE'
               : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
           "
           :text="`${
-            valueOf(store.context.data.gitExtendedStatusSkipWorktree) ? '2' : ''
+            valueOf(store.context.data.extendedGitStatusSkipWorktree) ? '2' : ''
           }${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE) ||
             ''
