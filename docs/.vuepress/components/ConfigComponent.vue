@@ -11,7 +11,6 @@ export default {
 
 <template>
   <section id="config">
-    <h2>Your Configuration</h2>
     <p>Copy and paste into your <code>.zshrc</code></p>
     <textarea
       v-model="store.customizations"

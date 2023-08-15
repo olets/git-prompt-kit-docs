@@ -19,6 +19,8 @@ In the terminal, the prompt character will be [expanded as a prompt](https://zsh
 
 ## Configuration
 
+### Your configuration
+
 <ConfigComponent/>
 
 <ResetOptionsComponent/>
