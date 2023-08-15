@@ -48,6 +48,7 @@ export default {
   <div>
     <div style="display: flex; gap: 1rem">
       <input
+        :id="`field-${theKey}`"
         :max="getMax(value?.type)"
         min="0"
         :name="`field-${theKey}`"
