@@ -30,14 +30,14 @@ export const useContextStore = defineStore("context", {
       gitRefBranch: {
         group: "Git ref",
         label: "On a local branch",
-        value: { default: false },
+        value: { default: true },
         type: "boolean",
       },
       gitRefRemote: {
         group: "Git ref",
-        label: "The local branch has a (pull) remote",
+        label: "The local branch has a remote",
         notes: "Only relevant when on a branch",
-        value: { default: false },
+        value: { default: true },
         type: "boolean",
       },
       gitRefAhead: {
@@ -69,7 +69,7 @@ export const useContextStore = defineStore("context", {
       directoryGit: {
         group: "Directory",
         label: "In a Git repo",
-        value: { default: false },
+        value: { default: true },
         type: "boolean",
       },
       gitStatusDeletedStaged: {
