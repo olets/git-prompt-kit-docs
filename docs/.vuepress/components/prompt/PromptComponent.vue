@@ -44,7 +44,12 @@ export default {
         id="not-git"
         style="display: flex; gap: var(--prompt-gap)"
       >
-        <div>
+        <div
+          v-if="
+            !valueOf(store.context.data.userHiddenUser) ||
+              !valueOf(store.context.data.userHiddenHost)
+          "
+        >
           <PromptSegmentComponent
             v-if="!valueOf(store.context.data.userHiddenUser)"
             color-option="GIT_PROMPT_KIT_COLOR_USER"
@@ -61,7 +66,7 @@ export default {
         <PromptSegmentComponent text="4:07:47" />
 
         <!-- GIT_PROMPT_KIT_WORKDIR -->
-        <div style="display: flex; gap: var(--prompt-gap)">
+        <div style="display: flex">
           <PromptSegmentComponent
             color-option="GIT_PROMPT_KIT_COLOR_WORKDIR"
             :text="`~/olets${
@@ -296,6 +301,7 @@ export default {
     </div>
 
     <span
+      v-if="valueOf(store.context.data.directoryGit)"
       id="git-status"
       style="display: flex; gap: var(--prompt-gap)"
     >
