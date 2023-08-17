@@ -1,6 +1,6 @@
 <script>
 import { useContextStore } from "../stores/context";
-import valueOf from "../utils/valueOf";
+import { valueOf } from "../utils/valueOf";
 import set from "../utils/set.js";
 import InputComponent from "./InputComponent.vue";
 
@@ -27,6 +27,10 @@ export default {
     },
   },
   methods: {
+    hasNotes() {
+      return Object.values(this.options).filter((option) => option.notes)
+        .length;
+    },
     reset() {
       this.store.$reset();
     },
@@ -42,7 +46,9 @@ export default {
       <thead>
         <tr>
           <th>Context</th>
-          <th>Notes</th>
+          <th v-if="hasNotes()">
+            Notes
+          </th>
           <th>Value</th>
         </tr>
       </thead>
@@ -60,7 +66,7 @@ export default {
             </label>
           </td>
 
-          <td>
+          <td v-if="hasNotes()">
             {{ value?.notes }}
           </td>
 

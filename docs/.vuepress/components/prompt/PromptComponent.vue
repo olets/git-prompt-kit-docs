@@ -2,7 +2,7 @@
 import { useOptionsStore } from "../../stores/options";
 import { useContextStore } from "../../stores/context";
 import { hexColor } from "../../utils/ansiToHex.js";
-import valueOf from "../../utils/valueOf";
+import { valueOf } from "../../utils/valueOf";
 import PromptSegmentComponent from "./PromptSegmentComponent.vue";
 
 export default {
@@ -99,14 +99,12 @@ export default {
       return segments.join("/");
     },
     hexColor,
-    valueOf,
-    segment(color, text) {
-      return `
-        <span style="color: ${color};">
-          ${text}
-        </span>
-      `;
+    useVerboseDefaults() {
+      return valueOf(
+        this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
+      );
     },
+    valueOf,
   },
 };
 </script>
@@ -135,22 +133,28 @@ export default {
         >
           <PromptSegmentComponent
             v-if="!valueOf(store.context.data.userHiddenUser)"
+            :key="useVerboseDefaults()"
             color-option="GIT_PROMPT_KIT_COLOR_USER"
             text="olets"
           />
 
           <PromptSegmentComponent
             v-if="!valueOf(store.context.data.userHiddenHost)"
+            :key="useVerboseDefaults()"
             color-option="GIT_PROMPT_KIT_COLOR_HOST"
             text="@dev"
           />
         </div>
 
-        <PromptSegmentComponent text="4:07:47" />
+        <PromptSegmentComponent
+          :key="useVerboseDefaults()"
+          text="4:07:47"
+        />
 
         <!-- GIT_PROMPT_KIT_CWD -->
 
         <PromptSegmentComponent
+          :key="useVerboseDefaults()"
           color-option="GIT_PROMPT_KIT_COLOR_CWD"
           :text="cwd()"
         />
@@ -163,6 +167,7 @@ export default {
       >
         <PromptSegmentComponent
           v-if="!valueOf(store.options.data.GIT_PROMPT_KIT_HIDE_TOOL_NAMES)"
+          :key="useVerboseDefaults()"
           text="Git"
         />
 
@@ -173,6 +178,7 @@ export default {
           <!-- branch -->
           <PromptSegmentComponent
             v-if="valueOf(store.context.data.gitRefBranch)"
+            :key="useVerboseDefaults()"
             :color-option="
               valueOf(store.context.data.gitRefAhead) ||
                 valueOf(store.context.data.gitRefBehind)
@@ -187,6 +193,7 @@ export default {
           <!-- commit -->
           <PromptSegmentComponent
             v-if="!valueOf(store.context.data.gitRefBranch)"
+            :key="useVerboseDefaults()"
             color-option="GIT_PROMPT_KIT_COLOR_HEAD"
             :text="`${
               valueOf(
@@ -230,6 +237,7 @@ export default {
                     store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                   )
               "
+              :key="useVerboseDefaults()"
               :color-option="
                 valueOf(store.context.data.gitRefAhead) ||
                   valueOf(store.context.data.gitRefBehind)
@@ -246,6 +254,7 @@ export default {
               !valueOf(store.context.data.gitRefDefaultRemote) ||
                 !valueOf(store.context.data.gitRefSameNameRemoteBranch)
             "
+            :key="useVerboseDefaults()"
             color-option="GIT_PROMPT_KIT_COLOR_REMOTE"
             :text="`${
               !valueOf(store.context.data.gitRefDefaultRemote) ? 'upstream' : ''
@@ -269,6 +278,7 @@ export default {
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
+            :key="useVerboseDefaults()"
             :color-option="
               valueOf(store.context.data.gitRefAhead)
                 ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
@@ -287,6 +297,7 @@ export default {
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
+            :key="useVerboseDefaults()"
             :color-option="
               valueOf(store.context.data.gitRefBehind)
                 ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
@@ -313,6 +324,7 @@ export default {
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
+            :key="useVerboseDefaults()"
             :color-option="
               valueOf(store.context.data.gitPushRefPushAhead) ||
                 valueOf(store.context.data.gitPushRefPushBehind)
@@ -332,6 +344,7 @@ export default {
               !valueOf(store.context.data.gitPushRefDefaultPushRemote) ||
                 !valueOf(store.context.data.gitPushRefSameNamePushRemoteBranch)
             "
+            :key="useVerboseDefaults()"
             color-option="GIT_PROMPT_KIT_COLOR_PUSH_REMOTE"
             :text="
               valueOf(store.context.data.gitPushRefDefaultPushRemote)
@@ -348,6 +361,7 @@ export default {
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
+            :key="useVerboseDefaults()"
             :color-option="
               valueOf(store.context.data.gitPushRefPushAhead)
                 ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
@@ -366,6 +380,7 @@ export default {
                   store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND
                 )
             "
+            :key="useVerboseDefaults()"
             :color-option="
               valueOf(store.context.data.gitPushRefPushBehind)
                 ? 'GIT_PROMPT_KIT_COLOR_PUSH_REMOTE'
@@ -380,6 +395,7 @@ export default {
         <!-- tag -->
         <PromptSegmentComponent
           v-if="valueOf(store.context.data.gitRefTag)"
+          :key="useVerboseDefaults()"
           color-option="GIT_PROMPT_KIT_COLOR_TAG"
           :text="`${
             valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_TAG) || ''
@@ -413,6 +429,7 @@ export default {
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.extendedGitStatusStashes)
               ? 'GIT_PROMPT_KIT_COLOR_STASH'
@@ -431,6 +448,7 @@ export default {
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.extendedGitStatusAssumeUnchanged)
               ? 'GIT_PROMPT_KIT_COLOR_ASSUME_UNCHANGED'
@@ -455,6 +473,7 @@ export default {
                 store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
               )
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.extendedGitStatusSkipWorktree)
               ? 'GIT_PROMPT_KIT_COLOR_SKIP_WORKTREE'
@@ -479,6 +498,7 @@ export default {
             valueOf(store.context.data.gitStatusUntracked) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.gitStatusUntracked)
               ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
@@ -495,6 +515,7 @@ export default {
             valueOf(store.context.data.gitStatusConflicted) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.gitStatusConflicted)
               ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
@@ -513,6 +534,7 @@ export default {
             valueOf(store.context.data.gitStatusDeleted) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.gitStatusDeleted)
               ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
@@ -529,6 +551,7 @@ export default {
             valueOf(store.context.data.gitStatusModified) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.gitStatusModified)
               ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
@@ -545,6 +568,7 @@ export default {
             valueOf(store.context.data.gitStatusNew) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.gitStatusNew)
               ? 'GIT_PROMPT_KIT_COLOR_STAGED'
@@ -561,6 +585,7 @@ export default {
             valueOf(store.context.data.gitStatusDeletedStaged) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.gitStatusDeletedStaged)
               ? 'GIT_PROMPT_KIT_COLOR_STAGED'
@@ -580,6 +605,7 @@ export default {
             valueOf(store.context.data.gitStatusModifiedStaged) ||
               valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS)
           "
+          :key="useVerboseDefaults()"
           :color-option="
             valueOf(store.context.data.gitStatusModifiedStaged)
               ? 'GIT_PROMPT_KIT_COLOR_STAGED'
@@ -597,6 +623,7 @@ export default {
       <!-- action -->
       <PromptSegmentComponent
         v-if="valueOf(store.context.data.gitStatusAction)"
+        :key="useVerboseDefaults()"
         color-option="GIT_PROMPT_KIT_COLOR_ACTION"
         text="merge"
       />
@@ -604,6 +631,7 @@ export default {
 
     <!-- prompt character -->
     <PromptSegmentComponent
+      :key="useVerboseDefaults()"
       :color-option="
         valueOf(store.context.data.sessionFailed)
           ? 'GIT_PROMPT_KIT_COLOR_FAILED'

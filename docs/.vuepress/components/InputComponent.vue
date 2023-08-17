@@ -1,6 +1,6 @@
 <script>
 import { hexColor } from "../utils/ansiToHex.js";
-import valueOf from "../utils/valueOf";
+import { getDefault, valueOf } from "../utils/valueOf";
 
 export default {
   props: {
@@ -14,7 +14,13 @@ export default {
     },
   },
   emits: ["set"],
+  watch: {
+    value(newVal, oldVal) {
+      console.log("value", newVal, oldVal);
+    },
+  },
   methods: {
+    getDefault,
     getPattern(type) {
       return type === "array" ? "\\(.*\\)" : null;
     },
@@ -47,10 +53,10 @@ export default {
       <input
         :id="`field-${theKey}`"
         :name="`field-${theKey}`"
-        :placeholder="value.value.default"
+        :placeholder="getDefault(value)"
         style="text-align: right; flex-grow: 1"
         :type="getType(value?.type)"
-        :value="valueOf(value)"
+        :value="valueOf(value) !== getDefault(value) ? valueOf(value) : ''"
         :pattern="getPattern(value?.type)"
         :checked="
           getType(value?.type) === 'checkbox' && valueOf(value) === true

@@ -2,6 +2,7 @@
 import { useOptionsStore } from "../stores/options";
 import set from "../utils/set.js";
 import InputComponent from "./InputComponent.vue";
+import { valueOf } from "../utils/valueOf";
 
 export default {
   components: [InputComponent],
@@ -35,9 +36,21 @@ export default {
     getType(type) {
       return type.includes("integer") ? "number" : "text";
     },
+    hasNotes() {
+      return Object.values(this.options).filter((option) => option.notes)
+        .length;
+    },
+    hasVerboseDefaults() {
+      return Object.values(this.options).filter(
+        (option) => option.value.verboseDefault
+      ).length;
+    },
     set,
     reset() {
       this.store.$reset();
+    },
+    useVerboseDefaults() {
+      return valueOf(this.store.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS);
     },
     valueOf,
   },
@@ -51,8 +64,13 @@ export default {
         <tr>
           <th>Option</th>
           <th>Default</th>
+          <th v-if="hasVerboseDefaults()">
+            Verbose Default
+          </th>
           <th>Type</th>
-          <th>Notes</th>
+          <th v-if="hasNotes()">
+            Notes
+          </th>
           <th>Value</th>
         </tr>
       </thead>
@@ -77,12 +95,19 @@ export default {
 
           <td>{{ option.value.default }}</td>
 
+          <td v-if="hasVerboseDefaults()">
+            {{ option.value.verboseDefault }}
+          </td>
+
           <td>{{ option.type }}</td>
 
-          <td>{{ option.notes }}</td>
+          <td v-if="hasNotes()">
+            {{ option.notes }}
+          </td>
 
           <td>
             <InputComponent
+              :key="`${optionKey}-${useVerboseDefaults()}`"
               :the-key="optionKey"
               :value="option"
               @set="set"

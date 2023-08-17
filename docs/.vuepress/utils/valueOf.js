@@ -1,4 +1,20 @@
-export default function (data) {
+import { optionsData } from "../stores/options";
+
+function getDefault(data) {
+  let ret = data?.value?.default || null;
+
+  if (
+    data?.value?.verboseDefault !== undefined &&
+    data?.value?.verboseDefault !== null &&
+    valueOf(optionsData.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS)
+  ) {
+    ret = data.value.verboseDefault;
+  }
+
+  return ret;
+}
+
+function valueOf(data) {
   let value;
 
   const type = data?.type || "string";
@@ -6,7 +22,7 @@ export default function (data) {
   if (data?.value?.custom !== undefined && data?.value?.custom !== null) {
     value = data?.value?.custom;
   } else {
-    value = data?.value?.default || null;
+    value = getDefault(data);
   }
 
   if (type.includes("integer")) {
@@ -15,3 +31,5 @@ export default function (data) {
 
   return value;
 }
+
+export { getDefault, valueOf };
