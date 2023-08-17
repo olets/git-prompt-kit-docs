@@ -112,7 +112,6 @@ export default {
 <template>
   <div
     id="prompt"
-    data-module="git-prompt-kit"
     :style="`background-color: ${hexColor(
       valueOf(store.context.data.terminalBackgroundColor)
     )}; color: ${hexColor(valueOf(store.context.data.terminalTextColor))};
@@ -146,10 +145,7 @@ export default {
           />
         </div>
 
-        <PromptSegmentComponent
-          :key="useVerboseDefaults()"
-          text="4:07:47"
-        />
+        <div>4:07:47</div>
 
         <!-- GIT_PROMPT_KIT_CWD -->
 
