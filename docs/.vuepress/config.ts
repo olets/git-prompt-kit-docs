@@ -67,24 +67,8 @@ export default defineUserConfig({
           text: "Introduction",
           link: "/",
         },
-        {
-          text: "Configure",
-          children: [
-            {
-              text: "Color",
-              link: "/color",
-            },
-            {
-              text: "Git",
-              link: "/git",
-            },
-            {
-              text: "User",
-              link: "/user",
-            },
-          ],
-        },
         "/context",
+        "/components",
         "/configuration",
       ],
     },
