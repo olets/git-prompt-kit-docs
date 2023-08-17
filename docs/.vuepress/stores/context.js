@@ -66,10 +66,16 @@ export const useContextStore = defineStore("context", {
         value: { default: false },
         type: "boolean",
       },
-      directoryGit: {
+      directoryGitRepo: {
         group: "Directory",
         label: "In a Git repo",
         value: { default: true },
+        type: "boolean",
+      },
+      directoryGitSubdirectory: {
+        group: "Directory",
+        label: "In a subdirectory in the Git repo",
+        value: { default: false },
         type: "boolean",
       },
       gitStatusDeletedStaged: {
