@@ -6,7 +6,7 @@ import ConflictedComponent from "./ConflictedComponent.vue";
 import CwdComponent from "./CwdComponent.vue";
 import DeletedComponent from "./DeletedComponent.vue";
 import DeletedStagedComponent from "./DeletedStagedComponent.vue";
-// import DirtyComponent from "./DirtyComponent.vue";
+import DirtyComponent from "./DirtyComponent.vue";
 import GitAheadComponent from "./GitAheadComponent.vue";
 import GitBehindComponent from "./GitBehindComponent.vue";
 import GitHeadComponent from "./GitHeadComponent.vue";
@@ -37,7 +37,7 @@ export default {
     CwdComponent,
     DeletedComponent,
     DeletedStagedComponent,
-    // DirtyComponent,
+    DirtyComponent,
     GitAheadComponent,
     GitBehindComponent,
     GitHeadComponent,
@@ -82,7 +82,7 @@ export default {
             label: "GIT_PROMPT_KIT_DELETED_STAGED",
             componentName: "DeletedStagedComponent",
           },
-          // { label: "DirtyComponent", componentName: "DirtyComponent", },
+          { label: "GIT_PROMPT_KIT_DIRTY", componentName: "DirtyComponent" },
           { label: "GIT_PROMPT_KIT_AHEAD", componentName: "GitAheadComponent" },
           {
             label: "GIT_PROMPT_KIT_BEHIND",
