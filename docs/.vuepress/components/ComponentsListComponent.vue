@@ -64,9 +64,14 @@ export default {
       components: [
         [
           { label: "GIT_PROMPT_KIT_ACTION", componentName: "ActionComponent" },
+          { label: "GIT_PROMPT_KIT_AHEAD", componentName: "GitAheadComponent" },
           {
             label: "GIT_PROMPT_KIT_ASSUMED_UNCHANGED",
             componentName: "AssumedUnchangedComponent",
+          },
+          {
+            label: "GIT_PROMPT_KIT_BEHIND",
+            componentName: "GitBehindComponent",
           },
           { label: "GIT_PROMPT_KIT_CHAR", componentName: "CharComponent" },
           {
@@ -83,12 +88,8 @@ export default {
             componentName: "DeletedStagedComponent",
           },
           { label: "GIT_PROMPT_KIT_DIRTY", componentName: "DirtyComponent" },
-          { label: "GIT_PROMPT_KIT_AHEAD", componentName: "GitAheadComponent" },
-          {
-            label: "GIT_PROMPT_KIT_BEHIND",
-            componentName: "GitBehindComponent",
-          },
           { label: "GIT_PROMPT_KIT_HEAD", componentName: "GitHeadComponent" },
+          { label: "GIT_PROMPT_KIT_PUSH", componentName: "GitPushComponent" },
           {
             label: "GIT_PROMPT_KIT_PUSH_AHEAD",
             componentName: "GitPushAheadComponent",
@@ -97,13 +98,11 @@ export default {
             label: "GIT_PROMPT_KIT_PUSH_BEHIND",
             componentName: "GitPushBehindComponent",
           },
-          { label: "GIT_PROMPT_KIT_PUSH", componentName: "GitPushComponent" },
           { label: "GIT_PROMPT_KIT_REF", componentName: "GitRefComponent" },
           {
             label: "GIT_PROMPT_KIT_REMOTE	",
             componentName: "GitRemoteComponent",
           },
-          { label: "GIT_PROMPT_KIT_TAG", componentName: "GitTagComponent" },
           {
             label: "GIT_PROMPT_KIT_MODIFIED",
             componentName: "ModifiedComponent",
@@ -134,6 +133,7 @@ export default {
             label: "GIT_PROMPT_KIT_STATUS_EXTENDED",
             componentName: "StatusExtendedComponent",
           },
+          { label: "GIT_PROMPT_KIT_TAG", componentName: "GitTagComponent" },
           {
             label: "GIT_PROMPT_KIT_UNTRACKED",
             componentName: "UntrackedComponent",
