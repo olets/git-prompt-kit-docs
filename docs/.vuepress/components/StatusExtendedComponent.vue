@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import AssumedUnchangedComponent from "./AssumedUnchangedComponent.vue";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 import SkipWorktreeComponent from "./SkipWorktreeComponent.vue";
@@ -23,11 +23,11 @@ export default {
   },
   methods: {
     useVerboseDefaults() {
-      return valueOf(
+      return getValue(
         this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
       );
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
@@ -35,11 +35,11 @@ export default {
 <template>
   <span
     v-if="
-      valueOf(store.context.data.directoryGitRepo) &&
-        (valueOf(store.context.data.extendedGitStatusStashes) ||
-          valueOf(store.context.data.extendedGitStatusAssumeUnchanged) ||
-          valueOf(store.context.data.extendedGitStatusSkipWorktree) ||
-          !valueOf(
+      getValue(store.context.data.directoryGitRepo) &&
+        (getValue(store.context.data.extendedGitStatusStashes) ||
+          getValue(store.context.data.extendedGitStatusAssumeUnchanged) ||
+          getValue(store.context.data.extendedGitStatusSkipWorktree) ||
+          !getValue(
             store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS
           ))
     "

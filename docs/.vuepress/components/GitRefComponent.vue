@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 import GitHeadComponent from "./GitHeadComponent.vue";
 import GitRemoteComponent from "./GitRemoteComponent.vue";
@@ -33,23 +33,23 @@ export default {
   },
   methods: {
     useVerboseDefaults() {
-      return valueOf(
+      return getValue(
         this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
       );
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
 
 <template>
   <span
-    v-if="valueOf(store.context.data.directoryGitRepo)"
+    v-if="getValue(store.context.data.directoryGitRepo)"
     id="git-ref"
     style="display: flex; gap: var(--prompt-gap)"
   >
     <PromptSegmentComponent
-      v-if="!valueOf(store.options.data.GIT_PROMPT_KIT_HIDE_TOOL_NAMES)"
+      v-if="!getValue(store.options.data.GIT_PROMPT_KIT_HIDE_TOOL_NAMES)"
       text="Git"
     />
 

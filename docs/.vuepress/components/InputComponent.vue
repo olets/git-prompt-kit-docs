@@ -1,6 +1,6 @@
 <script>
 import { hexColor } from "../utils/ansiToHex.js";
-import { getDefault, valueOf } from "../utils/valueOf";
+import { getDefault, getValue } from "../utils/value";
 
 export default {
   props: {
@@ -42,7 +42,7 @@ export default {
       return ret;
     },
     hexColor,
-    valueOf,
+    getValue,
   },
 };
 </script>
@@ -56,10 +56,10 @@ export default {
         :placeholder="getDefault(value)"
         style="text-align: right; flex-grow: 1"
         :type="getType(value?.type)"
-        :value="valueOf(value) !== getDefault(value) ? valueOf(value) : ''"
+        :value="getValue(value) !== getDefault(value) ? getValue(value) : ''"
         :pattern="getPattern(value?.type)"
         :checked="
-          getType(value?.type) === 'checkbox' && valueOf(value) === true
+          getType(value?.type) === 'checkbox' && getValue(value) === true
             ? true
             : false
         "
@@ -69,7 +69,7 @@ export default {
       <input
         v-if="value.type === 'color'"
         type="color"
-        :value="hexColor(valueOf(value))"
+        :value="hexColor(getValue(value))"
         @input="$emit('set', theKey, $event.target)"
       >
     </div>

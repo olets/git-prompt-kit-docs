@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 
 export default {
@@ -15,11 +15,11 @@ export default {
   },
   methods: {
     useVerboseDefaults() {
-      return valueOf(
+      return getValue(
         this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
       );
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
@@ -28,18 +28,18 @@ export default {
   <!-- remote ahead -->
   <PromptSegmentComponent
     v-if="
-      valueOf(store.context.data.gitRefRemote) &&
-        (valueOf(store.context.data.gitRefAhead) ||
-          !valueOf(store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND))
+      getValue(store.context.data.gitRefRemote) &&
+        (getValue(store.context.data.gitRefAhead) ||
+          !getValue(store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_AHEAD_BEHIND))
     "
     :key="useVerboseDefaults()"
     :color-option="
-      valueOf(store.context.data.gitRefAhead)
+      getValue(store.context.data.gitRefAhead)
         ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
-    :text="`${valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''}${
-      valueOf(store.context.data.gitRefAhead) ? '2' : ''
+    :text="`${getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''}${
+      getValue(store.context.data.gitRefAhead) ? '2' : ''
     }`"
   />
 </template>

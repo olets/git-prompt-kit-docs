@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../../stores/options";
 import { hexColor } from "../../utils/ansiToHex.js";
-import { valueOf } from "../../utils/valueOf";
+import { getValue } from "../../utils/value";
 
 export default {
   props: {
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     hexColor,
-    valueOf,
+    getValue,
   },
 };
 </script>
@@ -30,7 +30,7 @@ export default {
   <span
     :style="
       colorOption
-        ? `color: ${hexColor(valueOf(store.data[colorOption]))}`
+        ? `color: ${hexColor(getValue(store.data[colorOption]))}`
         : null
     "
     v-html="text"

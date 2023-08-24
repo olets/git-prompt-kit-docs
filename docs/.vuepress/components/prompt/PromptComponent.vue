@@ -2,7 +2,7 @@
 import { useOptionsStore } from "../../stores/options";
 import { useContextStore } from "../../stores/context";
 import { hexColor } from "../../utils/ansiToHex.js";
-import { valueOf } from "../../utils/valueOf";
+import { getValue } from "../../utils/value";
 import PromptSegmentComponent from "./PromptSegmentComponent.vue";
 import ActionComponent from "../ActionComponent.vue";
 import CwdComponent from "../CwdComponent.vue";
@@ -33,11 +33,11 @@ export default {
   methods: {
     hexColor,
     useVerboseDefaults() {
-      return valueOf(
+      return getValue(
         this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
       );
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
@@ -46,8 +46,8 @@ export default {
   <div
     id="prompt"
     :style="`background-color: ${hexColor(
-      valueOf(store.context.data.terminalBackgroundColor)
-    )}; color: ${hexColor(valueOf(store.context.data.terminalTextColor))};
+      getValue(store.context.data.terminalBackgroundColor)
+    )}; color: ${hexColor(getValue(store.context.data.terminalTextColor))};
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     border-radius: .25rem;`"

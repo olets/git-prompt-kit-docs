@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 import RepoRootComponent from "./RepoRootComponent.vue";
 import RepoSubdirectoryComponent from "./RepoSubdirectoryComponent.vue";
@@ -23,40 +23,42 @@ export default {
     path() {
       let segments = ["~", "projects", "olets", "git-prompt-kit"];
       if (
-        valueOf(this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT) >
-          -1 &&
-        valueOf(this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT) <
-          segments.length
+        getValue(
+          this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
+        ) > -1 &&
+        getValue(
+          this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
+        ) < segments.length
       ) {
         segments = segments.slice(
           segments.length -
             1 -
-            valueOf(
+            getValue(
               this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
             )
         );
       }
       return segments.join("/");
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
 
 <template>
   <PromptSegmentComponent
-    v-if="!valueOf(store.context.data.directoryGitRepo)"
+    v-if="!getValue(store.context.data.directoryGitRepo)"
     color-option="GIT_PROMPT_KIT_COLOR_CWD"
     :text="path()"
   />
 
   <div
-    v-if="valueOf(store.context.data.directoryGitRepo)"
+    v-if="getValue(store.context.data.directoryGitRepo)"
     style="display: flex"
   >
     <RepoRootComponent />
     <PromptSegmentComponent
-      v-if="valueOf(store.context.data.directoryGitSubdirectory)"
+      v-if="getValue(store.context.data.directoryGitSubdirectory)"
       color-option="GIT_PROMPT_KIT_COLOR_CWD"
       text="/"
     />

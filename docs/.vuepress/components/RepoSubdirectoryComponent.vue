@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 
 export default {
@@ -21,11 +21,11 @@ export default {
       let segments = [];
 
       if (
-        valueOf(
+        getValue(
           this.store.options.data
             .GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT
         ) < 0 ||
-        valueOf(
+        getValue(
           this.store.options.data
             .GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT
         ) >= subdirectories.length
@@ -37,7 +37,7 @@ export default {
           "...",
           ...subdirectories.slice(
             subdirectories.length -
-              valueOf(
+              getValue(
                 this.store.options.data
                   .GIT_PROMPT_KIT_REPO_SUBDIRECTORY_MAX_TRAILING_COUNT
               )
@@ -49,14 +49,14 @@ export default {
 
       return segments.join("/");
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
 
 <template>
   <PromptSegmentComponent
-    v-if="valueOf(store.context.data.directoryGitSubdirectory)"
+    v-if="getValue(store.context.data.directoryGitSubdirectory)"
     color-option="GIT_PROMPT_KIT_COLOR_CWD"
     :text="path()"
   />

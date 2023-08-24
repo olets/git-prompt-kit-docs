@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 
 export default {
@@ -15,11 +15,11 @@ export default {
   },
   methods: {
     useVerboseDefaults() {
-      return valueOf(
+      return getValue(
         this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
       );
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
@@ -27,17 +27,17 @@ export default {
 <template>
   <PromptSegmentComponent
     v-if="
-      valueOf(store.context.data.extendedGitStatusStashes) ||
-        !valueOf(store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS)
+      getValue(store.context.data.extendedGitStatusStashes) ||
+        !getValue(store.options.data.GIT_PROMPT_KIT_HIDE_INACTIVE_EXTENDED_STATUS)
     "
     :key="useVerboseDefaults()"
     :color-option="
-      valueOf(store.context.data.extendedGitStatusStashes)
+      getValue(store.context.data.extendedGitStatusStashes)
         ? 'GIT_PROMPT_KIT_COLOR_STASH'
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
-    :text="`${valueOf(store.context.data.extendedGitStatusStashes) ? '2' : ''}${
-      valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH) || ''
-    }`"
+    :text="`${
+      getValue(store.context.data.extendedGitStatusStashes) ? '2' : ''
+    }${getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH) || ''}`"
   />
 </template>

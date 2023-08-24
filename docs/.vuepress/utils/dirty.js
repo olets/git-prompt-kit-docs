@@ -1,4 +1,4 @@
-import { valueOf } from "./valueOf.js";
+import { getValue } from "./value.js";
 
 export function dirty({
   directoryGitRepo,
@@ -24,7 +24,7 @@ export function dirty({
       gitStatusNew,
       gitStatusUntracked,
     ]
-      .map((context) => valueOf(context))
+      .map((context) => getValue(context))
       .filter((val) => !!val).length > 0;
 
   return Number(dirty);

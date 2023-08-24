@@ -6,7 +6,7 @@ function getDefault(data) {
   if (
     data?.value?.verboseDefault !== undefined &&
     data?.value?.verboseDefault !== null &&
-    valueOf(optionsData.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS)
+    getValue(optionsData.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS)
   ) {
     ret = data.value.verboseDefault;
   }
@@ -14,7 +14,7 @@ function getDefault(data) {
   return ret;
 }
 
-function valueOf(data) {
+function getValue(data) {
   let value;
 
   const type = data?.type || "string";
@@ -32,4 +32,4 @@ function valueOf(data) {
   return value;
 }
 
-export { getDefault, valueOf };
+export { getDefault, getValue };

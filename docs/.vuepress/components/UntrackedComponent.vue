@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 
 export default {
@@ -15,11 +15,11 @@ export default {
   },
   methods: {
     useVerboseDefaults() {
-      return valueOf(
+      return getValue(
         this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
       );
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
@@ -27,18 +27,18 @@ export default {
 <template>
   <PromptSegmentComponent
     v-if="
-      valueOf(store.context.data.directoryGitRepo) &&
-        (valueOf(store.context.data.gitStatusUntracked) ||
-          valueOf(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS))
+      getValue(store.context.data.directoryGitRepo) &&
+        (getValue(store.context.data.gitStatusUntracked) ||
+          getValue(store.options.data.GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS))
     "
     :key="useVerboseDefaults()"
     :color-option="
-      valueOf(store.context.data.gitStatusUntracked)
+      getValue(store.context.data.gitStatusUntracked)
         ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
-    :text="`${valueOf(store.context.data.gitStatusUntracked) ? '2' : ''}${
-      valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_UNTRACKED) || ''
+    :text="`${getValue(store.context.data.gitStatusUntracked) ? '2' : ''}${
+      getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_UNTRACKED) || ''
     }`"
   />
 </template>

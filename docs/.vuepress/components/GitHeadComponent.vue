@@ -1,7 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import { dirty } from "../utils/dirty";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 
@@ -19,11 +19,11 @@ export default {
       return dirty(this.store.context.data);
     },
     useVerboseDefaults() {
-      return valueOf(
+      return getValue(
         this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
       );
     },
-    valueOf,
+    getValue,
   },
 };
 </script>
@@ -35,7 +35,7 @@ export default {
   >
     <!-- branch -->
     <PromptSegmentComponent
-      v-if="valueOf(store.context.data.gitRefBranch)"
+      v-if="getValue(store.context.data.gitRefBranch)"
       :key="useVerboseDefaults()"
       :color-option="
         dirtyValue()
@@ -43,13 +43,13 @@ export default {
           : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
       "
       :text="`${
-        valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_BRANCH) || ''
+        getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_BRANCH) || ''
       }main`"
     />
 
     <!-- commit -->
     <PromptSegmentComponent
-      v-if="!valueOf(store.context.data.gitRefBranch)"
+      v-if="!getValue(store.context.data.gitRefBranch)"
       :key="useVerboseDefaults()"
       :color-option="
         dirtyValue()
@@ -57,7 +57,8 @@ export default {
           : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
       "
       :text="`${
-        valueOf(valueOf(store.options.data.GIT_PROMPT_KIT_SYMBOL_COMMIT)) || ''
+        getValue(getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_COMMIT)) ||
+        ''
       }1234567`"
     />
   </span>

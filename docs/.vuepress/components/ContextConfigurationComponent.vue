@@ -1,6 +1,6 @@
 <script>
 import { useContextStore } from "../stores/context";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 import set from "../utils/set.js";
 import InputComponent from "./InputComponent.vue";
 
@@ -35,7 +35,7 @@ export default {
       this.store.$reset();
     },
     set,
-    valueOf,
+    getValue,
   },
 };
 </script>

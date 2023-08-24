@@ -2,7 +2,7 @@
 import { useOptionsStore } from "../stores/options";
 import set from "../utils/set.js";
 import InputComponent from "./InputComponent.vue";
-import { valueOf } from "../utils/valueOf";
+import { getValue } from "../utils/value";
 
 export default {
   components: [InputComponent],
@@ -50,9 +50,9 @@ export default {
       this.store.$reset();
     },
     useVerboseDefaults() {
-      return valueOf(this.store.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS);
+      return getValue(this.store.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS);
     },
-    valueOf,
+    getValue,
   },
 };
 </script>

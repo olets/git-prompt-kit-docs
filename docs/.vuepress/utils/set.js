@@ -1,5 +1,5 @@
 import { ansiOrHexColor } from "./ansiToHex.js";
-import { getDefault, valueOf } from "./valueOf.js";
+import { getDefault, getValue } from "./value.js";
 
 export default function (key, target) {
   const { checked, type, value } = target;
@@ -28,7 +28,7 @@ export default function (key, target) {
   this.store.data[key].value.custom = value;
   console.log(
     key,
-    valueOf(this.store.data[key]),
+    getValue(this.store.data[key]),
     getDefault(this.store.data[key])
   );
 }
