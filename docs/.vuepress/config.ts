@@ -70,6 +70,7 @@ export default defineUserConfig({
       "/options.md",
       "/components.md",
       "/demo.md",
+      "/integrations.md",
       "/recipes.md",
     ],
     sidebarDepth: 3,

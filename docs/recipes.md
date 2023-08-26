@@ -1,95 +1,12 @@
 # Recipes
 
-- [Prompt Managers](#prompt-managers)
-- [Customization examples](#customization-examples)
-
-## Prompt Managers
-
-> These are proof of concept. They were working when first written, but I do not use Spaceship or Starship and these are not regularly tested. Contributions are welcome.
-
-### Spaceship
-
-Git Prompt Kit comes with a [Spaceship](https://github.com/denysdovhan/spaceship-prompt) section. The Git Prompt Kit Spaceship section has been clocked at 50% faster than Spaceship's built in Git section.
-
-The Git Prompt Kit Spaceship section uses the default Git Prompt Kit's Git components; that is, it does not include Git Prompt Kit's user, host, the custom section, or prompt character components.
-
-```shell
-# .zshrc
-
-# Configure Spaceship
-SPACESHIP_PROMPT_ORDER=(
-  # any other sections
-  spaceship_git_prompt_kit
-  # any other sections
-)
-
-# Configure Git Prompt Kit and any Git-Prompt-Kit config options
-# For example
-GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS=0
-
-# Use Git Prompt Kit and Spaceship
-# Load olets/git-prompt-kit/git-prompt-kit.spaceship.zsh
-# Load olets/git-prompt-kit
-# Load denysdovhan/spaceship-prompt
-```
-
-See <https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Options.md#order> for Spaceship's default order.
-
-### Starship
-
-You can use Git Prompt Kit with [Starship](https://starship.rs/) (tested with zsh). The Git Prompt Kit Starship module has been clocked at about 10% to 30% faster than Starship's built in Git module.
-
-```shell
-# shell rc file
-
-# Configure Git Prompt Kit and any Git-Prompt-Kit config options
-# For example
-GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS=0
-GIT_PROMPT_KIT_USE_DEFAULT_PROMPT=0
-
-# Load Git Prompt Kit (will differ depending on installation method)
-
-eval "$(starship init zsh)"
-```
-
-```toml
-# starship.toml
-
-[git_branch]
-disabled = true
-
-[git_commit]
-disabled = true
-
-[git_state]
-disabled = true
-
-[git_status]
-disabled = true
-
-[custom.git_prompt_kit]
-# Customize to your liking. For example, here is
-# ref, extended status, status, and action, space-separated
-command = "print -P '$GIT_PROMPT_KIT_REF$GIT_PROMPT_KIT_STATUS_EXTENDED${GIT_PROMPT_KIT_STATUS_EXTENDED:+${${GIT_PROMPT_KIT_STATUS:+ }:-${GIT_PROMPT_KIT_ACTION:+ }}}$GIT_PROMPT_KIT_STATUS${GIT_PROMPT_KIT_ACTION:+${GIT_PROMPT_KIT_STATUS:+ }}$GIT_PROMPT_KIT_ACTION'"
-shell = ["zsh"]
-when = "true"
-prefix = ""
-```
-
-See <https://starship.rs/config/#prompt> for Starship's default order.
-
-## Customization examples
-
 Here are some examples of how the Git Prompt Kit components can be used.
 
 > They have not been thoroughly battle tested — they are not "Git Prompt Kit themes" but rather starting points for those new to customizing the zsh prompt.
 
-The construct `${x:+y}` is "print `$y` if `$x` is not null". In the context of prompt building, this is useful for conditionally adding spaces: `${x:+$x }` is "print `$x ` if `$x` is not null".
+Note: the construct `${x:+y}` is "print `$y` if `$x` is not null". In the context of prompt building, this is useful for conditionally adding spaces: `${x:+$x }` is "print `$x ` if `$x` is not null".
 
-- [git-radar-like](#git-radar-like)
-- [oh-my-git-like](#oh-my-git-like)
-- [Pure-like](#pure-like)
-- [Spaceship-like](#Spaceship-like)
+[[toc]]
 
 ---
 
