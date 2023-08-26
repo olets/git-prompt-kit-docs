@@ -1,6 +1,14 @@
+@font-face {
+  font-display: swap;
+  font-family: "Inconsolata Awesome";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Inconsolata+Awesome.ttf");
+}
+
 :root {
   --content-width: calc(900rem / 16);
-  --font-family-code: "Fira Code", monospace;
+  --font-family-code: "Inconsolata Awesome", monospace;
   --prompt-gap: calc(5rem / 16);
 
   scroll-behavior: smooth;
@@ -107,6 +115,11 @@ main {
   a {
     text-decoration: underline;
   }
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: 1.25rem;
 }
 
 div[class*="language-"] > button.copy-code-button {
