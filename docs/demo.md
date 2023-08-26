@@ -10,15 +10,21 @@
   top: var(--navbar-height);
 ">
 
-Scroll down to [Components](#components) for how configuration changes affect the components. Here's [Hometown Prompt](https://github.com/olets/hometown-prompt) as an example:
+Play with [configuration](#configuration) and [context](#context) to see how they affect the [components](#components).
+
+To save you constantly scrolling, here is [Hometown Prompt](https://github.com/olets/hometown-prompt) as a concise illustration:
 
   <PromptComponent/>
 
-In the terminal, the prompt character will be [expanded as a prompt](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html) with PROMPT_SUBST and PROMPT_PERCENT
+(In the terminal, the prompt character will be [expanded as a prompt](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html) with PROMPT_SUBST and PROMPT_PERCENT. In the default case, `%%` becomes `%`.
 
 </div>
 
 ## Configuration
+
+All custom configuration appears here, ready for copying and pasting into your `.zshrc`.
+
+<ConfigComponent/>
 
 <ResetOptionsComponent/>
 
@@ -40,25 +46,7 @@ In the terminal, the prompt character will be [expanded as a prompt](https://zsh
 
 <ResetOptionsComponent/>
 
-<ConfigComponent/>
-
 ## Context
-
-<div style="
-  background: white;
-  box-shadow: 0 0 1rem 1rem white;
-  padding: 0.5rem 1rem;
-  position: sticky; 
-  top: var(--navbar-height);
-">
-
-See [Components](./components.md) for how context changes affect the components. Here's [Hometown Prompt](https://github.com/olets/hometown-prompt) as an example:
-
-<PromptComponent/>
-
-In the terminal, the prompt character will be [expanded as a prompt](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html) with PROMPT_SUBST and PROMPT_PERCENT
-
-</div>
 
 ### Terminal
 

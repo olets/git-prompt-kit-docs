@@ -3,8 +3,6 @@ import { defineClientConfig } from "@vuepress/client";
 import { createPinia } from "pinia";
 const pinia = createPinia();
 
-import "a11y-dialog";
-
 import ComponentsListComponent from "./components/ComponentsListComponent.vue";
 import ConfigComponent from "./components/ConfigComponent.vue";
 import ContextConfigurationComponent from "./components/ContextConfigurationComponent.vue";
