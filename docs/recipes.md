@@ -1,10 +1,12 @@
 # Recipes
 
-Here are some examples of how the Git Prompt Kit components can be used.
+Use Git Prompt Kit to build the high-performance Git-aware prompt of your dreams.
 
-> They have not been thoroughly battle tested — they are not "Git Prompt Kit themes" but rather starting points for those new to customizing the zsh prompt.
+Here are some examples to get you started, based on existing Git-aware prompts.These have not been thoroughly battle tested — they are not "Git Prompt Kit themes" but rather starting points for those new to customizing the zsh prompt.
 
-Note: the construct `${x:+y}` is "print `$y` if `$x` is not null". In the context of prompt building, this is useful for conditionally adding spaces: `${x:+$x }` is "print `$x ` if `$x` is not null".
+**For a premade polished Git Prompt Kit-powered zsh prompt, check out [Hometown Prompt](https://github.com/olets/hometown-prompt).**
+
+> Note: in the examples below, the construct `${x:+y}` is "print `$y` if `$x` is not null". In the context of prompt building, this is useful for conditionally adding spaces: `${x:+$x }` is "print `$x ` if `$x` is not null".
 
 [[toc]]
 
