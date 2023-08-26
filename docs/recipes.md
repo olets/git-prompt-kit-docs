@@ -19,14 +19,13 @@ The Git Prompt Kit Spaceship section uses the default Git Prompt Kit's Git compo
 # Configure Spaceship
 SPACESHIP_PROMPT_ORDER=(
   # any other sections
-  git_prompt_kit
+  spaceship_git_prompt_kit
   # any other sections
 )
 
 # Configure Git Prompt Kit and any Git-Prompt-Kit config options
 # For example
 GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS=0
-GIT_PROMPT_KIT_LINEBREAK_AFTER_GIT_REF=0
 
 # Use Git Prompt Kit and Spaceship
 # Load olets/git-prompt-kit/git-prompt-kit.spaceship.zsh
@@ -47,7 +46,6 @@ You can use Git Prompt Kit with [Starship](https://starship.rs/) (tested with zs
 # For example
 GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS=0
 GIT_PROMPT_KIT_USE_DEFAULT_PROMPT=0
-GIT_PROMPT_KIT_LINEBREAK_AFTER_GIT_REF=0
 
 # Load Git Prompt Kit (will differ depending on installation method)
 
