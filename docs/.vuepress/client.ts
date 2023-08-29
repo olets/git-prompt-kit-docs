@@ -3,7 +3,6 @@ import { defineClientConfig } from "@vuepress/client";
 import { createPinia } from "pinia";
 const pinia = createPinia();
 
-import ComponentsListComponent from "./components/ComponentsListComponent.vue";
 import ConfigComponent from "./components/ConfigComponent.vue";
 import ContextConfigurationComponent from "./components/ContextConfigurationComponent.vue";
 import InputComponent from "./components/InputComponent.vue";
@@ -21,7 +20,6 @@ import ConflictedComponent from "./components/ConflictedComponent.vue";
 import CwdComponent from "./components/CwdComponent.vue";
 import DeletedComponent from "./components/DeletedComponent.vue";
 import DeletedStagedComponent from "./components/DeletedStagedComponent.vue";
-import DirtyComponent from "./components/DirtyComponent.vue";
 import GitAheadComponent from "./components/GitAheadComponent.vue";
 import GitBehindComponent from "./components/GitBehindComponent.vue";
 import GitHeadComponent from "./components/GitHeadComponent.vue";
@@ -62,7 +60,7 @@ export default defineClientConfig({
     app.component("CwdComponent", CwdComponent);
     app.component("DeletedComponent", DeletedComponent);
     app.component("DeletedStagedComponent", DeletedStagedComponent);
-    app.component("DirtyComponent", DirtyComponent);
+
     app.component("GitAheadComponent", GitAheadComponent);
     app.component("GitBehindComponent", GitBehindComponent);
     app.component("GitHeadComponent", GitHeadComponent);
