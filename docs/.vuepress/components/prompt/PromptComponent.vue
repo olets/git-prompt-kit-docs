@@ -12,10 +12,13 @@ import StatusExtendedComponent from "../StatusExtendedComponent.vue";
 import StatusComponent from "../StatusComponent.vue";
 import CharComponent from "../CharComponent.vue";
 
+import CustomComponent from "../CustomComponent.vue";
+
 export default {
   components: [
     ActionComponent,
     CharComponent,
+    CustomComponent,
     CwdComponent,
     GitRefComponent,
     PromptSegmentComponent,
@@ -52,8 +55,14 @@ export default {
     padding: 1rem;
     border-radius: .25rem;`"
   >
-    <div style="display: flex; gap: var(--prompt-gap)">
-      <span
+    <div
+      :style="`${
+        getValue(store.options.data.HOMETOWN_PROMPT_NO_LINEBREAK_BEFORE_GIT_REF)
+          ? 'display: flex;'
+          : ''
+      } gap: var(--prompt-gap)`"
+    >
+      <div
         id="not-git"
         style="display: flex; gap: var(--prompt-gap)"
       >
@@ -61,13 +70,44 @@ export default {
 
         <div>4:07:47</div>
 
+        <CustomComponent />
+
         <CwdComponent />
-      </span>
-      <GitRefComponent />
+      </div>
+
+      <div style="display: flex; gap: var(--prompt-gap)">
+        <GitRefComponent />
+
+        <div
+          v-if="
+            !getValue(
+              store.options.data.HOMETOWN_PROMPT_LINEBREAK_AFTER_GIT_REF
+            )
+          "
+          style="display: flex; gap: var(--prompt-gap)"
+        >
+          <StatusExtendedComponent
+            v-if="
+              getValue(store.options.data.HOMETOWN_PROMPT_SHOW_EXTENDED_STATUS)
+            "
+          />
+
+          <StatusComponent />
+
+          <ActionComponent />
+        </div>
+      </div>
     </div>
 
-    <div style="display: flex; gap: var(--prompt-gap)">
-      <StatusExtendedComponent />
+    <div
+      v-if="
+        getValue(store.options.data.HOMETOWN_PROMPT_LINEBREAK_AFTER_GIT_REF)
+      "
+      style="display: flex; gap: var(--prompt-gap)"
+    >
+      <StatusExtendedComponent
+        v-if="getValue(store.options.data.HOMETOWN_PROMPT_SHOW_EXTENDED_STATUS)"
+      />
 
       <StatusComponent />
 

@@ -2,6 +2,30 @@ import { defineStore } from "pinia";
 import configFromState from "../utils/configFromState.js";
 
 export const optionsData = {
+  // GROUP: Hometown Prompt content
+  HOMETOWN_PROMPT_CUSTOM: {
+    group: "Hometown Prompt content",
+    value: { default: "" },
+    notes:
+      "In the terminal, this is printed with <a href='https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html'>prompt expansion</a> with <code>PROMPT_SUBST</code> and <code>PROMPT_PERCENT</code>",
+    type: "string",
+  },
+  HOMETOWN_PROMPT_SHOW_EXTENDED_STATUS: {
+    group: "Hometown Prompt content",
+    value: { default: "1" },
+    type: "integer",
+  },
+  // GROUP: Hometown Prompt layout
+  HOMETOWN_PROMPT_LINEBREAK_AFTER_GIT_REF: {
+    group: "Hometown Prompt layout",
+    value: { default: "1" },
+    type: "integer",
+  },
+  HOMETOWN_PROMPT_NO_LINEBREAK_BEFORE_GIT_REF: {
+    group: "Hometown Prompt layout",
+    value: { default: "1" },
+    type: "integer",
+  },
   // GROUP: COLOR
   GIT_PROMPT_KIT_COLOR_ACTION: {
     group: "Color",
