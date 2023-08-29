@@ -6,7 +6,7 @@ export default defineUserConfig({
   // https://v2.vuepress.vuejs.org/reference/config.html#head
   head: [
     // social metas
-    ["meta", { property: "og:title", content: "git-prompt-kit" }],
+    ["meta", { property: "og:title", content: "hometown-prompt" }],
     [
       "meta",
       {
@@ -19,14 +19,14 @@ export default defineUserConfig({
       "meta",
       {
         property: "og:url",
-        content: "https://git-prompt-kit.olets.dev/",
+        content: "https://hometown-prompt.olets.dev/",
       },
     ],
-    ["meta", { property: "og:site_name", content: "git-prompt-kit" }],
+    ["meta", { property: "og:site_name", content: "hometown-prompt" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:image:width", content: "1200" }],
     ["meta", { property: "og:image:height", content: "630" }],
-    ["meta", { name: "twitter:title", content: "git-prompt-kit" }],
+    ["meta", { name: "twitter:title", content: "hometown-prompt" }],
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
     [
       "meta",
@@ -41,9 +41,8 @@ export default defineUserConfig({
   // site config
   // https://v2.vuepress.vuejs.org/guide/configuration.html#site-config
   lang: "en-US",
-  title: "git-prompt-kit",
-  description:
-    "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
+  title: "Hometown Prompt",
+  description: "A feature rich, high performance Git-aware zsh theme.",
 
   markdown: {
     links: {
@@ -58,9 +57,9 @@ export default defineUserConfig({
   // default theme config
   // https://v2.vuepress.vuejs.org/guide/theme.html#default-theme
   theme: defaultTheme({
-    repo: "olets/git-prompt-kit",
+    repo: "olets/hometown-prompt",
     docsDir: "docs",
-    docsRepo: "olets/git-prompt-kit-docs",
+    docsRepo: "olets/hometown-prompt-docs",
     sidebar: [
       {
         text: "Introduction",
@@ -68,10 +67,7 @@ export default defineUserConfig({
       },
       "/installation.md",
       "/options.md",
-      "/components.md",
       "/demo.md",
-      "/integrations.md",
-      "/recipes.md",
     ],
     sidebarDepth: 3,
     themePlugins: {
