@@ -6,6 +6,10 @@
 
 <!-- DUPE demo.md, options.md -->
 
+Read about Hometown Prompt's options on the [Options page](./options.md). Read about Git Prompt Kit's options in the [Git Prompt Kit's options documentation](https://git-prompt-kit.olets.dev/options.html).
+
+Play with [configuration](#configuration) and [context](#context) to see how they affect the prompt.
+
 Hometown Prompt is made almost entirely of [Git Prompt Kit](https://git-prompt-kit.olets.dev) components. So almost all of configuration —color customization, symbol customization, dimming vs hiding inactive elements, the number of path segments shows, etc— is done by configuring through Git Prompt Kit. (Git Prompt Kit is bundled with Hometown Prompt, so no additional download is necessary.)
 
 <div style="
@@ -15,14 +19,9 @@ Hometown Prompt is made almost entirely of [Git Prompt Kit](https://git-prompt-k
   position: sticky; 
   top: var(--navbar-height);
 ">
-
-Play with [configuration](#configuration) and [context](#context) to see how they affect the [components](#components).
-
-To save you constantly scrolling, here is [Hometown Prompt](https://github.com/olets/hometown-prompt) as a concise illustration:
-
   <PromptComponent/>
 
-(In the terminal, the prompt character will be [expanded as a prompt](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html) with PROMPT_SUBST and PROMPT_PERCENT. In the default case, `%%` becomes `%`.
+(In the terminal, the custom content and the prompt character are printed with [prompt expansion](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html), with `PROMPT_SUBST` and `PROMPT_PERCENT`. The default's `%%`, for example, becomes `%`).
 
 </div>
 
@@ -52,21 +51,27 @@ See [Options](./options.md) for descriptions.
 
 ### Behavior Options
 
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options) for descriptions.
+
 <OptionsConfigurationComponent group="behavior"/>
 
 ### Color Options
+
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options) for descriptions.
 
 <OptionsConfigurationComponent group="color"/>
 
 ### Content Options
 
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options) for descriptions.
+
 <OptionsConfigurationComponent group="content"/>
 
 ### Symbol Options
 
-<OptionsConfigurationComponent group="symbol"/>
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options) for descriptions.
 
-<ResetOptionsComponent/>
+<OptionsConfigurationComponent group="symbol"/>
 
 ## Context
 

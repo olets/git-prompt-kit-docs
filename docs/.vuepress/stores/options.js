@@ -184,7 +184,8 @@ export const optionsData = {
     value: {
       default: "%%",
     },
-    notes: "Rendered as a prompt string",
+    notes:
+      "In the terminal, this is printed with <a href='https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html'>prompt expansion</a> with <code>PROMPT_SUBST</code> and <code>PROMPT_PERCENT</code>",
     type: "string",
   },
   GIT_PROMPT_KIT_SYMBOL_CHAR_ROOT: {
