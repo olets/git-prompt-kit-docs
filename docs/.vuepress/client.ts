@@ -12,6 +12,8 @@ import PromptComponent from "./components/prompt/PromptComponent.vue";
 import PromptSegmentComponent from "./components/prompt/PromptSegmentComponent.vue";
 import ResetOptionsComponent from "./components/ResetOptionsComponent.vue";
 
+import CustomComponent from "./components/CustomComponent.vue";
+
 import ActionComponent from "./components/ActionComponent.vue";
 import AssumedUnchangedComponent from "./components/AssumedUnchangedComponent.vue";
 import CharComponent from "./components/CharComponent.vue";
@@ -45,12 +47,14 @@ export default defineClientConfig({
   enhance({ app }) {
     app.use(pinia);
 
+    app.component("CustomComponent", CustomComponent);
+
     app.component("ActionComponent", ActionComponent);
     app.component("AssumedUnchangedComponent", AssumedUnchangedComponent);
     app.component("CharComponent", CharComponent);
     app.component("ConfigComponent", ConfigComponent);
     app.component("ConflictedComponent", ConflictedComponent);
-    app.component("ComponentsListComponent", ComponentsListComponent);
+
     app.component(
       "ContextConfigurationComponent",
       ContextConfigurationComponent
