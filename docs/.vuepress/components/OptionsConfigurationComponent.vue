@@ -65,7 +65,7 @@ export default {
           <th>Option</th>
           <th>Default</th>
           <th v-if="hasVerboseDefaults()">
-            Verbose Default
+            Verbose Default**
           </th>
           <th>Type</th>
           <th v-if="hasNotes()">
@@ -115,6 +115,11 @@ export default {
             />
           </td>
         </tr>
+
+        <div v-if="hasVerboseDefaults()">
+          **The default if
+          <code>GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS</code> is non-zero.
+        </div>
       </tbody>
     </table>
   </form>
