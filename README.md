@@ -39,7 +39,6 @@ Under the following terms
 - Preserve terms — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 - No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
-
 ## Acknowledgments
 
 - The human-readable license summary is based on https://creativecommons.org/licenses/by-nc-sa/4.0. The ethics point was added.
