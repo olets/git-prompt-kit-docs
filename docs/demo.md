@@ -2,6 +2,12 @@
 
 [[toc]]
 
+&nbsp;
+
+<!-- DUPE demo.md, options.md -->
+
+Hometown Prompt is made almost entirely of [Git Prompt Kit](https://git-prompt-kit.olets.dev) components. So almost all of configuration —color customization, symbol customization, dimming vs hiding inactive elements, the number of path segments shows, etc— is done by configuring through Git Prompt Kit. (Git Prompt Kit is bundled with Hometown Prompt, so no additional download is necessary.)
+
 <div style="
   background: white;
   box-shadow: 0 0 1rem 1rem white;
@@ -20,13 +26,29 @@ To save you constantly scrolling, here is [Hometown Prompt](https://github.com/o
 
 </div>
 
-## Configuration
-
 All custom configuration appears here, ready for copying and pasting into your `.zshrc`.
 
 <ConfigComponent/>
 
 <ResetOptionsComponent/>
+
+## Hometown Prompt Configuration
+
+### Content Options
+
+See [Options](./options.md) for descriptions.
+
+<OptionsConfigurationComponent group="hometown prompt content"/>
+
+### Layout Options
+
+See [Options](./options.md) for descriptions.
+
+<OptionsConfigurationComponent group="hometown prompt layout"/>
+
+\* Git ref info is branch or commit, ahead/behind counts, remote name(s), and tag. See the [`GIT_PROMPT_KIT_REF` docs](https://git-prompt-kit.olets.dev/components.html).
+
+## Git Prompt Kit Configuration
 
 ### Behavior Options
 
@@ -79,9 +101,3 @@ All custom configuration appears here, ready for copying and pasting into your `
 ### Extended Git status
 
 <ContextConfigurationComponent group="Extended Git status"/>
-
-## Components
-
-These change according to the [Context](./context.md) and [Configuration](./configuration.md).
-
-<ComponentsListComponent/>
