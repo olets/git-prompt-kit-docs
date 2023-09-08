@@ -1,5 +1,9 @@
 # Recipes
 
+:::warning
+These are the docs for v4, which is not yet released.
+:::
+
 Use Git Prompt Kit to build the high-performance Git-aware prompt of your dreams.
 
 Here are some examples to get you started, based on existing Git-aware prompts.These have not been thoroughly battle tested — they are not "Git Prompt Kit themes" but rather starting points for those new to customizing the zsh prompt.

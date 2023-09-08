@@ -1,5 +1,9 @@
 # Integrations
 
+:::warning
+These are the docs for v4, which is not yet released.
+:::
+
 [[toc]]
 
 > These are proof of concept. I do not use Spaceship or Starship and these were last tested in 2020. Contributions are welcome.

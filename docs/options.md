@@ -1,5 +1,9 @@
 # Options
 
+:::warning
+These are the docs for v4, which is not yet released.
+:::
+
 Set variables in `.zshrc`. For example, to only show the user if _not_ `me`, only show the host if _not_ `my-computer` or `my-other-computer`, and use symbols to distinguish between branches and commits:
 
 ```shell

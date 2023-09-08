@@ -1,5 +1,9 @@
 # Components
 
+:::warning
+These are the docs for v4, which is not yet released.
+:::
+
 To use Git Prompt Kit's components in a custom prompt, load Git Prompt Kit and then refer to any of its components.
 
 For example, to create the minimal prompt `<current working directory> [<Git HEAD> ]% `:
