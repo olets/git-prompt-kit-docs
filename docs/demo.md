@@ -53,25 +53,25 @@ See [Options](./options.md) for descriptions.
 
 ### Behavior Options
 
-See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options) for descriptions.
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for descriptions.
 
 <OptionsConfigurationComponent group="behavior"/>
 
 ### Color Options
 
-See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options) for descriptions.
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for descriptions.
 
 <OptionsConfigurationComponent group="color"/>
 
 ### Content Options
 
-See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options) for descriptions.
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for descriptions.
 
 <OptionsConfigurationComponent group="content"/>
 
 ### Symbol Options
 
-See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options) for descriptions.
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for descriptions.
 
 <OptionsConfigurationComponent group="symbol"/>
 
