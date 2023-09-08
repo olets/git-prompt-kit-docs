@@ -3,8 +3,8 @@
 [[toc]]
 
 <div style="
-  background: white;
-  box-shadow: 0 0 1rem 1rem white;
+  background: var(--c-bg);
+  box-shadow: 0 0 1rem 1rem var(--c-bg);
   padding: 0.5rem 1rem;
   position: sticky; 
   top: var(--navbar-height);
