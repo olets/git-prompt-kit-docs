@@ -31,6 +31,8 @@ All custom configuration appears here, ready for copying and pasting into your `
 
 <ResetOptionsComponent/>
 
+<div id="configuration"></div>
+
 ## Hometown Prompt Configuration
 
 ### Content Options
