@@ -8,7 +8,6 @@ import ConfigComponent from "./components/ConfigComponent.vue";
 import ContextConfigurationComponent from "./components/ContextConfigurationComponent.vue";
 import InputComponent from "./components/InputComponent.vue";
 import OptionsConfigurationComponent from "./components/OptionsConfigurationComponent.vue";
-import PromptComponent from "./components/prompt/PromptComponent.vue";
 import PromptSegmentComponent from "./components/prompt/PromptSegmentComponent.vue";
 import ResetOptionsComponent from "./components/ResetOptionsComponent.vue";
 
@@ -76,7 +75,6 @@ export default defineClientConfig({
       "OptionsConfigurationComponent",
       OptionsConfigurationComponent
     );
-    app.component("PromptComponent", PromptComponent);
     app.component("PromptSegmentComponent", PromptSegmentComponent);
     app.component("RepoRootComponent", RepoRootComponent);
     app.component("RepoSubdirectoryComponent", RepoSubdirectoryComponent);
