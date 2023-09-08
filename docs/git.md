@@ -1,3 +1,0 @@
-# Git Options
-
-<GitOptionsComponent></GitOptionsComponent>
