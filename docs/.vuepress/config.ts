@@ -57,9 +57,28 @@ export default defineUserConfig({
   // default theme config
   // https://v2.vuepress.vuejs.org/guide/theme.html#default-theme
   theme: defaultTheme({
-    repo: "olets/hometown-prompt",
+    contributors: false,
+    lastUpdated: false,
     docsDir: "docs",
     docsRepo: "olets/hometown-prompt-docs",
+    navbar: [
+      {
+        text: "Changelog",
+        link: "https://github.com/olets/hometown-prompt/blob/main/CHANGELOG.md",
+        target: "_self",
+      },
+      {
+        text: "License",
+        link: "https://github.com/olets/hometown-prompt/blob/main/LICENSE",
+        target: "_self",
+      },
+      // Manual instead of with defaultTheme's `repo` so that we can specify the `target`
+      {
+        text: "GitHub",
+        link: "https://github.com/olets/hometown-prompt",
+        target: "_self",
+      },
+    ],
     sidebar: [
       {
         text: "Introduction",
