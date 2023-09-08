@@ -1,4 +1,4 @@
-# Hometown Prompt ![GitHub release (latest by date)](https://img.shields.io/github/v/release/olets/hometown-prompt)
+# Hometown Prompt <!-- ![GitHub release (latest by date)](https://img.shields.io/github/v/release/olets/hometown-prompt) -->
 
 ![splash card: the text 'Hometown Prompt' as green neon lettering](/images/hometown-prompt-splash-card.png)
 
