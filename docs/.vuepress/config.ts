@@ -36,6 +36,16 @@ export default defineUserConfig({
           "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
       },
     ],
+
+    // Fathom analytics
+    [
+      "script",
+      {
+        src: "https://cdn.usefathom.com/script.js",
+        "data-site": "IVUQPVDY",
+        defer: true,
+      },
+    ],
   ],
 
   // site config
