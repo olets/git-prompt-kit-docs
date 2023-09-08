@@ -13,8 +13,8 @@ Play with [configuration](#configuration) and [context](#context) to see how the
 Hometown Prompt is made almost entirely of [Git Prompt Kit](https://git-prompt-kit.olets.dev) components. So almost all of configuration —color customization, symbol customization, dimming vs hiding inactive elements, the number of path segments shows, etc— is done by configuring through Git Prompt Kit. (Git Prompt Kit is bundled with Hometown Prompt, so no additional download is necessary.)
 
 <div style="
-  background: white;
-  box-shadow: 0 0 1rem 1rem white;
+  background-color: var(--c-bg);
+  box-shadow: 0 0 1rem 1rem var(--c-bg);
   padding: 0.5rem 1rem;
   position: sticky; 
   top: var(--navbar-height);
