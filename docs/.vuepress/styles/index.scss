@@ -129,3 +129,8 @@ div[class*="language-"] > button.copy-code-button {
 .community a {
   text-decoration: none;
 }
+
+textarea {
+  resize: vertical;
+  width: 100%;
+}
