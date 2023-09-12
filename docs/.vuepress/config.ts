@@ -108,9 +108,9 @@ export default defineUserConfig({
     [
       // https://v2.vuepress.vuejs.org/reference/plugin/docsearch.html
       docsearchPlugin({
-        apiKey: process.env.SEARCH_KEY,
-        appId: process.env.APPLICATION_ID,
-        indexName: process.env.INDEX_NAME,
+        apiKey: process.env.SEARCH_KEY || "",
+        appId: process.env.APPLICATION_ID || "",
+        indexName: process.env.INDEX_NAME || "",
       }),
     ],
   ],
