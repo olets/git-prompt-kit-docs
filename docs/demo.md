@@ -23,13 +23,12 @@ Hometown Prompt is made almost entirely of [Git Prompt Kit](https://git-prompt-k
 
 (In the terminal, the custom content and the prompt character are printed with [prompt expansion](https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html), with `PROMPT_SUBST` and `PROMPT_PERCENT`. The default's `%%`, for example, becomes `%`).
 
-</div>
-
 All custom configuration appears here, ready for copying and pasting into your `.zshrc`.
 
 <ConfigComponent/>
 
 <ResetOptionsComponent/>
+</div>
 
 <div id="configuration"></div>
 
