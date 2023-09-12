@@ -8,11 +8,20 @@ These are the docs for v4, which is not yet released.
 
 ## Configuration
 
+<div style="
+  background-color: var(--c-bg);
+  box-shadow: 0 0 0.5rem 0.5rem var(--c-bg);
+  padding: 0.5rem 0.5rem;
+  position: sticky; 
+  top: var(--navbar-height);
+">
+
 All custom configuration appears here, ready for copying and pasting into your `.zshrc`.
 
-<ConfigComponent/>
+  <ConfigComponent/>
 
-<ResetOptionsComponent/>
+  <ResetOptionsComponent/>
+</div>
 
 ### Behavior Options
 
