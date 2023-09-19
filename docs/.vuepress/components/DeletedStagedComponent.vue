@@ -37,8 +37,14 @@ export default {
         ? 'GIT_PROMPT_KIT_COLOR_STAGED'
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
-    :text="`${getValue(store.context.data.gitStatusDeletedStaged) ? '2' : ''}${
-      getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED) || ''
+    :text="`${
+      getValue(store.context.data.gitStatusDeletedStaged)
+        ? '2' +
+          getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED)
+        : getValue(
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED_INACTIVE,
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED
+        ) || ''
     }`"
   />
 </template>

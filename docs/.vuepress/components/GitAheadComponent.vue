@@ -38,8 +38,13 @@ export default {
         ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
-    :text="`${getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) || ''}${
-      getValue(store.context.data.gitRefAhead) ? '2' : ''
+    :text="`${
+      getValue(store.context.data.gitRefAhead)
+        ? getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD) + '2'
+        : getValue(
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD_INACTIVE,
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_AHEAD
+        ) || ''
     }`"
   />
 </template>

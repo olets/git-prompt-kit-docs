@@ -37,8 +37,13 @@ export default {
         ? 'GIT_PROMPT_KIT_COLOR_REMOTE'
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
-    :text="`${getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND) || ''}${
-      getValue(store.context.data.gitRefBehind) ? '2' : ''
+    :text="`${
+      getValue(store.context.data.gitRefBehind)
+        ? getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND) + '2'
+        : getValue(
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND_INACTIVE,
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_BEHIND
+        ) || ''
     }`"
   />
 </template>
