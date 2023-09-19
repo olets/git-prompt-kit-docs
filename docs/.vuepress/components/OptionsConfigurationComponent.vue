@@ -115,12 +115,12 @@ export default {
             />
           </td>
         </tr>
-
-        <div v-if="hasVerboseDefaults()">
-          **The default if
-          <code>GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS</code> is non-zero.
-        </div>
       </tbody>
     </table>
   </form>
+
+  <div v-if="hasVerboseDefaults()">
+    **The default if
+    <code>GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS</code> is non-zero.
+  </div>
 </template>
