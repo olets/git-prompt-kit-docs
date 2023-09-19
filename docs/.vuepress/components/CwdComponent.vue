@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     path() {
-      let segments = ["~", "projects", "olets", "git-prompt-kit"];
+      let segments = ["~", "projects", "olets", "hometown-prompt"];
       if (
         getValue(
           this.store.options.data.GIT_PROMPT_KIT_CWD_MAX_TRAILING_COUNT
