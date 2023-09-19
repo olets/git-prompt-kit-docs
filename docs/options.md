@@ -43,10 +43,6 @@ Colors can be
 
 Support varies by terminal emulator.
 
-> Tip: To check a color it can be useful to run `print -P %F{<color>}<text>%f`, for example `print -P %F{199}●%f`.
-
-See [Issue #1: README appendix: default colors' swatches](https://github.com/olets/git-prompt-kit/issues/1) for the following table but with swatches. They may appear differently in your terminal.
-
 To visualize the configured colors, run
 
 ```shell:no-line-numbers
@@ -59,24 +55,11 @@ To print the configured values, run
 git-prompt-kit-config
 ```
 
-| Name                                    | Type   | Description                                                       | Default |
-| --------------------------------------- | ------ | ----------------------------------------------------------------- | ------- |
-| `GIT_PROMPT_KIT_COLOR_ACTION`           | string | Color of the Git action segment                                   | `199`   |
-| `GIT_PROMPT_KIT_COLOR_ASSUME_UNCHANGED` | string | Color of the Git assumed unchaged files segment                   | `81`    |
-| `GIT_PROMPT_KIT_COLOR_FAILED`           | string | Color of the prompt character when the previous command failed    | `88`    |
-| `GIT_PROMPT_KIT_COLOR_HEAD`             | string | Color of the Git HEAD segment when the working tree is dirty      | `140`   |
-| `GIT_PROMPT_KIT_COLOR_HOST`             | string | Color of the host segment                                         | `109`   |
-| `GIT_PROMPT_KIT_COLOR_INACTIVE`         | string | Color of inactive segments                                        | `247`   |
-| `GIT_PROMPT_KIT_COLOR_PUSH_REMOTE`      | string | Color of the Git push remote and its commits-ahead files segment  | `111`   |
-| `GIT_PROMPT_KIT_COLOR_REMOTE`           | string | Color of the Git remote and its commits-ahead files segment       | `216`   |
-| `GIT_PROMPT_KIT_COLOR_SKIP_WORKTREE`    | string | Color of the Git skip-worktree files segment                      | `81`    |
-| `GIT_PROMPT_KIT_COLOR_STAGED`           | string | Color of Git staged files segment                                 | `120`   |
-| `GIT_PROMPT_KIT_COLOR_STASH`            | string | Color of the Git stashes segment                                  | `81`    |
-| `GIT_PROMPT_KIT_COLOR_SUCCEEDED`        | string | Color of the prompt character when the previous command succeeded | `76`    |
-| `GIT_PROMPT_KIT_COLOR_TAG`              | string | Color of Git tag segment                                          | `86`    |
-| `GIT_PROMPT_KIT_COLOR_UNSTAGED`         | string | Color of Git unstaged files segment                               | `162`   |
-| `GIT_PROMPT_KIT_COLOR_USER`             | string | Color of the user                                                 | `109`   |
-| `GIT_PROMPT_KIT_COLOR_CWD`              | string | Color of the directory segment                                    | `39`    |
+:::tip
+Colors may appear differently in your terminal. To check, it can be useful to run `print -P %F{<color>}<text>%f`, for example `print -P %F{199}●%f` or `print -P %F{#34d5eb}●%f`.
+:::
+
+<OptionsComponent group="color"/>
 
 ## Content options
 

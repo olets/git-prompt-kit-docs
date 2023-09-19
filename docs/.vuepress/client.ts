@@ -7,6 +7,7 @@ import ComponentsListComponent from "./components/ComponentsListComponent.vue";
 import ConfigComponent from "./components/ConfigComponent.vue";
 import ContextConfigurationComponent from "./components/ContextConfigurationComponent.vue";
 import InputComponent from "./components/InputComponent.vue";
+import OptionsComponent from "./components/OptionsComponent.vue";
 import OptionsConfigurationComponent from "./components/OptionsConfigurationComponent.vue";
 import PromptSegmentComponent from "./components/prompt/PromptSegmentComponent.vue";
 import ResetOptionsComponent from "./components/ResetOptionsComponent.vue";
@@ -71,6 +72,7 @@ export default defineClientConfig({
     app.component("ModifiedComponent", ModifiedComponent);
     app.component("ModifiedStagedComponent", ModifiedStagedComponent);
     app.component("NewComponent", NewComponent);
+    app.component("OptionsComponent", OptionsComponent);
     app.component(
       "OptionsConfigurationComponent",
       OptionsConfigurationComponent
