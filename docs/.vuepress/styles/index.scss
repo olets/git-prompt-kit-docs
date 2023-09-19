@@ -134,3 +134,19 @@ textarea {
   resize: vertical;
   width: 100%;
 }
+
+.custom-container.tip a {
+  color: var(--c-text-accent);
+}
+
+.custom-container.warning a {
+  color: var(--c-text-accent);
+}
+
+.custom-container.danger a {
+  color: var(--c-text-accent);
+}
+
+.custom-container.details a {
+  color: var(--c-text-accent);
+}
