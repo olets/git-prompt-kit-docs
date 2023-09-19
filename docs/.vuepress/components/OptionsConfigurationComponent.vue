@@ -84,10 +84,16 @@ export default {
             </label>
           </td>
 
-          <td>{{ option.value.default }}</td>
+          <td>
+            <code v-if="option?.value?.default">{{
+              option.value.default
+            }}</code>
+          </td>
 
           <td v-if="hasVerboseDefaults()">
-            {{ option.value.verboseDefault }}
+            <code v-if="option?.value?.verboseDefault">{{
+              option.value.verboseDefault
+            }}</code>
           </td>
 
           <td>{{ option.type }}</td>
