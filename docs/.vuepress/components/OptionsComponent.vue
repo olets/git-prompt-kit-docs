@@ -91,7 +91,7 @@ export default {
           </td>
 
           <td>
-            {{ option.value.default }}
+            <code v-if="option.value.default">{{ option.value.default }}</code>
           </td>
 
           <td v-if="hasVerboseDefaults()">
@@ -108,13 +108,15 @@ export default {
             >
           </td>
 
-          <td v-if="hasDescriptions()">
-            {{ option.description }}
-          </td>
+          <td
+            v-if="hasDescriptions()"
+            v-html="option.description"
+          />
 
-          <td v-if="hasNotes()">
-            {{ option.notes }}
-          </td>
+          <td
+            v-if="hasNotes()"
+            v-html="option.notes"
+          />
         </tr>
       </tbody>
     </table>
