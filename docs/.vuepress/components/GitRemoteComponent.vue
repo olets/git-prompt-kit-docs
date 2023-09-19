@@ -1,6 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
+import { hexColor } from "../utils/ansiToHex.js";
 import { getValue } from "../utils/value";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 
@@ -46,6 +47,7 @@ export default {
         this.store.options.data.GIT_PROMPT_KIT_VERBOSE_DEFAULT_SYMBOLS
       );
     },
+    hexColor,
     getValue,
   },
 };
