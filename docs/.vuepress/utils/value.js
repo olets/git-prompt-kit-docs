@@ -14,22 +14,26 @@ function getDefault(data) {
   return ret;
 }
 
-function getValue(data) {
-  let value;
+function getValue(data, fallbackData) {
+  function val(data) {
+    let ret;
 
-  const type = data?.type || "string";
+    const type = data?.type || "string";
 
-  if (data?.value?.custom !== undefined && data?.value?.custom !== null) {
-    value = data?.value?.custom;
-  } else {
-    value = getDefault(data);
+    if (data?.value?.custom !== undefined && data?.value?.custom !== null) {
+      ret = data?.value?.custom;
+    } else {
+      ret = getDefault(data);
+    }
+
+    if (type.includes("integer")) {
+      ret = parseInt(ret);
+    }
+
+    return ret;
   }
 
-  if (type.includes("integer")) {
-    value = parseInt(value);
-  }
-
-  return value;
+  return val(data) || val(fallbackData) || null;
 }
 
 export { getDefault, getValue };

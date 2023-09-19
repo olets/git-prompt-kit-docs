@@ -151,25 +151,46 @@ export const optionsData = {
     group: "Symbol",
     value: {
       default: "+",
-      verboseDefault: "ahead",
+      verboseDefault: "ahead ",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_AHEAD_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "ahead",
+    },
   },
   GIT_PROMPT_KIT_SYMBOL_ASSUME_UNCHANGED: {
     group: "Symbol",
     value: {
       default: "⥱ ",
-      verboseDefault: "assumed unchanged",
+      verboseDefault: " assumed-unchanged",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_ASSUME_UNCHANGED_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "assumed-unchanged",
+    },
   },
   GIT_PROMPT_KIT_SYMBOL_BEHIND: {
     group: "Symbol",
     value: {
       default: "-",
-      verboseDefault: "behind",
+      verboseDefault: "behind ",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_BEHIND_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "behind",
+    },
   },
   GIT_PROMPT_KIT_SYMBOL_BRANCH: {
     group: "Symbol",
@@ -211,6 +232,13 @@ export const optionsData = {
     },
     type: "string",
   },
+  GIT_PROMPT_KIT_SYMBOL_CONFLICTED_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "conflicted",
+    },
+  },
   GIT_PROMPT_KIT_SYMBOL_DELETED: {
     group: "Symbol",
     value: {
@@ -219,13 +247,27 @@ export const optionsData = {
     },
     type: "string",
   },
+  GIT_PROMPT_KIT_SYMBOL_DELETED_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "deleted",
+    },
+  },
   GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED: {
     group: "Symbol",
     value: {
       default: "D_",
-      verboseDefault: " staged deleted",
+      verboseDefault: " staged-deleted",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_DELETED_STAGED_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "staged-deleted",
+    },
   },
   GIT_PROMPT_KIT_SYMBOL_HOST: {
     group: "Symbol",
@@ -251,13 +293,27 @@ export const optionsData = {
     },
     type: "string",
   },
+  GIT_PROMPT_KIT_SYMBOL_MODIFIED_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "modified",
+    },
+  },
   GIT_PROMPT_KIT_SYMBOL_MODIFIED_STAGED: {
     group: "Symbol",
     value: {
       default: "M_",
-      verboseDefault: " modified staged",
+      verboseDefault: " modified-staged",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_MODIFIED_STAGED_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "modified-staged",
+    },
   },
   GIT_PROMPT_KIT_SYMBOL_NEW: {
     group: "Symbol",
@@ -266,6 +322,13 @@ export const optionsData = {
       verboseDefault: " new",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_NEW_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "new",
+    },
   },
   GIT_PROMPT_KIT_SYMBOL_PUSH_REMOTE: {
     group: "Symbol",
@@ -287,9 +350,16 @@ export const optionsData = {
     group: "Symbol",
     value: {
       default: "⤳ ",
-      verboseDefault: " skip worktree",
+      verboseDefault: " skip-worktree",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "skip-worktree",
+    },
   },
   GIT_PROMPT_KIT_SYMBOL_STASH: {
     group: "Symbol",
@@ -298,6 +368,13 @@ export const optionsData = {
       verboseDefault: " stashes",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_STASH_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "stashes",
+    },
   },
   GIT_PROMPT_KIT_SYMBOL_TAG: {
     group: "Symbol",
@@ -314,6 +391,13 @@ export const optionsData = {
       verboseDefault: " untracked",
     },
     type: "string",
+  },
+  GIT_PROMPT_KIT_SYMBOL_UNTRACKED_INACTIVE: {
+    group: "Symbol",
+    value: {
+      default: "",
+      verboseDefault: "untracked",
+    },
   },
 
   // GROUP: CONTENT

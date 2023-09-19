@@ -37,8 +37,13 @@ export default {
         ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
-    :text="`${getValue(store.context.data.gitStatusUntracked) ? '2' : ''}${
-      getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_UNTRACKED) || ''
+    :text="`${
+      getValue(store.context.data.gitStatusUntracked)
+        ? '2' + getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_UNTRACKED)
+        : getValue(
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_UNTRACKED_INACTIVE,
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_UNTRACKED
+        ) || ''
     }`"
   />
 </template>

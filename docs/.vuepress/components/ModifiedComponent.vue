@@ -37,8 +37,13 @@ export default {
         ? 'GIT_PROMPT_KIT_COLOR_UNSTAGED'
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
-    :text="`${getValue(store.context.data.gitStatusModified) ? '2' : ''}${
-      getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_MODIFIED) || ''
+    :text="`${
+      getValue(store.context.data.gitStatusModified)
+        ? '2' + getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_MODIFIED)
+        : getValue(
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_MODIFIED_INACTIVE,
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_MODIFIED
+        ) || ''
     }`"
   />
 </template>

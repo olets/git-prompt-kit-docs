@@ -37,7 +37,12 @@ export default {
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
     :text="`${
-      getValue(store.context.data.extendedGitStatusStashes) ? '2' : ''
-    }${getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH) || ''}`"
+      getValue(store.context.data.extendedGitStatusStashes)
+        ? '2' + getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH)
+        : getValue(
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH_INACTIVE,
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_STASH
+        ) || ''
+    }`"
   />
 </template>

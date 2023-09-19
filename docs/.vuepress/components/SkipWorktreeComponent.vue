@@ -37,7 +37,12 @@ export default {
         : 'GIT_PROMPT_KIT_COLOR_INACTIVE'
     "
     :text="`${
-      getValue(store.context.data.extendedGitStatusSkipWorktree) ? '2' : ''
-    }${getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE) || ''}`"
+      getValue(store.context.data.extendedGitStatusSkipWorktree)
+        ? '2' + getValue(store.options.data.GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE)
+        : getValue(
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE_INACTIVE,
+          store.options.data.GIT_PROMPT_KIT_SYMBOL_SKIP_WORKTREE
+        ) || ''
+    }`"
   />
 </template>
