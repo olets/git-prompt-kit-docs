@@ -16,7 +16,7 @@ export default {
   methods: {
     path() {
       const aboveRoot = ["~", "projects", "olets"];
-      const root = `<span style="text-decoration: underline">git-prompt-kit</span>`;
+      const root = `<span style="text-decoration: underline">hometown-prompt</span>`;
 
       let segments = [];
 
