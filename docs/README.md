@@ -4,23 +4,44 @@
 
 **Hometown is a feature rich, high performance Git-aware zsh theme** with segments for the user, host, time, the current working directory and its parent, and —within a Git repo— detailed Git status. It is carefully designed to show a lot of information clearly.
 
-:::tip
-Get a feel for how the components respond to context and how the options work by playing with the [interactive demo](./demo.md).
+## How does it look?
+
+You can customize symbols and colors, hide inactive segments, hide certain segments always, and choose how many lines the prompt takes up. Given your configuration, the content is shown and the colors it's shown in changes based on which user is logged in, whether the previous command succeeded, and whether you're in a Git repo — and, if so, the Git status.
+
+:::tip TRY IT OUT!
+The best way to get a sense of Hometown Prompt, other than installing it, is to play with the
+
+🎨 [interactive web demo](./demo.md) 🎨
 :::
 
-&nbsp;
+Here are three static examples to start with, using the default colors and default symbol sets. In each, Hometown Prompt is telling us that we're logged in as one of our usual users on one of our usual hosts, the user is not root, the previous command succeeded, the current directory is the Git repo `hometown-prompt`, the branch `main` is checked out, `main` pushes and pulls from `origin/main`, we're 15 commits ahead of the remote, there are seven stashes, and there are three untracked files.
 
-![screenshot of Hometown Prompt example](/images/hometown-prompt-example.jpg)
+Default (Git ref on first line, no inactive Git ref segments, no extended Git status, default symbols, inactive Git status segments visible)
 
-By dynamically colorizing and hiding/revealing content, Hometown packs a lot of data into a concise and user-friendly prompt. It displays, in 1-3 lines depending on the layout configuration…
+![Hometown Prompt screenshot, default configuration](/images/hometown-prompt-default.png)
+
+More concise (inactive Git status segments hidden, active extended Git status segments visible, everything on one line)
+
+![Hometown Prompt screenshot, default configuration](/images/hometown-prompt-short.png)
+
+Less concise (Git ref and status each on their own line, inactive Git ref segments visible, active extended Git status segments visible, inactive Git status segments hidden, verbose default symbols)
+
+![Hometown Prompt screenshot, default configuration](/images/hometown-prompt-long.png)
+
+:::tip Something else to try
+The window title in the screenshots above is thanks to [zsh-window-title](https://github.com/olets/zsh-window-title)
+:::
+
+## What all is shown?
 
 Always:
 
-- The **current user**, if not one you've configured as hidden
+- The **current user**, if not one you've configured as hidden, and whether they are **root**
 - The **current host**, if not one you've configured as hidden
 - The **time** the prompt was drawn
 - **User-configured content**
 - The **current working directory** (the maximum number of path segments above the CWD is configurable)
+- Whether the **previous command** succeeded
 
 If in a Git repo:
 
