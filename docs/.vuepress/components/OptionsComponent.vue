@@ -34,10 +34,6 @@ export default {
       return Object.values(this.options).filter((option) => option?.description)
         .length;
     },
-    hasNotes() {
-      return Object.values(this.options).filter((option) => option?.notes)
-        .length;
-    },
     hasVerboseDefaults() {
       return Object.values(this.options).filter(
         (option) => option?.value?.verboseDefault
@@ -65,9 +61,6 @@ export default {
           </th>
           <th v-if="hasDescriptions()">
             Description
-          </th>
-          <th v-if="hasNotes()">
-            Notes
           </th>
         </tr>
       </thead>
@@ -104,8 +97,9 @@ export default {
 
           <td>{{ option.type }}</td>
 
-          <td v-if="option.type === 'color'">
+          <td v-if="hasColorOptions()">
             <input
+              v-if="option.type === 'color'"
               disabled
               type="color"
               :value="hexColor(getValue(option))"
@@ -114,12 +108,7 @@ export default {
 
           <td
             v-if="hasDescriptions()"
-            v-html="option.description"
-          />
-
-          <td
-            v-if="hasNotes()"
-            v-html="option.notes"
+            v-html="option?.description"
           />
         </tr>
       </tbody>
