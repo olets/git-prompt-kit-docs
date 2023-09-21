@@ -296,5 +296,5 @@ export function hexColor(ansiOrHex) {
       ansiOrHex[3];
   }
 
-  return hex;
+  return hex || null;
 }
