@@ -27,15 +27,6 @@ export default {
     },
   },
   methods: {
-    getMax(type) {
-      return type.includes("bit") ? 1 : null;
-    },
-    getPattern(type) {
-      return type === "array" ? "\\(.*\\)" : null;
-    },
-    getType(type) {
-      return type.includes("integer") ? "number" : "text";
-    },
     hasNotes() {
       return Object.values(this.options).filter((option) => option.notes)
         .length;
