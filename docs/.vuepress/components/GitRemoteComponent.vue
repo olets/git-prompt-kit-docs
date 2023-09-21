@@ -1,6 +1,7 @@
 <script>
 import { useOptionsStore } from "../stores/options";
 import { useContextStore } from "../stores/context";
+import { hexColor } from "../utils/ansiToHex.js";
 import { getValue } from "../utils/value";
 import PromptSegmentComponent from "./prompt/PromptSegmentComponent.vue";
 
@@ -47,6 +48,7 @@ export default {
       );
     },
     getValue,
+    hexColor,
   },
 };
 </script>
