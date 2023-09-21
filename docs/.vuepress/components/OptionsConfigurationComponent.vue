@@ -99,7 +99,7 @@ export default {
           <td>{{ option.type }}</td>
 
           <td v-if="hasNotes()">
-            {{ option.notes }}
+            {{ option?.notes }}
           </td>
 
           <td>
