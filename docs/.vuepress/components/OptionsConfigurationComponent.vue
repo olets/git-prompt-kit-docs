@@ -56,7 +56,7 @@ export default {
           <th>Option</th>
           <th>Default</th>
           <th v-if="hasVerboseDefaults()">
-            Verbose Default**
+            Verbose Default
           </th>
           <th>Type</th>
           <th v-if="hasNotes()">
@@ -70,7 +70,8 @@ export default {
           v-for="(option, optionKey) in options"
           :key="optionKey"
           :class="
-            option.value.custom && option.value.custom != option.value.default
+            option?.value?.custom &&
+              option.value.custom != option.value?.default
               ? 'customized'
               : null
           "
@@ -84,18 +85,23 @@ export default {
             </label>
           </td>
 
-          <td>{{ option.value.default }}</td>
-
-          <td v-if="hasVerboseDefaults()">
-            {{ option.value.verboseDefault }}
+          <td>
+            <code v-if="option?.value?.default">{{
+              option.value.default
+            }}</code>
           </td>
 
-          <td>{{ option.type }}</td>
+          <td v-if="hasVerboseDefaults()">
+            <code v-if="option?.value?.verboseDefault">{{
+              option.value.verboseDefault
+            }}</code>
+          </td>
 
-          <td
-            v-if="hasNotes()"
-            v-html="option.notes"
-          />
+          <td>{{ option?.type }}</td>
+
+          <td v-if="hasNotes()">
+            {{ option?.notes }}
+          </td>
 
           <td>
             <InputComponent
