@@ -6,6 +6,7 @@ const pinia = createPinia();
 import ConfigComponent from "./components/ConfigComponent.vue";
 import ContextConfigurationComponent from "./components/ContextConfigurationComponent.vue";
 import InputComponent from "./components/InputComponent.vue";
+import OptionsComponent from "./components/OptionsComponent.vue";
 import OptionsConfigurationComponent from "./components/OptionsConfigurationComponent.vue";
 import PromptComponent from "./components/prompt/PromptComponent.vue";
 import PromptSegmentComponent from "./components/prompt/PromptSegmentComponent.vue";
@@ -78,6 +79,7 @@ export default defineClientConfig({
       "OptionsConfigurationComponent",
       OptionsConfigurationComponent
     );
+    app.component("OptionsComponent", OptionsComponent);
     app.component("PromptComponent", PromptComponent);
     app.component("PromptSegmentComponent", PromptSegmentComponent);
     app.component("RepoRootComponent", RepoRootComponent);
