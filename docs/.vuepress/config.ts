@@ -94,13 +94,19 @@ export default defineUserConfig({
       },
     ],
 
-    // Fathom analytics
+    // Analytics
     [
       "script",
       {
         src: "https://cdn.usefathom.com/script.js",
         "data-site": "IVUQPVDY",
         defer: true,
+      },
+    ],
+    [
+      "script",
+      {
+        src: "/js/analytics.js",
       },
     ],
   ],
