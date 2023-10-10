@@ -6,7 +6,7 @@
 
 ## How does it look?
 
-You can customize symbols and colors, hide inactive segments, hide certain segments always, and choose how many lines the prompt takes up. Given your configuration, the content shown and the colors it's shown in changes based on which user is logged in, whether the previous command succeeded, and whether you're in a Git repo — and, if so, the Git status.
+You can **customize** symbols and colors, **hide** inactive segments, **hide** certain segments always, and **choose** how many lines the prompt takes up. Given your configuration, the content shown and the colors it's shown in **changes based on** which user is logged in, whether the previous command succeeded, and whether you're in a Git repo — and, if so, the Git status.
 
 :::tip TRY IT OUT!
 The best way to get a sense of Hometown Prompt, other than installing it, is to play with the
@@ -36,7 +36,7 @@ Or go completely custom!
 The window title in the screenshots above is thanks to [zsh-window-title](https://github.com/olets/zsh-window-title)
 :::
 
-## What all is shown?
+## What data is represented?
 
 Always:
 
