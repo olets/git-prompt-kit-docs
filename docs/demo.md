@@ -1,16 +1,16 @@
 # Interactive Demo & Configurator
 
+On this page you can see how Hometown Prompt responds to [context](#context) (user, host, Git status, etc).
+
+You can also experiment with [customizing your configuration](#configuration).
+
+:::tip
+No custom configuration is required. Hometown Prompt works right out of the box.
+:::
+
 [[toc]]
 
-&nbsp;
-
 <!-- DUPE demo.md, options.md -->
-
-Read about Hometown Prompt's options on the [Options page](./options.md). Read about Git Prompt Kit's options in the [Git Prompt Kit's options documentation](https://git-prompt-kit.olets.dev/options.html).
-
-Play with [configuration](#configuration) and [context](#context) to see how they affect the prompt.
-
-Hometown Prompt is made almost entirely of [Git Prompt Kit](https://git-prompt-kit.olets.dev) components. So almost all of configuration —color customization, symbol customization, dimming vs hiding inactive elements, the number of path segments shows, etc— is done by configuring through Git Prompt Kit. (Git Prompt Kit is bundled with Hometown Prompt, so no additional download is necessary.)
 
 <div style="
   background-color: var(--c-bg);
@@ -29,50 +29,6 @@ All custom configuration appears here, ready for copying and pasting into your `
 
 <ResetOptionsComponent/>
 </div>
-
-<div id="configuration"></div>
-
-## Hometown Prompt Configuration
-
-### Content Options
-
-See [Options](./options.md) for descriptions.
-
-<OptionsConfigurationComponent group="hometown prompt content"/>
-
-### Layout Options
-
-See [Options](./options.md) for descriptions.
-
-<OptionsConfigurationComponent group="hometown prompt layout"/>
-
-\* Git ref info is branch or commit, ahead/behind counts, remote name(s), and tag. See the [`GIT_PROMPT_KIT_REF` docs](https://git-prompt-kit.olets.dev/components.html).
-
-## Git Prompt Kit Configuration
-
-### Behavior Options
-
-See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for descriptions.
-
-<OptionsConfigurationComponent group="behavior"/>
-
-### Color Options
-
-See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for descriptions.
-
-<OptionsConfigurationComponent group="color"/>
-
-### Content Options
-
-See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for descriptions.
-
-<OptionsConfigurationComponent group="content"/>
-
-### Symbol Options
-
-See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for descriptions.
-
-<OptionsConfigurationComponent group="symbol"/>
 
 ## Context
 
@@ -107,3 +63,51 @@ See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/o
 ### Extended Git status
 
 <ContextConfigurationComponent group="Extended Git status"/>
+
+<div id="configuration"></div>
+
+## Hometown Prompt Configuration
+
+For detailed documentation of these options, see the [Options page](./options.md).
+
+### Content Options
+
+See [Options > Content](./options.md#content) for details.
+
+<OptionsConfigurationComponent group="hometown prompt content"/>
+
+### Layout Options
+
+See [Options > Layout](./options.md#layout) for details.
+
+<OptionsConfigurationComponent group="hometown prompt layout"/>
+
+\* Git ref info is branch or commit, ahead/behind counts, remote name(s), and tag. See the [`GIT_PROMPT_KIT_REF` docs](https://git-prompt-kit.olets.dev/components.html).
+
+## Git Prompt Kit Configuration
+
+Hometown Prompt is made almost entirely of [Git Prompt Kit](https://git-prompt-kit.olets.dev) components. So almost all of configuration —color customization, symbol customization, dimming vs hiding inactive elements, the number of path segments shows, etc— is done by configuring through Git Prompt Kit. (Git Prompt Kit is bundled with Hometown Prompt, so no additional download is necessary.) For detailed documentations of these options, see the [Git Prompt Kit's options documentation](https://git-prompt-kit.olets.dev/options.html).
+
+### Behavior Options
+
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for details.
+
+<OptionsConfigurationComponent group="behavior"/>
+
+### Color Options
+
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for details.
+
+<OptionsConfigurationComponent group="color"/>
+
+### Content Options
+
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for details.
+
+<OptionsConfigurationComponent group="content"/>
+
+### Symbol Options
+
+See [Git Prompt Kit's options' documentation](https://git-prompt-kit.olets.dev/options.html) for details.
+
+<OptionsConfigurationComponent group="symbol"/>
