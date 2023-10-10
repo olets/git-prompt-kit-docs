@@ -14,7 +14,7 @@ The best way to get a sense of Hometown Prompt, other than installing it, is to 
 🎨 [interactive web demo](./demo.md) 🎨
 :::
 
-Here are three static examples to start with, using the default colors and default symbol sets. In each, Hometown Prompt is telling us that we're logged in as one of our usual users on one of our usual hosts, the user is not root, the previous command succeeded, the current directory is the Git repo `hometown-prompt`, the branch `main` is checked out, `main` pushes and pulls from `origin/main`, we're 15 commits ahead of the remote, there are seven stashes, and there are three untracked files.
+Here are some static examples to start with, using the default colors and default symbol sets. In each, Hometown Prompt is telling us that we're logged in as one of our usual users on one of our usual hosts, the user is not root, the previous command succeeded, the current directory is the Git repo `hometown-prompt`, the branch `main` is checked out, `main` pushes and pulls from `origin/main`, we're 15 commits ahead of the remote, there are seven stashes, and there are three untracked files.
 
 Default (Git ref on first line, no inactive Git ref segments, no extended Git status, default symbols, inactive Git status segments visible)
 
@@ -27,6 +27,10 @@ More concise (inactive Git status segments hidden, active extended Git status se
 Less concise (Git ref and status each on their own line, inactive Git ref segments visible, active extended Git status segments visible, inactive Git status segments hidden, verbose default symbols)
 
 ![Hometown Prompt screenshot, default configuration](/images/hometown-prompt-long.png)
+
+Or go completely custom!
+
+![Hometown Prompt screenshot, custom configuration](/images/hometown-prompt-custom.png)
 
 :::tip Something else to try
 The window title in the screenshots above is thanks to [zsh-window-title](https://github.com/olets/zsh-window-title)
