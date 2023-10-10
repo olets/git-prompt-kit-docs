@@ -99,9 +99,10 @@ export default {
 
           <td>{{ option?.type }}</td>
 
-          <td v-if="hasNotes()">
-            {{ option?.notes }}
-          </td>
+          <td
+            v-if="hasNotes()"
+            v-html="option?.notes"
+          />
 
           <td>
             <InputComponent
