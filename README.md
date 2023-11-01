@@ -2,6 +2,8 @@
 
 Documentation for [Git Prompt Kit](https://github.com/olets/git-prompt-kit)
 
+Read the documentation at <https://git-prompt-kit.olets.dev/>.
+
 <!-- TOC -->
 - [Contributing](#contributing)
 - [License](#License)
