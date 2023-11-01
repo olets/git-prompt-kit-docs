@@ -4,9 +4,11 @@ Documentation for [Git Prompt Kit](https://github.com/olets/git-prompt-kit)
 
 Read the documentation at <https://git-prompt-kit.olets.dev/>.
 
-<!-- TOC -->
-- [Contributing](#contributing)
-- [License](#License)
+&nbsp;
+
+> 🎉 The next major version of Git Prompt Kit is in the works, complete with a brand new documentation site. Take a look in the [`next` branch](https://github.com/olets/git-prompt-kit-docs/tree/next)
+
+&nbsp;
 
 ## Contributing
 
