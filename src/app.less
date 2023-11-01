@@ -300,18 +300,21 @@ body {
 
 html {
   font-size: 16px;
+  font-family: 'Taviraj', serif;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  font-family: 'Taviraj', serif;
-  font-size: 18rem / 16;
-  font-weight: 327;
   justify-content: space-between;
   margin: 0 auto;
   max-width: 800px;
   padding: 40px;
+}
+
+main {
+  font-size: 18rem / 16;
+  font-weight: 327;
 }
 
 h1 {
@@ -436,5 +439,20 @@ ul {
 
   li {
     margin-bottom: 5px;
+  }
+}
+
+.banner {
+  background: cornsilk;
+  font-weight: 700;
+  line-height: 1.5;
+  font-size: 20rem / 16;
+  border: 3px solid var(--color-unstaged);
+  margin: (120rem / 16) (20rem / 16) (40rem / 16);
+  text-align: center;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 calc(3px + 4px) var(--color-unstaged), 0 0 #000;
+
+  a {
+    display: inline;
   }
 }
