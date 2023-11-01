@@ -51,9 +51,10 @@ export default {
     :style="`background-color: ${hexColor(
       getValue(store.context.data.terminalBackgroundColor)
     )}; color: ${hexColor(getValue(store.context.data.terminalTextColor))};
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-    border-radius: .25rem;`"
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      border-radius: .25rem;`"
+    aria-live="polite"
   >
     <div
       :style="`${

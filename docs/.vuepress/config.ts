@@ -106,6 +106,12 @@ export default defineUserConfig({
     [
       "script",
       {
+        src: "/js/accessibility.js",
+      },
+    ],
+    [
+      "script",
+      {
         src: "/js/analytics.js",
       },
     ],
