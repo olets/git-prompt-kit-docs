@@ -10,6 +10,10 @@ These are the docs for v4, which is not yet released.
 
 ### Spaceship
 
+:::warning
+Last tested with Starship v3.11.2. Contributions are welcome.
+:::
+
 Git Prompt Kit comes with a [Spaceship](https://github.com/denysdovhan/spaceship-prompt) section which shows `GIT_PROMPT_KIT_REF`, `GIT_PROMPT_KIT_STATUS_EXTENDED`, `GIT_PROMPT_KIT_STATUS`, and `GIT_PROMPT_KIT_ACTION`. It has been clocked at 50% faster than Spaceship's built in Git section.\*
 
 ```shell
@@ -32,9 +36,13 @@ GIT_PROMPT_KIT_SHOW_INACTIVE_STATUS=0
 # Load denysdovhan/spaceship-prompt
 ```
 
-See <https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Options.md#order> for Spaceship's default order.
+See <https://spaceship-prompt.sh/zh/config/prompt/#Prompt-order> for Spaceship's default order.
 
 ### Starship
+
+:::warning
+Last tested with Starship v0.43 or perhaps a close earlier minor version. Contributions are welcome.
+:::
 
 You can use Git Prompt Kit with [Starship](https://starship.rs/) (tested with zsh). The Git Prompt Kit Starship module has been clocked at about 10% to 30% faster than Starship's built in Git module.
 
