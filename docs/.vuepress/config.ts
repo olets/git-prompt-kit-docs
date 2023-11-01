@@ -138,18 +138,18 @@ export default defineUserConfig({
     navbar: [
       {
         text: "Changelog",
-        link: "https://github.com/olets/git-prompt-kit/blob/main/CHANGELOG.md",
+        link: "https://github.com/olets/git-prompt-kit/blob/v4/CHANGELOG.md",
         target: "_self",
       },
       {
         text: "License",
-        link: "https://github.com/olets/git-prompt-kit/blob/main/LICENSE",
+        link: "https://github.com/olets/git-prompt-kit/blob/v4/LICENSE",
         target: "_self",
       },
       // Manual instead of with defaultTheme's `repo` so that we can specify the `target`
       {
         text: "GitHub",
-        link: "https://github.com/olets/git-prompt-kit",
+        link: "https://github.com/olets/git-prompt-kit/tree/v4",
         target: "_self",
       },
     ],
