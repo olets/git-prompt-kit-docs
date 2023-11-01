@@ -1,9 +1,5 @@
 # Installation
 
-:::warning
-These are the docs for v4, which is not yet released.
-:::
-
 Shell plugin manager is the recommended installation method.
 
 ## With a shell plugin manager
