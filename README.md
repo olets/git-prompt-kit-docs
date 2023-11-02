@@ -1,4 +1,4 @@
-# git-prompt-kit-docs
+# git-prompt-kit-docs ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/olets/hometown-prompt-docs) ![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/olets/hometown-prompt-docs/latest)
 
 Documentation for [Git Prompt Kit](https://github.com/olets/git-prompt-kit)
 
