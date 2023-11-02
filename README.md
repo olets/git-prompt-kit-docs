@@ -2,6 +2,8 @@
 
 Documentation for [hometown-prompt](https://github.com/olets/hometown-prompt)
 
+Read the documentation at <https://hometown-prompt.olets.dev/>.
+
 <!-- TOC -->
 - [Contributing](#contributing)
 - [License](#License)
