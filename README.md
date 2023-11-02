@@ -1,4 +1,4 @@
-# hometown-prompt-docs <!-- ![GitHub release (latest by date)](https://img.shields.io/github/v/release/olets/hometown-prompt-docs) ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/olets/hometown-prompt-docs/latest) -->
+# hometown-prompt-docs ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/olets/hometown-prompt-docs?include_prereleases&label=pre-release) ![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/olets/hometown-prompt-docs/latest?include_prereleases)
 
 Documentation for [hometown-prompt](https://github.com/olets/hometown-prompt)
 
