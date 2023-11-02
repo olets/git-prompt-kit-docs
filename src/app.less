@@ -135,9 +135,9 @@ input[type="color"][value=""] {
 }
 #local {
   color: var(--color-remote);
-  :not(.checked-branch) &,
-  .checked-upstream & {
-    display: none;
+  display: none;
+  .checked-branch:not(.checked-upstream) & {
+    display: inline-block;
   }
 }
 #upstream {
