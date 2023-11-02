@@ -1,4 +1,4 @@
-# hometown-prompt-docs ![GitHub release (latest by date)](https://img.shields.io/github/v/release/olets/hometown-prompt-docs)
+# hometown-prompt-docs
 
 Documentation for [hometown-prompt](https://github.com/olets/hometown-prompt)
 
@@ -6,7 +6,7 @@ Read the documentation at <https://hometown-prompt.olets.dev/>.
 
 &nbsp;
 
-> 🎉 The next major version of Git Prompt Kit is in the works, complete with a brand new documentation site. Take a look in the [`next` branch](https://github.com/olets/git-prompt-kit-docs/tree/next)
+> 🎉 The next version of Hometown Prompt is in the works, complete with a brand new documentation site. Take a look in the [`next` branch](https://github.com/olets/git-prompt-kit-docs/tree/next)
 
 &nbsp;
 
