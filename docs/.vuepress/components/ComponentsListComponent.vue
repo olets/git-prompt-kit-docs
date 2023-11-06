@@ -73,7 +73,11 @@ export default {
             label: "GIT_PROMPT_KIT_BEHIND",
             componentName: "GitBehindComponent",
           },
-          { label: "GIT_PROMPT_KIT_CHAR", componentName: "CharComponent" },
+          {
+            label: "GIT_PROMPT_KIT_CHAR",
+            componentName: "CharComponent",
+            notes: "*",
+          },
           {
             label: "GIT_PROMPT_KIT_CONFLICTED",
             componentName: "ConflictedComponent",
@@ -164,10 +168,16 @@ export default {
         v-for="component in components[0]"
         :key="component.componentName"
       >
-        <td>{{ component.label }}</td>
+        <td>
+          {{ component.label }}
+          <span v-if="component.notes">{{ component.notes }}</span>
+        </td>
 
         <td><component :is="component.componentName" /></td>
       </tr>
     </tbody>
   </table>
+
+  * Printed with
+  <a href="https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html">prompt expansion</a>. The default <code>%%</code>, for example, becomes <code>%</code>
 </template>

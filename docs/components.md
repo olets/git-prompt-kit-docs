@@ -66,6 +66,6 @@ PROMPT='$GIT_PROMPT_KIT_CWD ${GIT_PROMPT_KIT_HEAD:+$GIT_PROMPT_KIT_HEAD }$GIT_PR
 
 ## Other components
 
-| Name                   | Type   | Description                               |
-| ---------------------- | ------ | ----------------------------------------- |
-| `GIT_PROMPT_KIT_DIRTY` | number | Equal to `1` if the Git worktree is dirty |
+| Name                   | Type   | Description                                                    |
+| ---------------------- | ------ | -------------------------------------------------------------- |
+| `GIT_PROMPT_KIT_DIRTY` | number | Equal to `1` if the Git working tree is dirty, otherwise unset |
