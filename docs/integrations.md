@@ -6,12 +6,10 @@ These are the docs for v4, which is not yet released.
 
 [[toc]]
 
-> These are proof of concept. I do not use Spaceship or Starship and these were last tested in 2020. Contributions are welcome.
-
 ### Spaceship
 
 :::warning
-Last tested with Starship v3.11.2. Contributions are welcome.
+Last tested with Spaceship v3.11.2. Contributions are welcome.
 :::
 
 Git Prompt Kit comes with a [Spaceship](https://github.com/denysdovhan/spaceship-prompt) section which shows `GIT_PROMPT_KIT_REF`, `GIT_PROMPT_KIT_STATUS_EXTENDED`, `GIT_PROMPT_KIT_STATUS`, and `GIT_PROMPT_KIT_ACTION`. It has been clocked at 50% faster than Spaceship's built in Git section.\*
