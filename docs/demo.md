@@ -16,6 +16,8 @@ Adjust [Configuration](#configuration) and [Context](#context), and scroll back 
 
 <ComponentsListComponent/>
 
+<div style="position: relative">
+
 ## Configuration
 
 <div style="
@@ -52,6 +54,8 @@ All configuration changes you make below will be listed here, ready for copying 
 <ResetOptionsComponent/>
 
 ## Context
+
+</div>
 
 ### Terminal
 
