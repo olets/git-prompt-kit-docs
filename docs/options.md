@@ -32,8 +32,8 @@ git-prompt-kit-config
 
 Colors can be
 
-- one of zsh's eight color names (`black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan` and `white`; see http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Character-Highlighting)
-- an integer 1-255 for an 8-bit color (see https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
+- one of zsh's eight color names (`black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan` and `white`; see <http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Character-Highlighting>)
+- an integer 1-255 for an 8-bit color (see <https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit>)
 - or a #-prefixed 3- or 6-character hexadecimal value for 24-bit color (e.g. `#fff`, `#34d5eb`)
 
 Support varies by terminal emulator.
