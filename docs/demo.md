@@ -26,7 +26,7 @@ Adjust [Configuration](#configuration) and [Context](#context), and scroll back 
   top: var(--navbar-height);
 ">
 
-All custom configuration appears here, ready for copying and pasting into your `.zshrc`.
+All configuration changes you make below will be listed here, ready for copying and pasting into your `.zshrc`.
 
   <ConfigComponent/>
 
