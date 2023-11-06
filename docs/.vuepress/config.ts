@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { defaultTheme, defineUserConfig } from "vuepress";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+import { shikiPlugin } from "@vuepress/plugin-shiki";
 
 export default defineUserConfig({
   // https://v2.vuepress.vuejs.org/reference/config.html#head
@@ -173,13 +174,16 @@ export default defineUserConfig({
   }),
 
   plugins: [
-    [
-      // https://v2.vuepress.vuejs.org/reference/plugin/docsearch.html
-      docsearchPlugin({
-        apiKey: process.env.SEARCH_KEY,
-        appId: process.env.APPLICATION_ID,
-        indexName: process.env.INDEX_NAME,
-      }),
-    ],
+    // https://v2.vuepress.vuejs.org/reference/plugin/docsearch.html
+    docsearchPlugin({
+      apiKey: process.env.SEARCH_KEY,
+      appId: process.env.APPLICATION_ID,
+      indexName: process.env.INDEX_NAME,
+    }),
+    // https://v2.vuepress.vuejs.org/reference/plugin/shiki.html
+    shikiPlugin({
+      // only github-dark and slack-dark pass color accessibility
+      theme: "github-dark",
+    }),
   ],
 });
