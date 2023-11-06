@@ -4,19 +4,19 @@
 These are the docs for v4, which is not yet released.
 :::
 
-Use Git Prompt Kit to build the high-performance Git-aware prompt of your dreams.
+The following are based on popular Git-aware prompts. These have not been thoroughly battle tested — they are not "supported official Git Prompt Kit themes" but rather starting points for those new to customizing the zsh prompt.
 
-Here are some examples to get you started, based on existing Git-aware prompts.These have not been thoroughly battle tested — they are not "Git Prompt Kit themes" but rather starting points for those new to customizing the zsh prompt.
+:::tip
+For a pre-made, polished, Git Prompt Kit-powered zsh prompt, check out [Hometown](https://github.com/olets/hometown-prompt).
+:::
 
-**For a premade polished Git Prompt Kit-powered zsh prompt, check out [Hometown Prompt](https://github.com/olets/hometown-prompt).**
-
-> Note: in the examples below, the construct `${x:+y}` is "print `$y` if `$x` is not null". In the context of prompt building, this is useful for conditionally adding spaces: `${x:+$x }` is "print `$x ` if `$x` is not null".
+:::tip
+In the examples below, the construct `${x:+y}` is "print `$y` if `$x` is not null". In the context of prompt building, this is useful for conditionally adding spaces: `${x:+$x }` is "print `$x ` if `$x` is not null".
+:::
 
 [[toc]]
 
----
-
-### [git-radar](https://github.com/michaeldfallen/git-radar)-like
+## [git-radar](https://github.com/michaeldfallen/git-radar)-like
 
 ![](/images/git-prompt-kit-git-radar.jpg)
 
@@ -64,7 +64,7 @@ PROMPT+='${GIT_PROMPT_KIT_UNTRACKED:+$GIT_PROMPT_KIT_UNTRACKED }'
 PROMPT+='${GIT_PROMPT_KIT_STATUS_EXTENDED:+$GIT_PROMPT_KIT_STATUS_EXTENDED }'
 ```
 
-### [oh-my-git](https://github.com/arialdomartini/oh-my-git)-like
+## [oh-my-git](https://github.com/arialdomartini/oh-my-git)-like
 
 omg's oppa-lana-style. Requires a Font Awesome-patched font, see <https://github.com/gabrielelana/awesome-terminal-fonts/tree/patching-strategy/patched>
 
@@ -133,7 +133,7 @@ PROMPT+='$GIT_PROMPT_KIT_CWD '
 PROMPT+='$GIT_PROMPT_KIT_CHAR '
 ```
 
-### [Pure](https://github.com/sindresorhus/pure)-like
+## [Pure](https://github.com/sindresorhus/pure)-like
 
 ![](/images/git-prompt-kit-pure.jpg)
 
@@ -179,7 +179,7 @@ PROMPT+=$'\n'
 PROMPT+='$GIT_PROMPT_KIT_CHAR '
 ```
 
-### [Spaceship](https://github.com/denysdovhan/spaceship-prompt)-like
+## [Spaceship](https://github.com/denysdovhan/spaceship-prompt)-like
 
 Git symbol requires a Powerline-patched font, see https://github.com/powerline/fonts
 
