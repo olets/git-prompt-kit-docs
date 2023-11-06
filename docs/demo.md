@@ -4,6 +4,10 @@
 These are the docs for v4, which is not yet released.
 :::
 
+:::tip
+Another convenient way to experiment with Git Prompt Kit is to install (even temporarily!) [Hometown](https://github.com/olets/hometown-prompt), a Git Prompt Kit-powered zsh prompt.
+:::
+
 [[toc]]
 
 ## Components
