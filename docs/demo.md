@@ -6,6 +6,16 @@ These are the docs for v4, which is not yet released.
 
 [[toc]]
 
+## Components
+
+These change according to the [Context](./context.md) and [Configuration](./configuration.md). Adjust those, and come back here to see the result.
+
+:::tip
+Adjust [Configuration](#configuration) and [Context](#context), and scroll back here to see the result.
+:::
+
+<ComponentsListComponent/>
+
 ## Configuration
 
 <div style="
@@ -74,9 +84,3 @@ All custom configuration appears here, ready for copying and pasting into your `
 ### Extended Git status
 
 <ContextConfigurationComponent group="Extended Git status"/>
-
-## Components
-
-These change according to the [Context](./context.md) and [Configuration](./configuration.md).
-
-<ComponentsListComponent/>
