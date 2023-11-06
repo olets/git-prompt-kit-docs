@@ -1,5 +1,9 @@
 # Options
 
+:::warning
+These are the docs for v3, which is not yet released.
+:::
+
 <!-- DUPE demo.md, options.md -->
 
 Hometown Prompt is made almost entirely of [Git Prompt Kit](https://git-prompt-kit.olets.dev) components. So almost all of configuration —color customization, symbol customization, dimming vs hiding inactive elements, the number of path segments shows, etc— is done by configuring through Git Prompt Kit. (Git Prompt Kit is bundled with Hometown Prompt, so no additional download is necessary.)
