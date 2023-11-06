@@ -159,6 +159,7 @@ export default defineUserConfig({
         link: "/",
       },
       "/installation.md",
+      "/usage.md",
       "/components.md",
       "/options.md",
       "/demo.md",
