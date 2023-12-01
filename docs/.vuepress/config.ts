@@ -153,6 +153,11 @@ export default defineUserConfig({
         link: "https://github.com/olets/git-prompt-kit/tree/v4",
         target: "_self",
       },
+      {
+        text: "olets.dev",
+        link: "https://olets.dev",
+        target: "_self",
+      },
     ],
     sidebar: [
       {
