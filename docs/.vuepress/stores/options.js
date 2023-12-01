@@ -5,7 +5,7 @@ export const optionsData = {
   // GROUP: Hometown Prompt content
   HOMETOWN_PROMPT_CUSTOM: {
     description:
-      "Displayed between the time and the working directory. In the terminal, this is printed with <a href='https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html'>prompt expansion</a> with <code>PROMPT_SUBST</code> and <code>PROMPT_PERCENT</code>",
+      "Displayed between the time and the working directory. In the terminal, this is printed with <a href='https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html'>prompt expansion</a> with <code>PROMPT_SUBST</code> and <code>PROMPT_PERCENT</code>. Need it to be dynamic? Define it in a <code>precmd</code> hook.",
     group: "Hometown Prompt content",
     value: { default: "" },
     notes:
