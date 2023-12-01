@@ -1,32 +1,36 @@
 # Usage
 
-Git Prompt Kit takes the work out of add high-performance Git information to your custom prompt.
+Git Prompt Kit takes the work out of adding high-performance Git information to your custom zsh theme.
 
-Say you want your prompt to show the current working directory; the Git branch if you're in a Git repo and on a branch, the Git commit if you're in a repo and not on a branch, colored if the working tree is dirty; and `%` when you aren't root but a `#` when you are, colored depending on whether the previous command succeeded or failed.
+Say you want your prompt to show the current working directory; the Git branch if you're in a Git repo and on a branch, the Git commit if you're in a repo and not on a branch, colored if the working tree is dirty; and `%` when you aren't root but a `#` when you are, colored depending on whether the previous command succeeded or failed. The vanilla way is add a `preexec` hook, and write some logic to get the branch with a commit SHA fallback. That might look like the example below.
 
 :::tip
-In the examples below,
-
-- the construct `${x:+y}` is "print `$y` if `$x` is not null". In the context of prompt building, this is useful for conditionally adding spaces: `${x:+$x }` is "print `$x ` if `$x` is not null".
-- colors are always customized. That's never required. In the example which doesn't use Git Prompt Kit, you could leave out the coloring and have a monochrome prompt. In the examples which use Git Prompt Kit, you could leave out the color definitions and you'd get the [default Git Prompt Kit colors](/options.html#color-options).
-  :::
-
-You could add a `preexec` hook, and write some logic to get the branch with a commit SHA fallback.
+The following examples use the construct `${x:+y}`. That's "`$y` if `$x` is not null". In the context of prompt building, this is useful for conditionally adding spaces: `${x:+$x }` is "`$x ` if `$x` is not null".
+:::
 
 ```shell
 # ~/.zshrc
+
 set_prompt_vars() {
   # define prompt_git_head
   # define prompt_git_dirty only if the working tree is dirty
 }
+
 autoload -Uz add-zsh-hook
-add-zsh-hook precmd set_git_head
-prompt_directory_color=#…
-prompt_git_head_color=#…
-prompt_failure_color=#…
-prompt_success_color=#…
+add-zsh-hook precmd set_prompt_vars
+
+prompt_directory_color=your_value_here
+prompt_git_head_color=your_value_here
+prompt_failure_color=your_value_here
+prompt_success_color=your_value_here
+
+# directory
 PROMPT='%F{$prompt_directory_color}%1d%f '
+
+# Git HEAD
 PROMPT+='${prompt_git_head:+ ${prompt_git_dirty:+%F{$prompt_git_head_color}}$prompt_git_head%f }'
+
+# prompt char
 PROMPT+='%F{%(?.$prompt_success_color.$prompt_failure_color)}%(!.#.$)%f '
 ```
 
@@ -36,14 +40,19 @@ Or you could use Git Prompt Kit's Git HEAD component. It's colored when the work
 
 ```shell
 # ~/.zshrc
-# optional
-GIT_PROMPT_KIT_COLOR_HEAD=#…
-# load Git Prompt Kit
-prompt_directory_color=#…
-prompt_failure_color=#…
-prompt_success_color=#…
+
+# load Git Prompt Kit and then
+
+prompt_directory_color=your_value_here
+prompt_failure_color=your_value_here
+prompt_success_color=your_value_here
+
+# directory
 PROMPT='%F{$prompt_directory_color}%1d%f '
+
 PROMPT+='${GIT_PROMPT_KIT_HEAD:+$GIT_PROMPT_KIT_HEAD }'
+
+# prompt char
 PROMPT+='%F{%(?.$prompt_success_color.$prompt_failure_color)}%(!.#.$)%f '
 ```
 
@@ -51,15 +60,16 @@ Using Git Prompt Kit's current working directory component will add some fancine
 
 ```shell
 # ~/.zshrc
-# optional
-GIT_PROMPT_KIT_COLOR_CWD=#…
-# optional
-GIT_PROMPT_KIT_COLOR_HEAD=#…
-# load Git Prompt Kit
-prompt_failure_color=#…
-prompt_success_color=#…
+
+# load Git Prompt Kit and then
+
+prompt_failure_color=your_value_here
+prompt_success_color=your_value_here
+
 PROMPT='$GIT_PROMPT_KIT_CWD '
 PROMPT+='${GIT_PROMPT_KIT_HEAD:+$GIT_PROMPT_KIT_HEAD }'
+
+# prompt char
 PROMPT+='%F{%(?.$prompt_success_color.$prompt_failure_color)}%(!.#.$)%f '
 ```
 
@@ -67,24 +77,41 @@ Using Git Prompt Kit's prompt character component leaves it all cleaned up.
 
 ```shell
 # ~/.zshrc
-# optional
-GIT_PROMPT_KIT_COLOR_CWD=#…
-# optional
-GIT_PROMPT_KIT_COLOR_FAILED=#…
-# optional
-GIT_PROMPT_KIT_COLOR_HEAD=#…
-# optional
-GIT_PROMPT_KIT_COLOR_SUCCEEDED=#…
-# load Git Prompt Kit
+
+# load Git Prompt Kit and then
+
 PROMPT='$GIT_PROMPT_KIT_CWD '
 PROMPT+='${GIT_PROMPT_KIT_HEAD:+$GIT_PROMPT_KIT_HEAD }'
 PROMPT+='$GIT_PROMPT_KIT_CHAR '
 ```
 
-In the above examples, the entire prompt could be built out of Git Prompt Kit components. But as the middle two show, using Git Prompt Kit components doesn't limit you to _only_ using Git Prompt Kit components. Say for example you wanted to add the time, and to put the prompt character on its own line. Do just as you would if you didn't have Git Prompt Kit:
+:::tip
+The above examples use [Git Prompt Kit's default colors](/options.html#color-options). But they can all be customized to your liking:
 
 ```shell
-PROMPT='%* '
+GIT_PROMPT_KIT_COLOR_CWD=your_value_here
+GIT_PROMPT_KIT_COLOR_FAILED=your_value_here
+GIT_PROMPT_KIT_COLOR_HEAD=your_value_here
+GIT_PROMPT_KIT_COLOR_SUCCEEDED=your_value_here
+```
+
+:::
+
+Using Git Prompt Kit components doesn't limit you to _only_ using Git Prompt Kit components. Say for example you wanted to add the time, a note, and to put the prompt character on its own line. Do just as you would if you didn't have Git Prompt Kit:
+
+```shell
+# ~/.zshrc
+
+set_prompt_vars() {
+  typeset -g MY_COOL_PROMPT_CONTENT=your_value_here
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd set_prompt_vars
+
+# load Git Prompt Kit and then
+
+PROMPT='%* hello world ${MY_COOL_PROMPT_CONTENT:+$MY_COOL_PROMPT_CONTENT }'
 PROMPT+='$GIT_PROMPT_KIT_CWD'
 PROMPT+='${GIT_PROMPT_KIT_HEAD:+ $GIT_PROMPT_KIT_HEAD}'
 PROMPT+=$'\n'
