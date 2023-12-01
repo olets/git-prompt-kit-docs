@@ -151,6 +151,11 @@ export default defineUserConfig({
         link: "https://github.com/olets/hometown-prompt",
         target: "_self",
       },
+      {
+        text: "olets.dev",
+        link: "https://olets.dev",
+        target: "_self",
+      },
     ],
     sidebar: [
       {
