@@ -1,14 +1,8 @@
-# hometown-prompt-docs ![GitHub release (latest by date)](https://img.shields.io/github/v/release/olets/hometown-prompt-docs) ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/olets/hometown-prompt-docs/latest)
+# hometown-prompt-docs ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/olets/hometown-prompt-docs?include_prereleases&label=pre-release) ![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/olets/hometown-prompt-docs/latest?include_prereleases)
 
 Documentation for [hometown-prompt](https://github.com/olets/hometown-prompt)
 
 Read the documentation at <https://hometown-prompt.olets.dev/>.
-
-&nbsp;
-
-> 🎉 The next version of Hometown Prompt is in the works, complete with a brand new documentation site. Take a look in the [`next` branch](https://github.com/olets/git-prompt-kit-docs/tree/next)
-
-&nbsp;
 
 ## Contributing
 
@@ -38,7 +32,6 @@ Under the following terms
 - Ethics - You must abide by the ethical standards specified in the Hippocratic License 3 with Ecocide, Extractive Industries, US Tariff Act, Mass Surveillance, Military Activities, and Media modules.
 - Preserve terms — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 - No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
-
 
 ## Acknowledgments
 
