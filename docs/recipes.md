@@ -1,9 +1,5 @@
 # Recipes
 
-:::warning
-These are the docs for v4, which is not yet released.
-:::
-
 The following are based on popular Git-aware prompts. These have not been thoroughly battle tested — they are not "supported official Git Prompt Kit themes" but rather starting points for those new to customizing the zsh prompt.
 
 :::tip

@@ -1,8 +1,4 @@
-# Git Prompt Kit ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/olets/git-prompt-kit?include_prereleases&label=pre-release) ![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/olets/git-prompt-kit/latest?include_prereleases)
-
-:::warning
-These are the docs for v4, which is not yet released.
-:::
+# Git Prompt Kit ![GitHub release (latest by date)](https://img.shields.io/github/v/release/olets/git-prompt-kit) ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/olets/git-prompt-kit/latest)
 
 ![splash card: the text 'GIT PROMPT KIT' as green neon lettering](/images/git-prompt-kit.png)
 
