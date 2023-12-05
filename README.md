@@ -32,7 +32,7 @@ cp .env{.example,}
 and fill in values in `.env`. Then
 
 ```shell
-yarn algolia:index
+pnpm algolia:index
 ```
 
 ## Contributing
