@@ -1,5 +1,5 @@
 {
-  "buildCommand": "yarn build",
-  "installCommand": "yarn install",
-  "outputDirectory": "dist"
+  "buildCommand": "pnpm docs:build",
+  "installCommand": "pnpm install",
+  "outputDirectory": "docs/.vuepress/dist"
 }

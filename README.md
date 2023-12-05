@@ -4,11 +4,36 @@ Documentation for [Git Prompt Kit](https://github.com/olets/git-prompt-kit)
 
 Read the documentation at <https://git-prompt-kit.olets.dev/>.
 
-&nbsp;
+## Requirements
 
-> 🎉 The next major version of Git Prompt Kit is in the works, complete with a brand new documentation site. Take a look in the [`next` branch](https://github.com/olets/git-prompt-kit-docs/tree/next)
+- [asdf](https://asdf-vm.com/) and its Node.js plugin
+- [pnpm](https://pnpm.io/)
 
-&nbsp;
+## Dev
+
+### Setup
+
+```shell
+pnpm install --shamefully-hoist
+```
+
+### Serve and watch
+
+```shell
+pnpm docs:dev
+```
+
+### Update Algolia index
+
+```shell
+cp .env{.example,}
+```
+
+and fill in values in `.env`. Then
+
+```shell
+yarn algolia:index
+```
 
 ## Contributing
 
@@ -38,7 +63,6 @@ Under the following terms
 - Ethics - You must abide by the ethical standards specified in the Hippocratic License 3 with Ecocide, Extractive Industries, US Tariff Act, Mass Surveillance, Military Activities, and Media modules.
 - Preserve terms — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 - No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
-
 
 ## Acknowledgments
 
