@@ -4,7 +4,7 @@ require("dotenv").config();
 const config = {
   // eslint-disable-next-line no-undef
   index_name: process.env.INDEX_NAME,
-  start_urls: ["https://next.hometown-prompt.olets.dev/"],
+  start_urls: ["https://hometown-prompt.olets.dev/"],
   stop_urls: [],
   selectors: {
     lvl0: {
