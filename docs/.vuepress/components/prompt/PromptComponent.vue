@@ -68,8 +68,6 @@ export default {
       >
         <UserhostComponent />
 
-        <div>4:07:47</div>
-
         <CustomComponent />
 
         <CwdComponent />

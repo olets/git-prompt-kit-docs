@@ -46,8 +46,7 @@ Always:
 
 - The **current user**, if not one you've configured as hidden, and whether they are **root**
 - The **current host**, if not one you've configured as hidden
-- The **time** the prompt was drawn
-- **User-configured content**
+- The **time** the prompt was drawn and/or **user-configured content**
 - The **current working directory** (the maximum number of path segments above the CWD is configurable)
 - Whether the **previous command** succeeded
 
