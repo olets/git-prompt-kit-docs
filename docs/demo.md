@@ -1,9 +1,5 @@
 # Interactive Demo & Configurator
 
-:::warning
-These are the docs for v3, which is not yet released.
-:::
-
 On this page you can see how Hometown Prompt responds to [context](#context) (user, host, Git status, etc).
 
 You can also experiment with [customizing your configuration](#configuration).
