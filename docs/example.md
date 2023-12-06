@@ -1,4 +1,4 @@
-# Usage
+# Example
 
 Git Prompt Kit takes the work out of adding high-performance Git information to your custom zsh theme.
 
