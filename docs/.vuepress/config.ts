@@ -115,7 +115,7 @@ export default defineUserConfig({
   // site config
   // https://v2.vuepress.vuejs.org/guide/configuration.html#site-config
   lang: "en-US",
-  title: "git-prompt-kit",
+  title: "Git Prompt Kit",
   description:
     "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
 
