@@ -171,6 +171,7 @@ export default defineUserConfig({
       "/demo.md",
       "/integrations.md",
       "/recipes.md",
+      "/performance.md",
       "/acknowledgments.md",
     ],
     sidebarDepth: 3,
