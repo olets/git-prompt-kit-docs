@@ -155,7 +155,7 @@ export default defineUserConfig({
       },
       {
         text: "olets.dev",
-        link: "https://olets.dev",
+        link: "https://www.olets.dev",
         target: "_self",
       },
     ],

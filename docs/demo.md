@@ -8,7 +8,7 @@ Another convenient way to experiment with Git Prompt Kit is to install (even tem
 
 ## Components
 
-These change according to the [Context](./context.md) and [Configuration](./configuration.md). Adjust those, and come back here to see the result.
+These change according to the [context](#context) and [configuration](#configuration). Adjust those, and come back here to see the result.
 
 :::tip
 Adjust [Configuration](#configuration) and [Context](#context), and scroll back here to see the result.
