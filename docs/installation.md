@@ -1,16 +1,24 @@
 # Installation
 
-Shell plugin manager is the recommended installation method.
+## Package
 
-## With a shell plugin manager
+Git Prompt Kit is available on Homebrew. Run
 
-1. Install git-prompt-kit with a zsh plugin manager. Each has their own way of doing things. See your package manager's documentation or the [zsh plugin manager plugin installation procedures gist](https://gist.github.com/olets/06009589d7887617e061481e22cf5a4a).
+```shell:no-line-numbers
+brew install olets/tap/git-prompt-kit
+```
 
-   After adding the plugin to the manager, restart zsh:
+and follow the post-install instructions logged to the terminal.
 
-   ```shell:no-line-numbers
-   exec zsh
-   ```
+## Plugin
+
+You can install Git Prompt Kit with a zsh plugin manager. Each has their own way of doing things. See your package manager's documentation or the [zsh plugin manager plugin installation procedures gist](https://gist.github.com/olets/06009589d7887617e061481e22cf5a4a).
+
+After adding the plugin to the manager, it will be available in all new terminals. To use it in an already-open terminal, restart zsh in that terminal:
+
+```shell:no-line-numbers
+exec zsh
+```
 
 ## Manual
 
@@ -27,4 +35,4 @@ exec zsh
 
 ## Prompt manager
 
-You can use Git Prompt Kit to create a custom, high-performance Spaceship Git section or Starship Git module. Starting points for both are in [Integrations](integrations.md).
+You can use Git Prompt Kit to create a custom, high-performance section in your zsh prompt manager. Starting points for Spaceship and Starship are in [Integrations](integrations.md).
