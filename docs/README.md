@@ -1,6 +1,6 @@
 # Git Prompt Kit ![GitHub release (latest by date)](https://img.shields.io/github/v/release/olets/git-prompt-kit) ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/olets/git-prompt-kit/latest)
 
-![splash card: the text 'GIT PROMPT KIT' as green neon lettering](/images/git-prompt-kit.png)
+![splash card: the text 'Git Prompt Kit' in all-caps green neon lettering](/images/git-prompt-kit.png)
 
 **Git Prompt Kit** is a configurable set of components for creating feature rich, high performance Git-aware zsh prompts (aka themes) with minimal coding.
 

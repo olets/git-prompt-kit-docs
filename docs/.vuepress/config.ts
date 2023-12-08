@@ -64,13 +64,13 @@ export default defineUserConfig({
     ],
 
     // social metas
-    ["meta", { property: "og:title", content: "git-prompt-kit" }],
+    ["meta", { property: "og:title", content: "Git Prompt Kit" }],
     [
       "meta",
       {
         property: "og:description",
         content:
-          "A configurable set of components for creating feature rich, high performance Git-aware zsh prompts.",
+          "A collection of configurable, fast Git status components for custom zsh themes",
       },
     ],
     [
@@ -80,11 +80,25 @@ export default defineUserConfig({
         content: "https://git-prompt-kit.olets.dev/",
       },
     ],
-    ["meta", { property: "og:site_name", content: "git-prompt-kit" }],
+    ["meta", { property: "og:site_name", content: "Git Prompt Kit" }],
     ["meta", { property: "og:type", content: "website" }],
+    [
+      "meta",
+      {
+        property: "og:image",
+        content: "https://git-prompt-kit.olets.dev/images/git-prompt-kit.png",
+      },
+    ],
     ["meta", { property: "og:image:width", content: "1200" }],
     ["meta", { property: "og:image:height", content: "630" }],
-    ["meta", { name: "twitter:title", content: "git-prompt-kit" }],
+    [
+      "meta",
+      {
+        property: "og:image:alt",
+        content: "The text 'Git Prompt Kit' in all-caps green neon lettering",
+      },
+    ],
+    ["meta", { name: "twitter:title", content: "Git Prompt Kit" }],
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
     [
       "meta",
