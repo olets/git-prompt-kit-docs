@@ -25,6 +25,15 @@ html.dark {
   --c-tip-text-accent: #0d497d;
 }
 
+.theme-default-content h1,
+.theme-default-content h2,
+.theme-default-content h3,
+.theme-default-content h4,
+.theme-default-content h5,
+.theme-default-content h6 {
+  margin-top: 0;
+}
+
 .customized:not(:invalid) {
   background-color: cornsilk !important;
 }
