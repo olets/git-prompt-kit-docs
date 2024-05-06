@@ -178,7 +178,7 @@ export default defineUserConfig({
         text: "Introduction",
         link: "/",
       },
-      "/example.md",
+      "/examples.md",
       "/installation.md",
       "/components.md",
       "/options.md",
