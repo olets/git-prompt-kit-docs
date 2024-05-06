@@ -197,9 +197,9 @@ export default defineUserConfig({
   plugins: [
     // https://v2.vuepress.vuejs.org/reference/plugin/docsearch.html
     docsearchPlugin({
-      apiKey: process.env.SEARCH_KEY,
-      appId: process.env.APPLICATION_ID,
-      indexName: process.env.INDEX_NAME,
+      apiKey: process.env.SEARCH_KEY || "",
+      indexName: process.env.INDEX_NAME || "",
+      appId: process.env.APPLICATION_ID || "",
     }),
     // https://v2.vuepress.vuejs.org/reference/plugin/shiki.html
     shikiPlugin({
