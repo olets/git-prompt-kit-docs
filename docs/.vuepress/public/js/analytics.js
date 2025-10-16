@@ -2,27 +2,27 @@ function addTrackingToNav() {
   const links = [
     {
       els: Array.from(
-        document.querySelectorAll('.navbar-items a[aria-label="Changelog"]')
+        document.querySelectorAll('.navbar-items a[aria-label="Changelog"]'),
       ),
-      fathomEventId: "HLMCWOYS",
+      trackedEventId: "HLMCWOYS",
     },
     {
       els: Array.from(
-        document.querySelectorAll('.navbar-items a[aria-label="License"]')
+        document.querySelectorAll('.navbar-items a[aria-label="License"]'),
       ),
-      fathomEventId: "KNIBFW7J",
+      trackedEventId: "KNIBFW7J",
     },
     {
       els: Array.from(
-        document.querySelectorAll('.navbar-items a[aria-label="HZQZRPQP"]')
+        document.querySelectorAll('.navbar-items a[aria-label="HZQZRPQP"]'),
       ),
-      fathomEventId: "UDQTYUYT",
+      trackedEventId: "UDQTYUYT",
     },
   ];
 
   for (const link of links) {
     link.els.forEach((el) =>
-      el.setAttribute("data-fathom-event-id", link.fathomEventId)
+      el.setAttribute("data-track-event-id", link.trackedEventId),
     );
   }
 }
@@ -31,14 +31,15 @@ function trackLinks() {
   const links = document.getElementsByTagName("a");
 
   for (const link of links) {
-    const fathomEventId = link.getAttribute("data-fathom-event-id");
+    const trackedEventId = link.getAttribute("data-track-event-id");
 
-    if (!fathomEventId) {
+    if (!trackedEventId) {
       continue;
     }
 
     link.addEventListener("click", () => {
-      window.fathom.trackGoal(fathomEventId, 0);
+      window?.fathom?.trackGoal(trackedEventId, 0);
+      window?.umami?.track(trackedEventId.substring(0, 50));
     });
   }
 }
@@ -62,7 +63,8 @@ function trackSearch() {
       if (!isOpen) {
         // closed
         document.documentElement.removeAttribute(openAttribute);
-        window.fathom.trackGoal("CSSW2VC0", 0);
+        window?.fathom?.trackGoal("CSSW2VC0", 0);
+        window?.umami?.track("Close search dialog");
       }
 
       return;
@@ -74,7 +76,8 @@ function trackSearch() {
 
     // opened
     document.documentElement.setAttribute(openAttribute, "");
-    window.fathom.trackGoal("PMIFXTJB", 0);
+    window?.fathom?.trackGoal("PMIFXTJB", 0);
+    window?.umami?.track("Open search dialog");
   }
 
   function watchHitEls() {
@@ -84,7 +87,8 @@ function trackSearch() {
       hitEl.querySelector("a").addEventListener("click", () => {
         document.documentElement.removeAttribute(openAttribute);
 
-        window.fathom.trackGoal("VEDZHEVX", 0);
+        window?.fathom?.trackGoal("VEDZHEVX", 0);
+        window?.umami?.track("Click search dialog hit");
       });
     }
   }
